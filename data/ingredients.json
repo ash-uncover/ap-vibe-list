@@ -22,13 +22,6 @@
     ]
   },
   {
-    "id": "40be63ea-6279-48dd-b456-382d0b353c9c",
-    "name": "Salt",
-    "labels": [
-      "Pantry"
-    ]
-  },
-  {
     "id": "585f279e-ae83-4736-8d6f-da2d1edcfde1",
     "name": "Sugar",
     "labels": [
@@ -57,6 +50,11 @@
   {
     "id": "a33cca24-8fd5-4325-9d2c-acc75adb44ae",
     "name": "Ognions",
+    "labels": []
+  },
+  {
+    "id": "40be63ea-6279-48dd-b456-382d0b353c9c",
+    "name": "Sel",
     "labels": []
   }
 ]
