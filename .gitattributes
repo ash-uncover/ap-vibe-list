@@ -1,0 +1,12 @@
+# Normalize line endings: store text files as LF in the repo and check them
+# out as LF on every platform, so Windows checkouts don't introduce CRLF noise.
+* text=auto eol=lf
+
+# Explicitly treat common binary types as binary (no EOL conversion).
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
