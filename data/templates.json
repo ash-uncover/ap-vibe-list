@@ -1,0 +1,13 @@
+[
+  {
+    "id": "a0831b6f-372d-4804-aef5-bcccbf6f3883",
+    "name": "Courses Hebdo",
+    "kind": "template",
+    "items": [
+      {
+        "ingredientId": "26acd202-fbce-452c-ac29-44cdcea53591",
+        "amount": "2"
+      }
+    ]
+  }
+]
