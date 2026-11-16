@@ -5,5 +5,65 @@
     "labels": [
       "Drinks"
     ]
+  },
+  {
+    "id": "57388d60-59e0-48d1-bce0-f7085dbf968f",
+    "name": "Spaghetti",
+    "labels": [
+      "Pantry"
+    ]
+  },
+  {
+    "id": "9657ec40-0f79-47fe-8939-009365418cc4",
+    "name": "Skyr",
+    "labels": [
+      "Dairy"
+    ]
+  },
+  {
+    "id": "369faa26-498e-4c13-aff3-8b9828486854",
+    "name": "Bananas",
+    "labels": [
+      "Produce",
+      "Fruit"
+    ]
+  },
+  {
+    "id": "8956733b-e594-42ac-b107-8a77f1a996ab",
+    "name": "Apples",
+    "labels": [
+      "Produce",
+      "Fruit"
+    ]
+  },
+  {
+    "id": "e6186313-7935-4fee-ace1-355ba4fcab2f",
+    "name": "Zucchini",
+    "labels": [
+      "Produce",
+      "Vegetable"
+    ]
+  },
+  {
+    "id": "a33cca24-8fd5-4325-9d2c-acc75adb44ae",
+    "name": "Onions",
+    "labels": [
+      "Produce",
+      "Vegetable"
+    ]
+  },
+  {
+    "id": "40be63ea-6279-48dd-b456-382d0b353c9c",
+    "name": "Salt",
+    "labels": [
+      "Pantry"
+    ]
+  },
+  {
+    "id": "585f279e-ae83-4736-8d6f-da2d1edcfde1",
+    "name": "Sugar",
+    "labels": [
+      "Pantry"
+    ]
   }
 ]
