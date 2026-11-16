@@ -213,5 +213,12 @@
     "id": "1a067989-0d45-475e-9cae-9258471f15a1",
     "name": "Farine",
     "labels": []
+  },
+  {
+    "id": "e1b78ca8-5a06-42e3-94f6-cafa4d9fd8c2",
+    "name": "Saumon (pavés)",
+    "labels": [
+      "Poissons"
+    ]
   }
 ]
