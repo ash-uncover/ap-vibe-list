@@ -173,5 +173,12 @@
     "labels": [
       "Fruits"
     ]
+  },
+  {
+    "id": "c73d07f1-8950-4079-89fb-9883e90010de",
+    "name": "Tomates",
+    "labels": [
+      "Légumes"
+    ]
   }
 ]
