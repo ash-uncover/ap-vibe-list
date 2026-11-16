@@ -234,5 +234,10 @@
     "labels": [
       "Poissons"
     ]
+  },
+  {
+    "id": "7fe21b95-c288-4e74-9b83-acecb032e485",
+    "name": "Oeufs",
+    "labels": []
   }
 ]
