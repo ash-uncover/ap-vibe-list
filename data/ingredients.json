@@ -7,13 +7,6 @@
     ]
   },
   {
-    "id": "9657ec40-0f79-47fe-8939-009365418cc4",
-    "name": "Skyr",
-    "labels": [
-      "Dairy"
-    ]
-  },
-  {
     "id": "e6186313-7935-4fee-ace1-355ba4fcab2f",
     "name": "Zucchini",
     "labels": [
@@ -55,6 +48,11 @@
   {
     "id": "40be63ea-6279-48dd-b456-382d0b353c9c",
     "name": "Sel",
+    "labels": []
+  },
+  {
+    "id": "9657ec40-0f79-47fe-8939-009365418cc4",
+    "name": "Skyr",
     "labels": []
   }
 ]
