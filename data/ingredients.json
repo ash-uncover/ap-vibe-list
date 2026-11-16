@@ -256,5 +256,12 @@
     "labels": [
       "Fromages"
     ]
+  },
+  {
+    "id": "5046eaf9-daae-45f3-a6fd-be22ccf2d548",
+    "name": "Eau (bouteilles)",
+    "labels": [
+      "Boissons"
+    ]
   }
 ]
