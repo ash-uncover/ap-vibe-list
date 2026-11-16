@@ -1,4 +1,4 @@
-import { useEffect, useState, type KeyboardEvent } from 'react'
+import { useEffect, useMemo, useState, type KeyboardEvent } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { useAuth } from '../auth/AuthContext'
 import { DATA_PATHS, writeJson } from '../github/data'
@@ -23,6 +23,25 @@ export function IngredientEdit() {
 
   const existing = !isNew && data ? data.find((i) => i.id === id) : undefined
 
+  // Autocompletion source: every label already used across the catalog, minus the
+  // ones already on this ingredient. Filtered by what's typed so far.
+  const suggestions = useMemo(() => {
+    const all = new Set<string>()
+    for (const ing of data ?? []) for (const l of ing.labels) all.add(l)
+    for (const l of labels) all.delete(l)
+    const q = labelInput.trim().toLowerCase()
+    return [...all]
+      .filter((l) => !q || l.toLowerCase().includes(q))
+      .sort((a, b) => a.localeCompare(b))
+      .slice(0, 12)
+  }, [data, labels, labelInput])
+
+  function addLabelValue(value: string) {
+    const l = value.trim()
+    if (l && !labels.includes(l)) setLabels([...labels, l])
+    setLabelInput('')
+  }
+
   useEffect(() => {
     if (loaded || !data) return
     if (existing) {
@@ -33,9 +52,7 @@ export function IngredientEdit() {
   }, [data, existing, loaded])
 
   function addLabel() {
-    const l = labelInput.trim()
-    if (l && !labels.includes(l)) setLabels([...labels, l])
-    setLabelInput('')
+    addLabelValue(labelInput)
   }
 
   function onLabelKey(e: KeyboardEvent<HTMLInputElement>) {
@@ -141,6 +158,21 @@ export function IngredientEdit() {
                 Add
               </button>
             </div>
+
+            {suggestions.length > 0 && (
+              <div className="chips chips--suggest">
+                {suggestions.map((l) => (
+                  <button
+                    key={l}
+                    type="button"
+                    className="chip chip--add"
+                    onClick={() => addLabelValue(l)}
+                  >
+                    + {l}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {saveError && <p className="flash flash--error">{saveError}</p>}

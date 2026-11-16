@@ -539,6 +539,19 @@ code {
   color: var(--fg);
   border-color: var(--muted);
 }
+.chips--suggest {
+  margin-top: 2px;
+}
+.chip--add {
+  font-family: inherit;
+  cursor: pointer;
+  color: var(--accent);
+  background: transparent;
+  border-color: var(--border);
+}
+.chip--add:hover {
+  border-color: var(--accent);
+}
 
 /* ---------- ingredient picker ---------- */
 .picker {
