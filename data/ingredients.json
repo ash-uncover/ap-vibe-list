@@ -249,5 +249,12 @@
     "id": "b21ee1bf-1888-4ddf-9026-ddd05d8080f1",
     "name": "Pâte brisée",
     "labels": []
+  },
+  {
+    "id": "382aea38-4035-4498-adf8-cd710d349849",
+    "name": "Emental rapé",
+    "labels": [
+      "Fromages"
+    ]
   }
 ]
