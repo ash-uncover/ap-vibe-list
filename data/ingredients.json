@@ -7,13 +7,6 @@
     ]
   },
   {
-    "id": "8956733b-e594-42ac-b107-8a77f1a996ab",
-    "name": "Pommes",
-    "labels": [
-      "Fruit"
-    ]
-  },
-  {
     "id": "369faa26-498e-4c13-aff3-8b9828486854",
     "name": "Bananes",
     "labels": [
@@ -165,6 +158,13 @@
     "name": "Chipolatas",
     "labels": [
       "Viande"
+    ]
+  },
+  {
+    "id": "8956733b-e594-42ac-b107-8a77f1a996ab",
+    "name": "Pommes",
+    "labels": [
+      "Fruits"
     ]
   }
 ]
