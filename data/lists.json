@@ -21,38 +21,5 @@
         "bought": false
       }
     ]
-  },
-  {
-    "id": "ec7339ff-2d2d-455c-b633-0f6623e50a18",
-    "name": "Next courses",
-    "status": "active",
-    "createdAt": "2026-11-16T22:07:30.519Z",
-    "items": [
-      {
-        "ingredientId": "57388d60-59e0-48d1-bce0-f7085dbf968f",
-        "amount": "1",
-        "bought": false
-      },
-      {
-        "ingredientId": "9657ec40-0f79-47fe-8939-009365418cc4",
-        "amount": "1",
-        "bought": false
-      },
-      {
-        "ingredientId": "382aea38-4035-4498-adf8-cd710d349849",
-        "amount": "200g",
-        "bought": false
-      },
-      {
-        "ingredientId": "94e30404-35ad-4b17-b6db-6bbd2e46bb23",
-        "amount": "2",
-        "bought": false
-      },
-      {
-        "ingredientId": "a33cca24-8fd5-4325-9d2c-acc75adb44ae",
-        "amount": "1",
-        "bought": false
-      }
-    ]
   }
 ]
