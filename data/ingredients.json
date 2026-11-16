@@ -26,11 +26,6 @@
     "labels": []
   },
   {
-    "id": "40be63ea-6279-48dd-b456-382d0b353c9c",
-    "name": "Sel",
-    "labels": []
-  },
-  {
     "id": "9657ec40-0f79-47fe-8939-009365418cc4",
     "name": "Skyr",
     "labels": []
@@ -52,6 +47,13 @@
     "name": "Ognions",
     "labels": [
       "Légumes"
+    ]
+  },
+  {
+    "id": "40be63ea-6279-48dd-b456-382d0b353c9c",
+    "name": "Sel",
+    "labels": [
+      "Condiment"
     ]
   }
 ]
