@@ -22,14 +22,6 @@
     ]
   },
   {
-    "id": "a33cca24-8fd5-4325-9d2c-acc75adb44ae",
-    "name": "Onions",
-    "labels": [
-      "Produce",
-      "Vegetable"
-    ]
-  },
-  {
     "id": "40be63ea-6279-48dd-b456-382d0b353c9c",
     "name": "Salt",
     "labels": [
@@ -60,6 +52,11 @@
   {
     "id": "26acd202-fbce-452c-ac29-44cdcea53591",
     "name": "Café",
+    "labels": []
+  },
+  {
+    "id": "a33cca24-8fd5-4325-9d2c-acc75adb44ae",
+    "name": "Ognions",
     "labels": []
   }
 ]
