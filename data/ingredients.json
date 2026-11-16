@@ -21,13 +21,6 @@
     ]
   },
   {
-    "id": "40be63ea-6279-48dd-b456-382d0b353c9c",
-    "name": "Sel",
-    "labels": [
-      "Condiment"
-    ]
-  },
-  {
     "id": "585f279e-ae83-4736-8d6f-da2d1edcfde1",
     "name": "Sucre",
     "labels": [
@@ -198,6 +191,13 @@
   {
     "id": "30236c68-d555-495f-b078-97c5aa9a7166",
     "name": "Huile d'olive",
+    "labels": [
+      "Condiments"
+    ]
+  },
+  {
+    "id": "40be63ea-6279-48dd-b456-382d0b353c9c",
+    "name": "Sel",
     "labels": [
       "Condiments"
     ]
