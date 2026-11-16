@@ -124,5 +124,12 @@
       "Laitage",
       "Yahourts"
     ]
+  },
+  {
+    "id": "94e30404-35ad-4b17-b6db-6bbd2e46bb23",
+    "name": "Lardons",
+    "labels": [
+      "Viande"
+    ]
   }
 ]
