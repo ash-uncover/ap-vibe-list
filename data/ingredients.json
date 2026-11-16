@@ -194,5 +194,12 @@
     "labels": [
       "Légumes"
     ]
+  },
+  {
+    "id": "30236c68-d555-495f-b078-97c5aa9a7166",
+    "name": "Huile d'olive",
+    "labels": [
+      "Condiments"
+    ]
   }
 ]
