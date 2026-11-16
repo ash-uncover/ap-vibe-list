@@ -99,5 +99,12 @@
     "labels": [
       "Fruits"
     ]
+  },
+  {
+    "id": "c429ceca-36e9-49fb-b37d-5d220bbbefbd",
+    "name": "Poivrons",
+    "labels": [
+      "Légumes"
+    ]
   }
 ]
