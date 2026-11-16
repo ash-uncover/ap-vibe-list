@@ -29,14 +29,6 @@
     ]
   },
   {
-    "id": "8956733b-e594-42ac-b107-8a77f1a996ab",
-    "name": "Apples",
-    "labels": [
-      "Produce",
-      "Fruit"
-    ]
-  },
-  {
     "id": "e6186313-7935-4fee-ace1-355ba4fcab2f",
     "name": "Zucchini",
     "labels": [
@@ -64,6 +56,13 @@
     "name": "Sugar",
     "labels": [
       "Pantry"
+    ]
+  },
+  {
+    "id": "8956733b-e594-42ac-b107-8a77f1a996ab",
+    "name": "Pommes",
+    "labels": [
+      "Fruit"
     ]
   }
 ]
