@@ -1,12 +1,5 @@
 [
   {
-    "id": "26acd202-fbce-452c-ac29-44cdcea53591",
-    "name": "Coffee",
-    "labels": [
-      "Drinks"
-    ]
-  },
-  {
     "id": "57388d60-59e0-48d1-bce0-f7085dbf968f",
     "name": "Spaghetti",
     "labels": [
@@ -63,5 +56,10 @@
     "labels": [
       "Fruit"
     ]
+  },
+  {
+    "id": "26acd202-fbce-452c-ac29-44cdcea53591",
+    "name": "Café",
+    "labels": []
   }
 ]
