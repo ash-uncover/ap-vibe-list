@@ -25,5 +25,16 @@
         "amount": "1"
       }
     ]
+  },
+  {
+    "id": "0dbda934-1207-4c6a-854f-6293e0c95ff5",
+    "name": "Truc nul",
+    "kind": "recipe",
+    "items": [
+      {
+        "ingredientId": "57388d60-59e0-48d1-bce0-f7085dbf968f",
+        "amount": "2"
+      }
+    ]
   }
 ]
