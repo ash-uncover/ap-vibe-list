@@ -21,11 +21,6 @@
     ]
   },
   {
-    "id": "26acd202-fbce-452c-ac29-44cdcea53591",
-    "name": "Café",
-    "labels": []
-  },
-  {
     "id": "9657ec40-0f79-47fe-8939-009365418cc4",
     "name": "Skyr",
     "labels": []
@@ -57,5 +52,10 @@
     "labels": [
       "Condiment"
     ]
+  },
+  {
+    "id": "26acd202-fbce-452c-ac29-44cdcea53591",
+    "name": "Café2",
+    "labels": []
   }
 ]
