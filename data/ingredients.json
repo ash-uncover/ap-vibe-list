@@ -31,11 +31,6 @@
     "labels": []
   },
   {
-    "id": "585f279e-ae83-4736-8d6f-da2d1edcfde1",
-    "name": "Sucre",
-    "labels": []
-  },
-  {
     "id": "e6186313-7935-4fee-ace1-355ba4fcab2f",
     "name": "Courgettes",
     "labels": [
@@ -52,6 +47,13 @@
   {
     "id": "40be63ea-6279-48dd-b456-382d0b353c9c",
     "name": "Sel",
+    "labels": [
+      "Condiment"
+    ]
+  },
+  {
+    "id": "585f279e-ae83-4736-8d6f-da2d1edcfde1",
+    "name": "Sucre",
     "labels": [
       "Condiment"
     ]
