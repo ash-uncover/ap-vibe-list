@@ -93,13 +93,6 @@
     ]
   },
   {
-    "id": "94e30404-35ad-4b17-b6db-6bbd2e46bb23",
-    "name": "Lardons",
-    "labels": [
-      "Viande"
-    ]
-  },
-  {
     "id": "892a4be9-9686-4883-80f7-b54f44b21148",
     "name": "Bacon",
     "labels": [
@@ -318,5 +311,13 @@
     "name": "Farine",
     "labels": [],
     "defaultUnit": "kg"
+  },
+  {
+    "id": "94e30404-35ad-4b17-b6db-6bbd2e46bb23",
+    "name": "Lardons",
+    "labels": [
+      "Viande"
+    ],
+    "defaultUnit": "pack"
   }
 ]
