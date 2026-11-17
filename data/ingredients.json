@@ -21,11 +21,6 @@
     ]
   },
   {
-    "id": "26acd202-fbce-452c-ac29-44cdcea53591",
-    "name": "Café",
-    "labels": []
-  },
-  {
     "id": "41410737-3cb6-410e-9a40-85e57ab5c001",
     "name": "Poires",
     "labels": [
@@ -313,5 +308,11 @@
     "labels": [
       "Fromages"
     ]
+  },
+  {
+    "id": "26acd202-fbce-452c-ac29-44cdcea53591",
+    "name": "Café",
+    "labels": [],
+    "defaultUnit": "pack"
   }
 ]
