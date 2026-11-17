@@ -280,5 +280,12 @@
     "id": "6f5b83a2-90fd-4a27-bdaa-0e72e584bbc4",
     "name": "Riz",
     "labels": []
+  },
+  {
+    "id": "929245b8-655b-4f48-aa2e-4925ac2c8145",
+    "name": "Lentilles (conserve)",
+    "labels": [
+      "Conserves"
+    ]
   }
 ]
