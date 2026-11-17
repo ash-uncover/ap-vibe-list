@@ -239,13 +239,6 @@
     "labels": []
   },
   {
-    "id": "382aea38-4035-4498-adf8-cd710d349849",
-    "name": "Emmental rapé",
-    "labels": [
-      "Fromages"
-    ]
-  },
-  {
     "id": "895e806f-e1ca-4686-b527-acb3fe255aa5",
     "name": "Miel",
     "labels": []
@@ -314,6 +307,14 @@
     "name": "Eau (bouteilles)",
     "labels": [
       "Boissons"
+    ],
+    "defaultUnit": "pack"
+  },
+  {
+    "id": "382aea38-4035-4498-adf8-cd710d349849",
+    "name": "Emmental rapé",
+    "labels": [
+      "Fromages"
     ],
     "defaultUnit": "pack"
   }
