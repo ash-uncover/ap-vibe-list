@@ -306,5 +306,12 @@
     "id": "3f2dc3c8-221a-41f2-93d3-572c5b61624b",
     "name": "Pains à burger",
     "labels": []
+  },
+  {
+    "id": "12c27b6e-10f7-48de-8420-2cccc34b8685",
+    "name": "Parmesan rapé",
+    "labels": [
+      "Fromages"
+    ]
   }
 ]
