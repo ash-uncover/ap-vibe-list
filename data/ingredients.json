@@ -42,13 +42,6 @@
     ]
   },
   {
-    "id": "f361e22c-3ae3-4483-a9ff-2a46157fc9d9",
-    "name": "Raisins Blancs",
-    "labels": [
-      "Fruits"
-    ]
-  },
-  {
     "id": "2e3bc3cb-b0fb-43c2-9cdf-92826e938d0d",
     "name": "Raisins Noirs",
     "labels": [
@@ -320,5 +313,13 @@
       "Fromages"
     ],
     "defaultUnit": "pack"
+  },
+  {
+    "id": "f361e22c-3ae3-4483-a9ff-2a46157fc9d9",
+    "name": "Raisins Blancs",
+    "labels": [
+      "Fruits"
+    ],
+    "defaultUnit": "g"
   }
 ]
