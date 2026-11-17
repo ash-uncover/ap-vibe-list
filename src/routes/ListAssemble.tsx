@@ -4,8 +4,12 @@ import { useAuth } from '../auth/AuthContext'
 import { DATA_PATHS, writeJson } from '../github/data'
 import {
   DEFAULT_UNIT,
+  effectiveItems,
+  formatAmount,
+  migrateList,
   newId,
   normalizeItem,
+  type AttachedRecipe,
   type Bundle,
   type Ingredient,
   type Item,
@@ -14,15 +18,17 @@ import {
 import type { GitHubError } from '../github/types'
 import { useCollection } from '../hooks/useCollection'
 import { IngredientPicker } from '../components/IngredientPicker'
+import { RecipeGroups } from '../components/RecipeGroups'
 import { ErrorNote, Loading, PageHead, ReadOnlyBanner } from '../components/ui'
 import { clearDraft, DRAFT_NEW_LIST, getDraft, setDraft } from '../storage/drafts'
 
 interface Draft {
   name: string
   items: Item[]
+  recipes: AttachedRecipe[]
 }
 
-/** Merge item lists, summing quantities of the same ingredient in the same unit. */
+/** Merge user item lists, summing quantities of the same ingredient in the same unit. */
 function mergeItems(base: Item[], add: Item[]): Item[] {
   const map = new Map<string, Item>()
   for (const it of [...base, ...add]) {
@@ -44,55 +50,81 @@ export function ListAssemble() {
   const recipes = useCollection<Bundle>(DATA_PATHS.recipes)
   const ingredients = useCollection<Ingredient>(DATA_PATHS.ingredients)
 
-  const initial = useMemo(() => getDraft<Draft>(DRAFT_NEW_LIST), [])
-  const [draft, setDraftState] = useState<Draft>(initial ?? { name: '', items: [] })
+  const initial = useMemo<Draft | null>(() => {
+    const d = getDraft<Partial<Draft>>(DRAFT_NEW_LIST)
+    return d ? { name: d.name ?? '', items: d.items ?? [], recipes: d.recipes ?? [] } : null
+  }, [])
+  const [draft, setDraftState] = useState<Draft>(
+    initial ?? { name: '', items: [], recipes: [] },
+  )
   const [busy, setBusy] = useState(false)
   const [saveError, setSaveError] = useState<string | null>(null)
   const cloneApplied = useRef(initial != null)
+
+  const byId = useMemo(
+    () => new Map((ingredients.data ?? []).map((i) => [i.id, i] as const)),
+    [ingredients.data],
+  )
+  const unitFor = (id: string) => byId.get(id)?.defaultUnit ?? DEFAULT_UNIT
 
   // Persist working state so a refresh never loses it.
   useEffect(() => {
     setDraft(DRAFT_NEW_LIST, draft)
   }, [draft])
 
-  // Clone from a past list (unbought items) when arriving via ?from and no draft exists.
+  // Clone from a past list: flatten its still-unbought effective items into user items.
   useEffect(() => {
-    if (cloneApplied.current || !fromId || !lists.data) return
-    const src = lists.data.find((l) => l.id === fromId)
-    if (src) {
-      const defaults = new Map((ingredients.data ?? []).map((i) => [i.id, i.defaultUnit] as const))
-      setDraftState({
-        name: `${src.name} (copy)`,
-        items: src.items
-          .filter((i) => !i.bought)
-          .map((r) => normalizeItem(r, defaults.get(r.ingredientId) ?? DEFAULT_UNIT)),
-      })
+    if (cloneApplied.current || !fromId || !lists.data || !ingredients.data) return
+    const raw = lists.data.find((l) => l.id === fromId)
+    if (raw) {
+      const src = migrateList(raw, unitFor)
+      const bought = new Set(src.bought)
+      const items = effectiveItems(src.items, src.recipes).filter(
+        (e) => !bought.has(`${e.ingredientId}|${e.unit}`),
+      )
+      setDraftState({ name: `${src.name} (copy)`, items, recipes: [] })
     }
     cloneApplied.current = true
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fromId, lists.data, ingredients.data])
 
-  const byId = useMemo(
-    () => new Map((ingredients.data ?? []).map((i) => [i.id, i] as const)),
-    [ingredients.data],
-  )
-
-  // One-time migration of a restored draft that may still use the old amount shape.
-  const normalizedDraft = useRef(false)
+  // One-time migration of a restored draft that may use the old item shape.
+  const normalized = useRef(false)
   useEffect(() => {
-    if (normalizedDraft.current || !ingredients.data) return
-    normalizedDraft.current = true
+    if (normalized.current || !ingredients.data) return
+    normalized.current = true
     setDraftState((d) => ({
       ...d,
-      items: d.items.map((r) => normalizeItem(r, byId.get(r.ingredientId)?.defaultUnit ?? DEFAULT_UNIT)),
+      items: d.items.map((r) => normalizeItem(r, unitFor(r.ingredientId))),
+      recipes: d.recipes.map((g) => ({
+        ...g,
+        items: g.items.map((r) => normalizeItem(r, unitFor(r.ingredientId))),
+      })),
     }))
-  }, [ingredients.data, byId])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ingredients.data])
 
-  function applyBundle(bundle: Bundle | undefined) {
+  function applyTemplate(bundle: Bundle | undefined) {
     if (!bundle) return
-    const norm = bundle.items.map((r) =>
-      normalizeItem(r, byId.get(r.ingredientId)?.defaultUnit ?? DEFAULT_UNIT),
-    )
+    const norm = bundle.items.map((r) => normalizeItem(r, unitFor(r.ingredientId)))
     setDraftState((d) => ({ ...d, items: mergeItems(d.items, norm) }))
+  }
+
+  function attachRecipe(bundle: Bundle | undefined) {
+    if (!bundle) return
+    setDraftState((d) => {
+      if (d.recipes.some((g) => g.recipeId === bundle.id)) return d
+      const group: AttachedRecipe = {
+        recipeId: bundle.id,
+        name: bundle.name,
+        items: bundle.items.map((r) => normalizeItem(r, unitFor(r.ingredientId))),
+      }
+      return { ...d, recipes: [...d.recipes, group] }
+    })
+  }
+
+  function detachRecipe(recipeId: string) {
+    setDraftState((d) => ({ ...d, recipes: d.recipes.filter((g) => g.recipeId !== recipeId) }))
   }
 
   async function create() {
@@ -105,14 +137,11 @@ export function ListAssemble() {
         name: draft.name.trim() || 'Shopping list',
         status: 'active',
         createdAt: new Date().toISOString(),
-        items: draft.items.map((i) => ({ ...i, bought: false })),
+        items: draft.items,
+        recipes: draft.recipes,
+        bought: [],
       }
-      await writeJson(
-        client,
-        DATA_PATHS.lists,
-        [...lists.data, list],
-        `Create list: ${list.name}`,
-      )
+      await writeJson(client, DATA_PATHS.lists, [...lists.data, list], `Create list: ${list.name}`)
       clearDraft(DRAFT_NEW_LIST)
       navigate(`/lists/${list.id}`)
     } catch (e) {
@@ -123,17 +152,35 @@ export function ListAssemble() {
 
   function discard() {
     clearDraft(DRAFT_NEW_LIST)
-    setDraftState({ name: '', items: [] })
+    setDraftState({ name: '', items: [], recipes: [] })
   }
 
   const anyLoading =
     lists.loading || templates.loading || recipes.loading || ingredients.loading
   const anyError = lists.error || templates.error || recipes.error || ingredients.error
   if (anyLoading) return <Loading />
-  if (anyError) return <ErrorNote error={anyError} onRetry={() => { lists.reload(); templates.reload(); recipes.reload(); ingredients.reload() }} />
+  if (anyError) {
+    return (
+      <ErrorNote
+        error={anyError}
+        onRetry={() => {
+          lists.reload()
+          templates.reload()
+          recipes.reload()
+          ingredients.reload()
+        }}
+      />
+    )
+  }
 
   const templateList = templates.data ?? []
-  const recipeList = recipes.data ?? []
+  const recipeList = (recipes.data ?? []).filter(
+    (r) => !draft.recipes.some((g) => g.recipeId === r.id),
+  )
+  const effective = effectiveItems(draft.items, draft.recipes)
+  const effByName = [...effective].sort((a, b) =>
+    (byId.get(a.ingredientId)?.name ?? '').localeCompare(byId.get(b.ingredientId)?.name ?? ''),
+  )
 
   return (
     <div className="stack">
@@ -160,11 +207,11 @@ export function ListAssemble() {
                 className="input"
                 value=""
                 onChange={(e) => {
-                  applyBundle(templateList.find((t) => t.id === e.target.value))
+                  applyTemplate(templateList.find((t) => t.id === e.target.value))
                   e.target.value = ''
                 }}
               >
-                <option value="">Choose a template…</option>
+                <option value="">Add a template’s items…</option>
                 {templateList.map((t) => (
                   <option key={t.id} value={t.id}>
                     {t.name} ({t.items.length})
@@ -174,30 +221,9 @@ export function ListAssemble() {
             </label>
           )}
 
-          {recipeList.length > 0 && (
-            <label className="field">
-              <span className="field__label">Add a recipe</span>
-              <select
-                className="input"
-                value=""
-                onChange={(e) => {
-                  applyBundle(recipeList.find((r) => r.id === e.target.value))
-                  e.target.value = ''
-                }}
-              >
-                <option value="">Add a recipe’s ingredients…</option>
-                {recipeList.map((r) => (
-                  <option key={r.id} value={r.id}>
-                    {r.name} ({r.items.length})
-                  </option>
-                ))}
-              </select>
-            </label>
-          )}
-
           <div className="field">
             <span className="field__label">
-              Items {draft.items.length > 0 && `(${draft.items.length})`}
+              Your items {draft.items.length > 0 && `(${draft.items.length})`}
             </span>
             <IngredientPicker
               catalog={ingredients.data ?? []}
@@ -207,6 +233,54 @@ export function ListAssemble() {
             />
           </div>
 
+          {recipeList.length > 0 && (
+            <label className="field">
+              <span className="field__label">Add a recipe</span>
+              <select
+                className="input"
+                value=""
+                onChange={(e) => {
+                  attachRecipe(recipes.data?.find((r) => r.id === e.target.value))
+                  e.target.value = ''
+                }}
+              >
+                <option value="">Attach a recipe…</option>
+                {recipeList.map((r) => (
+                  <option key={r.id} value={r.id}>
+                    {r.name} ({r.items.length})
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
+
+          {draft.recipes.length > 0 && (
+            <div className="field">
+              <span className="field__label">Recipes</span>
+              <RecipeGroups
+                recipes={draft.recipes}
+                catalog={ingredients.data ?? []}
+                onDetach={detachRecipe}
+              />
+            </div>
+          )}
+
+          {effByName.length > 0 && (
+            <details className="disclosure">
+              <summary>Final list • {effByName.length} items</summary>
+              <ul className="rgroup__items disclosure__body">
+                {effByName.map((it) => (
+                  <li key={`${it.ingredientId}|${it.unit}`} className="rgroup__item">
+                    <span className="rgroup__item-name">
+                      {byId.get(it.ingredientId)?.name ?? 'Unknown item'}
+                    </span>
+                    <span className="rows__meta">{formatAmount(it.quantity, it.unit)}</span>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          )}
+
           {saveError && <p className="flash flash--error">{saveError}</p>}
         </div>
       </div>
@@ -215,7 +289,7 @@ export function ListAssemble() {
         <button
           className="btn btn--primary"
           onClick={create}
-          disabled={!writeAccess || busy || draft.items.length === 0}
+          disabled={!writeAccess || busy || effective.length === 0}
           title={writeAccess ? undefined : 'Read-only token'}
         >
           {busy ? 'Creating…' : 'Create list'}
@@ -224,9 +298,6 @@ export function ListAssemble() {
           Discard
         </button>
       </div>
-      {byId.size === 0 && (
-        <p className="muted">No ingredients in the catalog yet — add some as you go.</p>
-      )}
     </div>
   )
 }

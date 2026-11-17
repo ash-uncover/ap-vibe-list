@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
 import { useAuth } from '../auth/AuthContext'
 import { DATA_PATHS } from '../github/data'
-import type { ShoppingList } from '../github/model'
+import { DEFAULT_UNIT, listProgress, migrateList, type ShoppingList } from '../github/model'
 import { useCollection } from '../hooks/useCollection'
 import { ErrorNote, Loading, ReadOnlyBanner } from '../components/ui'
 
@@ -34,14 +34,14 @@ export function Home() {
           <h2 className="section">Resume shopping</h2>
           <ul className="rows rows--cards">
             {active.map((l) => {
-              const done = l.items.filter((i) => i.bought).length
+              const { done, total } = listProgress(migrateList(l, () => DEFAULT_UNIT))
               return (
                 <li key={l.id}>
                   <Link to={`/lists/${l.id}`} className="listcard">
                     <div className="listcard__top">
                       <span className="rows__main">{l.name}</span>
                       <span className="rows__meta">
-                        {done}/{l.items.length}
+                        {done}/{total}
                       </span>
                     </div>
                   </Link>

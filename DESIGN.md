@@ -43,7 +43,9 @@ interface List {
   status: 'active' | 'completed'
   createdAt: string           // ISO
   completedAt?: string        // ISO
-  items: ListItem[]
+  items: Item[]               // user items (template-seeded + manually added), editable
+  recipes: AttachedRecipe[]   // attached recipe snapshots (read-only groups)
+  bought: string[]            // effective lines ticked, keyed `${ingredientId}|${unit}`
 }
 
 interface Item {
@@ -52,8 +54,10 @@ interface Item {
   unit: Unit                  // defaults to the ingredient's defaultUnit; editable per item
 }
 
-interface ListItem extends Item {
-  bought: boolean
+interface AttachedRecipe {
+  recipeId: string
+  name: string                // snapshot for display
+  items: Item[]               // snapshot at attach time — immune to later recipe edits
 }
 ```
 
@@ -61,8 +65,12 @@ interface ListItem extends Item {
   catalog `Ingredient` first, then reference it.
 - **Templates vs recipes** are the same `Bundle` structure; `kind` only differs in *when/how*
   they feed list assembly: a **template seeds** a new list; a **recipe expands** into one.
-- **Bundles and clones dereference** into fresh `ListItem`s (`bought: false`). A `List`
-  never stores a bundle reference, so it is immune to later edits of that bundle.
+- **Provenance-aware composition.** A list keeps **user items** (template seeding folds in
+  here, fully editable) separate from **attached recipes** (read-only snapshot groups). The
+  actual shopping list is **computed**: per (ingredient, unit), recipes sum among themselves
+  and user items cover them — `effective = max(user, Σ recipes)`; different units never
+  combine. `bought` is tracked per effective line (`ingredientId|unit`). Recipe snapshots keep
+  a list immune to later recipe edits; the shop view shows the flat effective list.
 - Labels can group/filter the shop view; because an ingredient may carry several, grouping
   is a filter, not a strict one-aisle partition.
 - **Amounts are structured** (`quantity` + `unit`) so identical ingredient+unit items sum

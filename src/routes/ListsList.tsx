@@ -1,11 +1,11 @@
 import { Link } from 'react-router'
 import { DATA_PATHS } from '../github/data'
-import type { ShoppingList } from '../github/model'
+import { DEFAULT_UNIT, listProgress, migrateList, type ShoppingList } from '../github/model'
 import { useCollection } from '../hooks/useCollection'
 import { EmptyState, ErrorNote, Loading, PageHead, ReadOnlyBanner } from '../components/ui'
 
 function progress(list: ShoppingList): { done: number; total: number } {
-  return { done: list.items.filter((i) => i.bought).length, total: list.items.length }
+  return listProgress(migrateList(list, () => DEFAULT_UNIT))
 }
 
 function ListCard({ list }: { list: ShoppingList }) {
