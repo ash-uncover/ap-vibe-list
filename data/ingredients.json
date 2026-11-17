@@ -268,5 +268,12 @@
     "id": "895e806f-e1ca-4686-b527-acb3fe255aa5",
     "name": "Miel",
     "labels": []
+  },
+  {
+    "id": "5ac8b11f-ac93-40bf-804f-c225d19bdeff",
+    "name": "Bières",
+    "labels": [
+      "Boissons"
+    ]
   }
 ]
