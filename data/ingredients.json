@@ -275,5 +275,10 @@
     "labels": [
       "Boissons"
     ]
+  },
+  {
+    "id": "6f5b83a2-90fd-4a27-bdaa-0e72e584bbc4",
+    "name": "Riz",
+    "labels": []
   }
 ]
