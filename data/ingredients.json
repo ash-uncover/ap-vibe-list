@@ -246,13 +246,6 @@
     ]
   },
   {
-    "id": "5046eaf9-daae-45f3-a6fd-be22ccf2d548",
-    "name": "Eau (bouteilles)",
-    "labels": [
-      "Boissons"
-    ]
-  },
-  {
     "id": "895e806f-e1ca-4686-b527-acb3fe255aa5",
     "name": "Miel",
     "labels": []
@@ -315,5 +308,13 @@
       "Poissons"
     ],
     "defaultUnit": "g"
+  },
+  {
+    "id": "5046eaf9-daae-45f3-a6fd-be22ccf2d548",
+    "name": "Eau (bouteilles)",
+    "labels": [
+      "Boissons"
+    ],
+    "defaultUnit": "pack"
   }
 ]
