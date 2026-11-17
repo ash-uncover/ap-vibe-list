@@ -270,13 +270,6 @@
     "labels": []
   },
   {
-    "id": "12c27b6e-10f7-48de-8420-2cccc34b8685",
-    "name": "Parmesan rapé",
-    "labels": [
-      "Fromages"
-    ]
-  },
-  {
     "id": "26acd202-fbce-452c-ac29-44cdcea53591",
     "name": "Café",
     "labels": [],
@@ -317,6 +310,14 @@
     "name": "Lardons",
     "labels": [
       "Viande"
+    ],
+    "defaultUnit": "pack"
+  },
+  {
+    "id": "12c27b6e-10f7-48de-8420-2cccc34b8685",
+    "name": "Parmesan rapé",
+    "labels": [
+      "Fromages"
     ],
     "defaultUnit": "pack"
   }
