@@ -1,6 +1,6 @@
 import { Link } from 'react-router'
 import { DATA_PATHS } from '../github/data'
-import type { Ingredient } from '../github/model'
+import { normalizeUnit, unitLabel, type Ingredient } from '../github/model'
 import { useCollection } from '../hooks/useCollection'
 import { Chip, EmptyState, ErrorNote, Loading, PageHead, ReadOnlyBanner } from '../components/ui'
 
@@ -50,6 +50,7 @@ export function IngredientsList() {
                       ))}
                     </span>
                   )}
+                  <span className="rows__unit">{unitLabel(normalizeUnit(i.defaultUnit))}</span>
                   <span className="rows__chevron" aria-hidden>
                     ›
                   </span>

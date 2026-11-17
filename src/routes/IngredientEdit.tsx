@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState, type KeyboardEvent } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { useAuth } from '../auth/AuthContext'
 import { DATA_PATHS, writeJson } from '../github/data'
-import { newId, type Ingredient } from '../github/model'
+import { DEFAULT_UNIT, newId, normalizeUnit, UNITS, type Ingredient, type Unit } from '../github/model'
 import type { GitHubError } from '../github/types'
 import { useCollection } from '../hooks/useCollection'
 import { ErrorNote, Loading, PageHead, ReadOnlyBanner } from '../components/ui'
@@ -16,6 +16,7 @@ export function IngredientEdit() {
 
   const [name, setName] = useState('')
   const [labels, setLabels] = useState<string[]>([])
+  const [defaultUnit, setDefaultUnit] = useState<Unit>(DEFAULT_UNIT)
   const [labelInput, setLabelInput] = useState('')
   const [busy, setBusy] = useState(false)
   const [saveError, setSaveError] = useState<string | null>(null)
@@ -47,6 +48,7 @@ export function IngredientEdit() {
     if (existing) {
       setName(existing.name)
       setLabels(existing.labels)
+      setDefaultUnit(normalizeUnit(existing.defaultUnit))
     }
     setLoaded(true)
   }, [data, existing, loaded])
@@ -73,6 +75,7 @@ export function IngredientEdit() {
         id: existing?.id ?? newId(),
         name: trimmed,
         labels,
+        defaultUnit,
       }
       const others = data.filter((i) => i.id !== next.id)
       await writeJson(
@@ -129,6 +132,21 @@ export function IngredientEdit() {
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. Olive oil"
             />
+          </label>
+
+          <label className="field">
+            <span className="field__label">Default unit</span>
+            <select
+              className="input"
+              value={defaultUnit}
+              onChange={(e) => setDefaultUnit(e.target.value as Unit)}
+            >
+              {UNITS.map((u) => (
+                <option key={u.code} value={u.code}>
+                  {u.label}
+                </option>
+              ))}
+            </select>
           </label>
 
           <div className="field">

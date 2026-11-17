@@ -3,7 +3,9 @@ import { useNavigate, useSearchParams } from 'react-router'
 import { useAuth } from '../auth/AuthContext'
 import { DATA_PATHS, writeJson } from '../github/data'
 import {
+  DEFAULT_UNIT,
   newId,
+  normalizeItem,
   type Bundle,
   type Ingredient,
   type Item,
@@ -20,11 +22,13 @@ interface Draft {
   items: Item[]
 }
 
+/** Merge item lists, summing quantities of the same ingredient in the same unit. */
 function mergeItems(base: Item[], add: Item[]): Item[] {
-  const map = new Map(base.map((i) => [i.ingredientId, i] as const))
-  for (const it of add) {
-    const prev = map.get(it.ingredientId)
-    map.set(it.ingredientId, { ingredientId: it.ingredientId, amount: it.amount ?? prev?.amount })
+  const map = new Map<string, Item>()
+  for (const it of [...base, ...add]) {
+    const key = `${it.ingredientId}|${it.unit}`
+    const prev = map.get(key)
+    map.set(key, prev ? { ...prev, quantity: prev.quantity + it.quantity } : { ...it })
   }
   return [...map.values()]
 }
@@ -56,24 +60,39 @@ export function ListAssemble() {
     if (cloneApplied.current || !fromId || !lists.data) return
     const src = lists.data.find((l) => l.id === fromId)
     if (src) {
+      const defaults = new Map((ingredients.data ?? []).map((i) => [i.id, i.defaultUnit] as const))
       setDraftState({
         name: `${src.name} (copy)`,
         items: src.items
           .filter((i) => !i.bought)
-          .map(({ ingredientId, amount }) => ({ ingredientId, amount })),
+          .map((r) => normalizeItem(r, defaults.get(r.ingredientId) ?? DEFAULT_UNIT)),
       })
     }
     cloneApplied.current = true
-  }, [fromId, lists.data])
+  }, [fromId, lists.data, ingredients.data])
 
   const byId = useMemo(
     () => new Map((ingredients.data ?? []).map((i) => [i.id, i] as const)),
     [ingredients.data],
   )
 
+  // One-time migration of a restored draft that may still use the old amount shape.
+  const normalizedDraft = useRef(false)
+  useEffect(() => {
+    if (normalizedDraft.current || !ingredients.data) return
+    normalizedDraft.current = true
+    setDraftState((d) => ({
+      ...d,
+      items: d.items.map((r) => normalizeItem(r, byId.get(r.ingredientId)?.defaultUnit ?? DEFAULT_UNIT)),
+    }))
+  }, [ingredients.data, byId])
+
   function applyBundle(bundle: Bundle | undefined) {
     if (!bundle) return
-    setDraftState((d) => ({ ...d, items: mergeItems(d.items, bundle.items) }))
+    const norm = bundle.items.map((r) =>
+      normalizeItem(r, byId.get(r.ingredientId)?.defaultUnit ?? DEFAULT_UNIT),
+    )
+    setDraftState((d) => ({ ...d, items: mergeItems(d.items, norm) }))
   }
 
   async function create() {

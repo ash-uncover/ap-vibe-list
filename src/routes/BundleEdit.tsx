@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { useAuth } from '../auth/AuthContext'
 import { DATA_PATHS, writeJson } from '../github/data'
-import { newId, type Bundle, type BundleKind, type Ingredient, type Item } from '../github/model'
+import { DEFAULT_UNIT, newId, normalizeItem, type Bundle, type BundleKind, type Ingredient, type Item } from '../github/model'
 import type { GitHubError } from '../github/types'
 import { useCollection } from '../hooks/useCollection'
 import { IngredientPicker } from '../components/IngredientPicker'
@@ -36,13 +36,16 @@ export function BundleEdit({ kind }: Props) {
   const existing = !isNew && bundles.data ? bundles.data.find((b) => b.id === id) : undefined
 
   useEffect(() => {
-    if (loaded || !bundles.data) return
+    if (loaded || !bundles.data || !ingredients.data) return
     if (existing) {
       setName(existing.name)
-      setItems(existing.items)
+      const defaults = new Map(ingredients.data.map((i) => [i.id, i.defaultUnit] as const))
+      setItems(
+        existing.items.map((r) => normalizeItem(r, defaults.get(r.ingredientId) ?? DEFAULT_UNIT)),
+      )
     }
     setLoaded(true)
-  }, [bundles.data, existing, loaded])
+  }, [bundles.data, ingredients.data, existing, loaded])
 
   async function save() {
     if (!client || !bundles.data) return

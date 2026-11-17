@@ -1,8 +1,16 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { useAuth } from '../auth/AuthContext'
 import { DATA_PATHS, writeJson } from '../github/data'
-import type { Ingredient, Item, ListItem, ShoppingList } from '../github/model'
+import {
+  DEFAULT_UNIT,
+  formatAmount,
+  normalizeItem,
+  type Ingredient,
+  type Item,
+  type ListItem,
+  type ShoppingList,
+} from '../github/model'
 import type { GitHubError } from '../github/types'
 import { useCollection } from '../hooks/useCollection'
 import { IngredientPicker } from '../components/IngredientPicker'
@@ -29,9 +37,29 @@ export function ListShop() {
 
   // Seed working state from the committed list the first time it loads.
   useEffect(() => {
-    if (working !== null || !list) return
-    setWorking(list.items)
-  }, [list, working])
+    if (working !== null || !list || !ingredients.data) return
+    const defaults = new Map(ingredients.data.map((i) => [i.id, i.defaultUnit] as const))
+    setWorking(
+      list.items.map((r) => ({
+        ...normalizeItem(r, defaults.get(r.ingredientId) ?? DEFAULT_UNIT),
+        bought: !!r.bought,
+      })),
+    )
+  }, [list, working, ingredients.data])
+
+  // Migrate a restored shopping draft that may still use the old amount shape.
+  const normalizedWorking = useRef(false)
+  useEffect(() => {
+    if (normalizedWorking.current || working === null || !ingredients.data) return
+    normalizedWorking.current = true
+    const defaults = new Map(ingredients.data.map((i) => [i.id, i.defaultUnit] as const))
+    setWorking((w) =>
+      (w ?? []).map((r) => ({
+        ...normalizeItem(r, defaults.get(r.ingredientId) ?? DEFAULT_UNIT),
+        bought: !!r.bought,
+      })),
+    )
+  }, [working, ingredients.data])
 
   // Persist in-progress ticks so a refresh is safe — this is NOT a commit.
   useEffect(() => {
@@ -113,7 +141,11 @@ export function ListShop() {
 
   const done = working.filter((i) => i.bought).length
   const total = working.length
-  const pickerItems: Item[] = working.map(({ ingredientId, amount }) => ({ ingredientId, amount }))
+  const pickerItems: Item[] = working.map(({ ingredientId, quantity, unit }) => ({
+    ingredientId,
+    quantity,
+    unit,
+  }))
 
   return (
     <div className="stack">
@@ -144,7 +176,7 @@ export function ListShop() {
                     onChange={() => toggle(it.ingredientId)}
                   />
                   <span className="check__name">{ing?.name ?? 'Unknown item'}</span>
-                  {it.amount && <span className="check__amount">{it.amount}</span>}
+                  <span className="check__amount">{formatAmount(it.quantity, it.unit)}</span>
                   {ing && ing.labels.length > 0 && (
                     <span className="check__chips">
                       {ing.labels.map((l) => (

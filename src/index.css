@@ -490,6 +490,11 @@ code {
   gap: 4px;
   flex-wrap: wrap;
 }
+.rows__unit {
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
 
 .listcard {
   flex-direction: column;
@@ -559,6 +564,7 @@ code {
   flex-direction: column;
   gap: 10px;
   width: 100%;
+  min-width: 0;
 }
 .picker__selected {
   list-style: none;
@@ -566,7 +572,7 @@ code {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 .picker__row {
   display: flex;
@@ -576,10 +582,29 @@ code {
 .picker__name {
   flex: 1;
   min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-.input--amount {
-  width: 92px;
+.picker__controls {
+  display: flex;
+  gap: 8px;
+}
+.input--qty {
+  width: 56px;
   flex: none;
+  text-align: right;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+.input--unit {
+  width: 112px;
+  flex: none;
+  padding-left: 8px;
+  padding-right: 4px;
+}
+.picker__empty {
+  margin: 0;
 }
 .picker__catalog {
   list-style: none;
@@ -588,8 +613,8 @@ code {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  max-height: 260px;
-  overflow: auto;
+  max-height: 280px;
+  overflow-y: auto;
 }
 .picker__add {
   width: 100%;
@@ -597,7 +622,7 @@ code {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding: 8px 12px;
+  padding: 10px 12px;
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -606,12 +631,18 @@ code {
   text-align: left;
   cursor: pointer;
 }
+.picker__add-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .picker__add:hover {
   border-color: var(--muted);
 }
 .picker__plus {
   color: var(--accent);
   font-weight: 700;
+  flex: none;
 }
 
 /* ---------- checklist (shopping) ---------- */

@@ -1,7 +1,14 @@
 import { useMemo, useState } from 'react'
 import { useAuth } from '../auth/AuthContext'
 import { DATA_PATHS, writeJson } from '../github/data'
-import { newId, type Ingredient, type Item } from '../github/model'
+import {
+  DEFAULT_UNIT,
+  newId,
+  UNITS,
+  type Ingredient,
+  type Item,
+  type Unit,
+} from '../github/model'
 import type { GitHubError } from '../github/types'
 
 interface Props {
@@ -18,22 +25,18 @@ export function IngredientPicker({ catalog, items, onChange, onCatalogChange }: 
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const byId = useMemo(
-    () => new Map(catalog.map((i) => [i.id, i] as const)),
-    [catalog],
-  )
+  const byId = useMemo(() => new Map(catalog.map((i) => [i.id, i] as const)), [catalog])
   const selectedIds = useMemo(() => new Set(items.map((i) => i.ingredientId)), [items])
 
   const q = query.trim().toLowerCase()
   const matches = q
-    ? catalog.filter(
-        (i) => !selectedIds.has(i.id) && i.name.toLowerCase().includes(q),
-      )
+    ? catalog.filter((i) => !selectedIds.has(i.id) && i.name.toLowerCase().includes(q))
     : catalog.filter((i) => !selectedIds.has(i.id))
   const exactExists = catalog.some((i) => i.name.toLowerCase() === q)
 
   function add(ingredientId: string) {
-    onChange([...items, { ingredientId }])
+    const unit = byId.get(ingredientId)?.defaultUnit ?? DEFAULT_UNIT
+    onChange([...items, { ingredientId, quantity: 1, unit }])
     setQuery('')
   }
 
@@ -41,12 +44,8 @@ export function IngredientPicker({ catalog, items, onChange, onCatalogChange }: 
     onChange(items.filter((i) => i.ingredientId !== ingredientId))
   }
 
-  function setAmount(ingredientId: string, amount: string) {
-    onChange(
-      items.map((i) =>
-        i.ingredientId === ingredientId ? { ...i, amount: amount || undefined } : i,
-      ),
-    )
+  function patch(ingredientId: string, patch: Partial<Item>) {
+    onChange(items.map((i) => (i.ingredientId === ingredientId ? { ...i, ...patch } : i)))
   }
 
   async function quickCreate() {
@@ -55,14 +54,14 @@ export function IngredientPicker({ catalog, items, onChange, onCatalogChange }: 
     setBusy(true)
     setError(null)
     try {
-      const ing: Ingredient = { id: newId(), name, labels: [] }
+      const ing: Ingredient = { id: newId(), name, labels: [], defaultUnit: DEFAULT_UNIT }
       await writeJson(
         client,
         DATA_PATHS.ingredients,
         [...catalog, ing],
         `Add ingredient: ${name}`,
       )
-      onChange([...items, { ingredientId: ing.id }])
+      onChange([...items, { ingredientId: ing.id, quantity: 1, unit: ing.defaultUnit }])
       setQuery('')
       onCatalogChange()
     } catch (e) {
@@ -74,7 +73,7 @@ export function IngredientPicker({ catalog, items, onChange, onCatalogChange }: 
 
   return (
     <div className="picker">
-      {items.length > 0 && (
+      {items.length > 0 ? (
         <ul className="picker__selected">
           {items.map((it) => (
             <li key={it.ingredientId} className="picker__row">
@@ -82,11 +81,28 @@ export function IngredientPicker({ catalog, items, onChange, onCatalogChange }: 
                 {byId.get(it.ingredientId)?.name ?? 'Unknown item'}
               </span>
               <input
-                className="input input--amount"
-                placeholder="amount"
-                value={it.amount ?? ''}
-                onChange={(e) => setAmount(it.ingredientId, e.target.value)}
+                className="input input--qty"
+                type="number"
+                min="0"
+                step="any"
+                value={Number.isFinite(it.quantity) ? it.quantity : ''}
+                onChange={(e) =>
+                  patch(it.ingredientId, { quantity: Number(e.target.value) || 0 })
+                }
+                aria-label="Quantity"
               />
+              <select
+                className="input input--unit"
+                value={it.unit}
+                onChange={(e) => patch(it.ingredientId, { unit: e.target.value as Unit })}
+                aria-label="Unit"
+              >
+                {UNITS.map((u) => (
+                  <option key={u.code} value={u.code}>
+                    {u.label}
+                  </option>
+                ))}
+              </select>
               <button
                 className="btn btn--sm btn--danger-ghost"
                 onClick={() => remove(it.ingredientId)}
@@ -97,11 +113,13 @@ export function IngredientPicker({ catalog, items, onChange, onCatalogChange }: 
             </li>
           ))}
         </ul>
+      ) : (
+        <p className="muted picker__empty">No ingredients yet — search below to add.</p>
       )}
 
       <input
         className="input"
-        placeholder="Search or add an item…"
+        placeholder="Search the catalog…"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
@@ -114,12 +132,12 @@ export function IngredientPicker({ catalog, items, onChange, onCatalogChange }: 
         </button>
       )}
 
-      {matches.length > 0 && (
+      {q && matches.length > 0 && (
         <ul className="picker__catalog">
           {matches.slice(0, 20).map((i) => (
             <li key={i.id}>
               <button className="picker__add" onClick={() => add(i.id)}>
-                <span>{i.name}</span>
+                <span className="picker__add-name">{i.name}</span>
                 <span className="picker__plus" aria-hidden>
                   ＋
                 </span>

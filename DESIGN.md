@@ -23,7 +23,10 @@ interface Ingredient {
   id: string
   name: string
   labels: string[]            // many-to-many; known labels = union of those in use
+  defaultUnit: Unit           // pre-fills the unit when added to a bundle/list
 }
+
+type Unit = 'piece' | 'pack' | 'g' | 'kg'   // display: Pièce · Paquet · Poids (g) · Poids (kg)
 
 type BundleKind = 'template' | 'recipe'
 
@@ -45,7 +48,8 @@ interface List {
 
 interface Item {
   ingredientId: string        // always a reference to an Ingredient — never free text
-  amount?: string             // free text: "500g", "2", "2 bottles"
+  quantity: number            // structured so quantities aggregate
+  unit: Unit                  // defaults to the ingredient's defaultUnit; editable per item
 }
 
 interface ListItem extends Item {
@@ -61,6 +65,9 @@ interface ListItem extends Item {
   never stores a bundle reference, so it is immune to later edits of that bundle.
 - Labels can group/filter the shop view; because an ingredient may carry several, grouping
   is a filter, not a strict one-aisle partition.
+- **Amounts are structured** (`quantity` + `unit`) so identical ingredient+unit items sum
+  when bundles/lists merge (`2 pce` + `3 pce` → `5 pce`); `defaultUnit` pre-fills new items.
+  Legacy free-text `amount` and missing `defaultUnit` are migrated on read.
 - IDs: `crypto.randomUUID()`.
 
 ## Storage
