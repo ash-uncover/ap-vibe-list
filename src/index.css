@@ -267,7 +267,9 @@ code {
 }
 .input {
   font-family: inherit;
-  font-size: 14px;
+  /* 16px min: iOS Safari/WebKit zooms the whole viewport in when a focused
+     field is smaller, which then leaves the page scrollable sideways. */
+  font-size: 16px;
   padding: 6px 12px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -282,7 +284,7 @@ code {
 }
 .editor {
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 16px; /* 16px min to prevent iOS focus-zoom (see .input) */
   width: 100%;
   padding: 12px;
   border: 1px solid var(--border);
