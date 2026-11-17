@@ -1,12 +1,5 @@
 [
   {
-    "id": "57388d60-59e0-48d1-bce0-f7085dbf968f",
-    "name": "Spaghetti",
-    "labels": [
-      "Pantry"
-    ]
-  },
-  {
     "id": "e6186313-7935-4fee-ace1-355ba4fcab2f",
     "name": "Courgettes",
     "labels": [
@@ -322,6 +315,14 @@
     "id": "6f5b83a2-90fd-4a27-bdaa-0e72e584bbc4",
     "name": "Riz",
     "labels": [],
+    "defaultUnit": "kg"
+  },
+  {
+    "id": "57388d60-59e0-48d1-bce0-f7085dbf968f",
+    "name": "Spaghetti",
+    "labels": [
+      "Pantry"
+    ],
     "defaultUnit": "kg"
   }
 ]
