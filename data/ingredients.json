@@ -217,13 +217,6 @@
     ]
   },
   {
-    "id": "403e2f2a-f907-4959-8ea9-1bd00e3595ac",
-    "name": "Crevettes",
-    "labels": [
-      "Poissons"
-    ]
-  },
-  {
     "id": "ec6b411e-2f9d-42fe-a5ad-1e3051686876",
     "name": "Thon (longes)",
     "labels": [
@@ -314,5 +307,13 @@
     "name": "Café",
     "labels": [],
     "defaultUnit": "pack"
+  },
+  {
+    "id": "403e2f2a-f907-4959-8ea9-1bd00e3595ac",
+    "name": "Crevettes",
+    "labels": [
+      "Poissons"
+    ],
+    "defaultUnit": "g"
   }
 ]
