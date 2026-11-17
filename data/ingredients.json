@@ -263,5 +263,10 @@
     "labels": [
       "Boissons"
     ]
+  },
+  {
+    "id": "895e806f-e1ca-4686-b527-acb3fe255aa5",
+    "name": "Miel",
+    "labels": []
   }
 ]
