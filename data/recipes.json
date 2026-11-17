@@ -28,12 +28,23 @@
   },
   {
     "id": "0dbda934-1207-4c6a-854f-6293e0c95ff5",
-    "name": "Truc nul",
+    "name": "Pâtes au courgettes",
     "kind": "recipe",
     "items": [
       {
         "ingredientId": "57388d60-59e0-48d1-bce0-f7085dbf968f",
-        "amount": "2"
+        "quantity": 1,
+        "unit": "pack"
+      },
+      {
+        "ingredientId": "e6186313-7935-4fee-ace1-355ba4fcab2f",
+        "quantity": 2,
+        "unit": "piece"
+      },
+      {
+        "ingredientId": "12c27b6e-10f7-48de-8420-2cccc34b8685",
+        "quantity": 1,
+        "unit": "pack"
       }
     ]
   }
