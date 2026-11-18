@@ -6,7 +6,28 @@
     "items": [
       {
         "ingredientId": "26acd202-fbce-452c-ac29-44cdcea53591",
-        "amount": "2"
+        "quantity": 2,
+        "unit": "pack"
+      },
+      {
+        "ingredientId": "57388d60-59e0-48d1-bce0-f7085dbf968f",
+        "quantity": 2,
+        "unit": "pack"
+      },
+      {
+        "ingredientId": "94e30404-35ad-4b17-b6db-6bbd2e46bb23",
+        "quantity": 2,
+        "unit": "pack"
+      },
+      {
+        "ingredientId": "382aea38-4035-4498-adf8-cd710d349849",
+        "quantity": 2,
+        "unit": "pack"
+      },
+      {
+        "ingredientId": "369faa26-498e-4c13-aff3-8b9828486854",
+        "quantity": 5,
+        "unit": "piece"
       }
     ]
   }
