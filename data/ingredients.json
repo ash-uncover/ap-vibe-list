@@ -340,5 +340,11 @@
       "Viande"
     ],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "eb2611ea-b78e-4a33-af0c-879fcc978dd5",
+    "name": "Chocolat",
+    "labels": [],
+    "defaultUnit": "pack"
   }
 ]
