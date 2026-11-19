@@ -2,18 +2,18 @@
   {
     "id": "bcf8d67b-63a1-44ee-b1c3-b8391ef86e74",
     "name": "ajd",
-    "status": "active",
     "createdAt": "2026-11-19T18:20:49.691Z",
+    "status": "active",
     "items": [
       {
         "ingredientId": "5ac8b11f-ac93-40bf-804f-c225d19bdeff",
-        "unit": "piece",
-        "quantity": 1
+        "quantity": 1,
+        "unit": "piece"
       },
       {
         "ingredientId": "94e30404-35ad-4b17-b6db-6bbd2e46bb23",
-        "unit": "g",
-        "quantity": 160
+        "quantity": 160,
+        "unit": "g"
       }
     ],
     "recipes": [],
