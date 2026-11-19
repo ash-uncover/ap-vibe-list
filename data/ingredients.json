@@ -324,5 +324,13 @@
       "Pantry"
     ],
     "defaultUnit": "kg"
+  },
+  {
+    "id": "773861eb-3528-4e72-b42e-c4ce56a76064",
+    "name": "Fromage a Burger",
+    "labels": [
+      "Laitage"
+    ],
+    "defaultUnit": "piece"
   }
 ]
