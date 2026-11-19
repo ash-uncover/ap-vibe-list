@@ -116,5 +116,27 @@
         "unit": "piece"
       }
     ]
+  },
+  {
+    "id": "3e582e27-958c-4112-ae6f-d2211afd151b",
+    "name": "Saumon Echalottes",
+    "kind": "recipe",
+    "items": [
+      {
+        "ingredientId": "e1b78ca8-5a06-42e3-94f6-cafa4d9fd8c2",
+        "quantity": 2,
+        "unit": "piece"
+      },
+      {
+        "ingredientId": "6f5b83a2-90fd-4a27-bdaa-0e72e584bbc4",
+        "quantity": 250,
+        "unit": "g"
+      },
+      {
+        "ingredientId": "28719dfb-6b13-4ac4-b658-729be09ae59b",
+        "quantity": 4,
+        "unit": "piece"
+      }
+    ]
   }
 ]
