@@ -52,5 +52,17 @@
         "unit": "piece"
       }
     ]
+  },
+  {
+    "id": "6d469ea8-5efa-46ce-ba0e-e9fa9d755ca6",
+    "name": "Burger",
+    "kind": "recipe",
+    "items": [
+      {
+        "ingredientId": "3f2dc3c8-221a-41f2-93d3-572c5b61624b",
+        "quantity": 4,
+        "unit": "piece"
+      }
+    ]
   }
 ]
