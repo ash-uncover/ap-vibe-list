@@ -1,1 +1,77 @@
-[]
+[
+  {
+    "id": "81b8dcb9-7b90-4350-b434-a08dd5bf5079",
+    "name": "Courses Hebdo - 19/11/2026",
+    "status": "active",
+    "createdAt": "2026-11-19T15:27:44.858Z",
+    "items": [
+      {
+        "ingredientId": "369faa26-498e-4c13-aff3-8b9828486854",
+        "unit": "piece",
+        "quantity": 5
+      },
+      {
+        "ingredientId": "26acd202-fbce-452c-ac29-44cdcea53591",
+        "unit": "pack",
+        "quantity": 2
+      },
+      {
+        "ingredientId": "e6186313-7935-4fee-ace1-355ba4fcab2f",
+        "unit": "piece",
+        "quantity": 2
+      },
+      {
+        "ingredientId": "382aea38-4035-4498-adf8-cd710d349849",
+        "unit": "pack",
+        "quantity": 2
+      },
+      {
+        "ingredientId": "773861eb-3528-4e72-b42e-c4ce56a76064",
+        "unit": "piece",
+        "quantity": 12
+      },
+      {
+        "ingredientId": "94e30404-35ad-4b17-b6db-6bbd2e46bb23",
+        "unit": "pack",
+        "quantity": 2
+      },
+      {
+        "ingredientId": "a33cca24-8fd5-4325-9d2c-acc75adb44ae",
+        "unit": "piece",
+        "quantity": 1
+      },
+      {
+        "ingredientId": "3f2dc3c8-221a-41f2-93d3-572c5b61624b",
+        "unit": "piece",
+        "quantity": 4
+      },
+      {
+        "ingredientId": "12c27b6e-10f7-48de-8420-2cccc34b8685",
+        "unit": "pack",
+        "quantity": 1
+      },
+      {
+        "ingredientId": "9657ec40-0f79-47fe-8939-009365418cc4",
+        "unit": "piece",
+        "quantity": 1
+      },
+      {
+        "ingredientId": "57388d60-59e0-48d1-bce0-f7085dbf968f",
+        "unit": "pack",
+        "quantity": 2
+      },
+      {
+        "ingredientId": "5873f275-8b9d-4477-8472-2aff7edee366",
+        "unit": "piece",
+        "quantity": 4
+      },
+      {
+        "ingredientId": "c73d07f1-8950-4079-89fb-9883e90010de",
+        "unit": "piece",
+        "quantity": 1
+      }
+    ],
+    "recipes": [],
+    "bought": []
+  }
+]
