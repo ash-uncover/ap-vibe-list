@@ -2,8 +2,9 @@
   {
     "id": "27cd0d82-5283-456d-bd6f-0e6434143e26",
     "name": "Hebdo",
-    "status": "active",
     "createdAt": "2026-11-19T07:07:12.940Z",
+    "status": "completed",
+    "completedAt": "2026-11-19T07:07:18.494Z",
     "items": [],
     "recipes": [
       {
