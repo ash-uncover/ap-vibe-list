@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "id": "1b867d7b-62ef-447b-8e39-107c467c3102",
+    "name": "jeudi 19 nov",
+    "status": "active",
+    "createdAt": "2026-11-19T18:19:38.065Z",
+    "items": [
+      {
+        "ingredientId": "5ac8b11f-ac93-40bf-804f-c225d19bdeff",
+        "unit": "piece",
+        "quantity": 1
+      },
+      {
+        "ingredientId": "94e30404-35ad-4b17-b6db-6bbd2e46bb23",
+        "unit": "g",
+        "quantity": 160
+      }
+    ],
+    "recipes": [],
+    "bought": []
+  }
+]
