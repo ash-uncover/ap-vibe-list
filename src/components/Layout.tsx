@@ -3,7 +3,7 @@ import { useAuth } from '../auth/AuthContext'
 import { BottomNav } from './BottomNav'
 
 export function Layout() {
-  const { writeAccess, logout } = useAuth()
+  const { logout } = useAuth()
 
   return (
     <>
@@ -17,9 +17,6 @@ export function Layout() {
           </Link>
 
           <div className="app-header__right">
-            <span className={`badge ${writeAccess ? 'badge--green' : 'badge--gray'}`}>
-              {writeAccess ? 'read / write' : 'read only'}
-            </span>
             <button className="btn btn--default btn--sm" onClick={logout}>
               Sign out
             </button>

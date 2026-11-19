@@ -1,5 +1,4 @@
 import { Link } from 'react-router'
-import { useAuth } from '../auth/AuthContext'
 import { DATA_PATHS } from '../github/data'
 import { DEFAULT_UNIT, listProgress, migrateList, type ShoppingList } from '../github/model'
 import { useCollection } from '../hooks/useCollection'
@@ -14,16 +13,11 @@ const NAV = [
 ]
 
 export function Home() {
-  const { repo } = useAuth()
   const { data, loading, error, reload } = useCollection<ShoppingList>(DATA_PATHS.lists)
   const active = data ? data.filter((l) => l.status === 'active') : []
 
   return (
     <div className="stack">
-      <div className="hero">
-        <h1 className="hero__title">Shopping</h1>
-        {repo && <p className="muted">{repo.full_name}</p>}
-      </div>
       <ReadOnlyBanner />
 
       {loading && <Loading />}
