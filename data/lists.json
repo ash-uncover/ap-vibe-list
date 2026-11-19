@@ -14,6 +14,11 @@
         "ingredientId": "94e30404-35ad-4b17-b6db-6bbd2e46bb23",
         "quantity": 160,
         "unit": "g"
+      },
+      {
+        "ingredientId": "fe5ad2df-b2f1-4597-9383-3383a1c4db13",
+        "quantity": 1,
+        "unit": "piece"
       }
     ],
     "recipes": [],
