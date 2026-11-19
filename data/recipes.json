@@ -62,6 +62,31 @@
         "ingredientId": "3f2dc3c8-221a-41f2-93d3-572c5b61624b",
         "quantity": 4,
         "unit": "piece"
+      },
+      {
+        "ingredientId": "5873f275-8b9d-4477-8472-2aff7edee366",
+        "quantity": 4,
+        "unit": "piece"
+      },
+      {
+        "ingredientId": "773861eb-3528-4e72-b42e-c4ce56a76064",
+        "quantity": 12,
+        "unit": "piece"
+      },
+      {
+        "ingredientId": "a33cca24-8fd5-4325-9d2c-acc75adb44ae",
+        "quantity": 1,
+        "unit": "piece"
+      },
+      {
+        "ingredientId": "9657ec40-0f79-47fe-8939-009365418cc4",
+        "quantity": 1,
+        "unit": "piece"
+      },
+      {
+        "ingredientId": "c73d07f1-8950-4079-89fb-9883e90010de",
+        "quantity": 1,
+        "unit": "piece"
       }
     ]
   }
