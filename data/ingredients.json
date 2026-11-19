@@ -332,5 +332,13 @@
       "Laitage"
     ],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "5873f275-8b9d-4477-8472-2aff7edee366",
+    "name": "Steack Haches",
+    "labels": [
+      "Viande"
+    ],
+    "defaultUnit": "piece"
   }
 ]
