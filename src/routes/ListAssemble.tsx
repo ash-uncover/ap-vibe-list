@@ -3,12 +3,14 @@ import { useNavigate, useSearchParams } from 'react-router'
 import { useAuth } from '../auth/AuthContext'
 import { DATA_PATHS, writeJson } from '../github/data'
 import {
+  boughtKey,
   DEFAULT_UNIT,
   effectiveItems,
   formatAmount,
   migrateList,
   newId,
   normalizeItem,
+  unitShort,
   type AttachedRecipe,
   type Bundle,
   type Ingredient,
@@ -28,15 +30,14 @@ interface Draft {
   recipes: AttachedRecipe[]
 }
 
-/** Merge user item lists, summing quantities of the same ingredient in the same unit. */
-function mergeItems(base: Item[], add: Item[]): Item[] {
-  const map = new Map<string, Item>()
-  for (const it of [...base, ...add]) {
-    const key = `${it.ingredientId}|${it.unit}`
-    const prev = map.get(key)
-    map.set(key, prev ? { ...prev, quantity: prev.quantity + it.quantity } : { ...it })
-  }
-  return [...map.values()]
+interface ReviewState {
+  items: Item[]
+  bought: string[]
+}
+
+/** What we persist to localStorage: the draft plus, once reached, the review state. */
+interface PersistedDraft extends Draft {
+  review?: ReviewState | null
 }
 
 export function ListAssemble() {
@@ -50,16 +51,36 @@ export function ListAssemble() {
   const recipes = useCollection<Bundle>(DATA_PATHS.recipes)
   const ingredients = useCollection<Ingredient>(DATA_PATHS.ingredients)
 
-  const initial = useMemo<Draft | null>(() => {
-    const d = getDraft<Partial<Draft>>(DRAFT_NEW_LIST)
-    return d ? { name: d.name ?? '', items: d.items ?? [], recipes: d.recipes ?? [] } : null
+  const initial = useMemo<PersistedDraft | null>(() => {
+    const d = getDraft<Partial<PersistedDraft>>(DRAFT_NEW_LIST)
+    if (!d) return null
+    const review =
+      d.review && Array.isArray(d.review.items) && Array.isArray(d.review.bought)
+        ? { items: d.review.items, bought: d.review.bought }
+        : null
+    return { name: d.name ?? '', items: d.items ?? [], recipes: d.recipes ?? [], review }
   }, [])
   const [draft, setDraftState] = useState<Draft>(
-    initial ?? { name: '', items: [], recipes: [] },
+    initial
+      ? { name: initial.name, items: initial.items, recipes: initial.recipes }
+      : { name: '', items: [], recipes: [] },
   )
   const [busy, setBusy] = useState(false)
   const [saveError, setSaveError] = useState<string | null>(null)
   const cloneApplied = useRef(initial != null)
+
+  // The flattened, ingredient-only list the user confirms before the list is created.
+  const [review, setReview] = useState<ReviewState | null>(initial?.review ?? null)
+
+  // Step 1 is picking a template (one or none). Skip it when resuming a draft that
+  // already has content, or when cloning from a past list; jump straight to the review
+  // step when a persisted review is being restored.
+  const resuming =
+    initial != null &&
+    (initial.name.trim() !== '' || initial.items.length > 0 || initial.recipes.length > 0)
+  const [step, setStep] = useState<'template' | 'build' | 'review'>(
+    initial?.review ? 'review' : fromId || resuming ? 'build' : 'template',
+  )
 
   const byId = useMemo(
     () => new Map((ingredients.data ?? []).map((i) => [i.id, i] as const)),
@@ -69,8 +90,14 @@ export function ListAssemble() {
 
   // Persist working state so a refresh never loses it.
   useEffect(() => {
-    setDraft(DRAFT_NEW_LIST, draft)
-  }, [draft])
+    setDraft(DRAFT_NEW_LIST, { ...draft, review })
+  }, [draft, review])
+
+  // Nothing to choose from: advance straight to the builder.
+  useEffect(() => {
+    if (step !== 'template' || templates.loading || templates.error) return
+    if ((templates.data?.length ?? 0) === 0) setStep('build')
+  }, [step, templates.loading, templates.error, templates.data])
 
   // Clone from a past list: flatten its still-unbought effective items into user items.
   useEffect(() => {
@@ -104,10 +131,17 @@ export function ListAssemble() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ingredients.data])
 
-  function applyTemplate(bundle: Bundle | undefined) {
-    if (!bundle) return
-    const norm = bundle.items.map((r) => normalizeItem(r, unitFor(r.ingredientId)))
-    setDraftState((d) => ({ ...d, items: mergeItems(d.items, norm) }))
+  /** Step 1 choice: seed the draft from a template (or start blank) and move to the builder. */
+  function pickTemplate(bundle: Bundle | undefined) {
+    if (bundle) {
+      const items = bundle.items.map((r) => normalizeItem(r, unitFor(r.ingredientId)))
+      setDraftState({
+        name: `${bundle.name} - ${new Date().toLocaleDateString()}`,
+        items,
+        recipes: [],
+      })
+    }
+    setStep('build')
   }
 
   function attachRecipe(bundle: Bundle | undefined) {
@@ -127,19 +161,58 @@ export function ListAssemble() {
     setDraftState((d) => ({ ...d, recipes: d.recipes.filter((g) => g.recipeId !== recipeId) }))
   }
 
+  /** Leave the builder: flatten to the final ingredient-only list and show it for review. */
+  function goReview() {
+    const items = effectiveItems(draft.items, draft.recipes).sort((a, b) =>
+      (byId.get(a.ingredientId)?.name ?? '').localeCompare(byId.get(b.ingredientId)?.name ?? ''),
+    )
+    setReview({ items, bought: [] })
+    setSaveError(null)
+    setStep('review')
+  }
+
+  /** Return to the builder, dropping the (recomputed-on-next-review) confirmation state. */
+  function backToBuild() {
+    setReview(null)
+    setStep('build')
+  }
+
+  function setReviewQty(index: number, quantity: number) {
+    setReview((r) =>
+      r
+        ? { ...r, items: r.items.map((it, i) => (i === index ? { ...it, quantity } : it)) }
+        : r,
+    )
+  }
+
+  function toggleReviewBought(key: string) {
+    setReview((r) =>
+      r
+        ? {
+            ...r,
+            bought: r.bought.includes(key)
+              ? r.bought.filter((k) => k !== key)
+              : [...r.bought, key],
+          }
+        : r,
+    )
+  }
+
   async function create() {
-    if (!client || !lists.data) return
+    if (!client || !lists.data || !review) return
     setBusy(true)
     setSaveError(null)
     try {
+      const items = review.items.filter((it) => it.quantity > 0)
+      const keys = new Set(items.map((it) => boughtKey(it.ingredientId, it.unit)))
       const list: ShoppingList = {
         id: newId(),
         name: draft.name.trim() || 'Shopping list',
         status: 'active',
         createdAt: new Date().toISOString(),
-        items: draft.items,
-        recipes: draft.recipes,
-        bought: [],
+        items,
+        recipes: [],
+        bought: review.bought.filter((k) => keys.has(k)),
       }
       await writeJson(client, DATA_PATHS.lists, [...lists.data, list], `Create list: ${list.name}`)
       clearDraft(DRAFT_NEW_LIST)
@@ -153,6 +226,8 @@ export function ListAssemble() {
   function discard() {
     clearDraft(DRAFT_NEW_LIST)
     setDraftState({ name: '', items: [], recipes: [] })
+    setReview(null)
+    setStep((templates.data?.length ?? 0) > 0 ? 'template' : 'build')
   }
 
   const anyLoading =
@@ -174,6 +249,121 @@ export function ListAssemble() {
   }
 
   const templateList = templates.data ?? []
+
+  // Step 1 — choose a template (or start blank).
+  if (step === 'template') {
+    return (
+      <div className="stack">
+        <PageHead title="New list" />
+        <ReadOnlyBanner />
+
+        <div className="box">
+          <div className="box__body">
+            <span className="field__label">Choose a starting point</span>
+            <ul className="rows rows--cards">
+              <li>
+                <button type="button" className="listcard" onClick={() => pickTemplate(undefined)}>
+                  <div className="listcard__top">
+                    <span className="rows__main">Blank list</span>
+                    <span className="rows__meta">Start from scratch</span>
+                  </div>
+                </button>
+              </li>
+              {templateList.map((t) => (
+                <li key={t.id}>
+                  <button type="button" className="listcard" onClick={() => pickTemplate(t)}>
+                    <div className="listcard__top">
+                      <span className="rows__main">{t.name}</span>
+                      <span className="rows__meta">{t.items.length} items</span>
+                    </div>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // Step 3 — review the final ingredient-only list before creating it.
+  if (step === 'review' && review) {
+    const reviewBought = new Set(review.bought)
+    const canCreate = review.items.some((it) => it.quantity > 0)
+    return (
+      <div className="stack">
+        <PageHead title="Review list" />
+        <ReadOnlyBanner />
+
+        <button type="button" className="btn btn--sm" onClick={backToBuild}>
+          ← Back to editing
+        </button>
+
+        <p className="muted">
+          {draft.name.trim() || 'Shopping list'} — adjust quantities or tick anything you
+          already have.
+        </p>
+
+        <div className="box">
+          <div className="box__body">
+            {review.items.length === 0 ? (
+              <p className="muted">This list is empty.</p>
+            ) : (
+              <ul className="checklist">
+                {review.items.map((it, i) => {
+                  const key = boughtKey(it.ingredientId, it.unit)
+                  const ing = byId.get(it.ingredientId)
+                  const bought = reviewBought.has(key)
+                  return (
+                    <li key={key}>
+                      <div className={`review-row ${bought ? 'is-bought' : ''}`}>
+                        <input
+                          type="checkbox"
+                          className="review-row__check"
+                          checked={bought}
+                          onChange={() => toggleReviewBought(key)}
+                          aria-label="Already have this"
+                        />
+                        <span className="review-row__name">{ing?.name ?? 'Unknown item'}</span>
+                        <input
+                          className="input input--qty"
+                          type="number"
+                          min="0"
+                          step="any"
+                          value={Number.isFinite(it.quantity) ? it.quantity : ''}
+                          onChange={(e) => setReviewQty(i, Number(e.target.value) || 0)}
+                          aria-label="Quantity"
+                        />
+                        <span className="rows__unit">{unitShort(it.unit)}</span>
+                      </div>
+                    </li>
+                  )
+                })}
+              </ul>
+            )}
+
+            {saveError && <p className="flash flash--error">{saveError}</p>}
+          </div>
+        </div>
+
+        <div className="actions">
+          <button
+            className="btn btn--primary"
+            onClick={create}
+            disabled={!writeAccess || busy || !canCreate}
+            title={writeAccess ? undefined : 'Read-only token'}
+          >
+            {busy ? 'Creating…' : 'Create list'}
+          </button>
+          <button className="btn" onClick={backToBuild} disabled={busy}>
+            Back
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  // Step 2 — assemble the list.
   const recipeList = (recipes.data ?? []).filter(
     (r) => !draft.recipes.some((g) => g.recipeId === r.id),
   )
@@ -187,6 +377,12 @@ export function ListAssemble() {
       <PageHead title="New list" />
       <ReadOnlyBanner />
 
+      {templateList.length > 0 && (
+        <button type="button" className="btn btn--sm" onClick={() => setStep('template')}>
+          ← Choose a different starting point
+        </button>
+      )}
+
       <div className="box">
         <div className="box__body">
           <label className="field">
@@ -199,27 +395,6 @@ export function ListAssemble() {
               placeholder="e.g. Saturday shop"
             />
           </label>
-
-          {templateList.length > 0 && (
-            <label className="field">
-              <span className="field__label">Start from a template</span>
-              <select
-                className="input"
-                value=""
-                onChange={(e) => {
-                  applyTemplate(templateList.find((t) => t.id === e.target.value))
-                  e.target.value = ''
-                }}
-              >
-                <option value="">Add a template’s items…</option>
-                {templateList.map((t) => (
-                  <option key={t.id} value={t.id}>
-                    {t.name} ({t.items.length})
-                  </option>
-                ))}
-              </select>
-            </label>
-          )}
 
           <div className="field">
             <span className="field__label">
@@ -288,13 +463,13 @@ export function ListAssemble() {
       <div className="actions">
         <button
           className="btn btn--primary"
-          onClick={create}
-          disabled={!writeAccess || busy || effective.length === 0}
+          onClick={goReview}
+          disabled={!writeAccess || effective.length === 0}
           title={writeAccess ? undefined : 'Read-only token'}
         >
-          {busy ? 'Creating…' : 'Create list'}
+          Review list
         </button>
-        <button className="btn" onClick={discard} disabled={busy}>
+        <button className="btn" onClick={discard}>
           Discard
         </button>
       </div>

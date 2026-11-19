@@ -525,6 +525,12 @@ code {
   justify-content: space-between;
   gap: 10px;
 }
+button.listcard {
+  width: 100%;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
 
 /* ---------- progress bar ---------- */
 .progress {
@@ -710,6 +716,31 @@ code {
   display: flex;
   gap: 4px;
   flex-wrap: wrap;
+}
+
+/* ---------- review rows (new-list confirmation) ---------- */
+.review-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.review-row__check {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--btn);
+  flex: none;
+}
+.review-row__name {
+  flex: 1;
+  min-width: 0;
+}
+.review-row.is-bought .review-row__name {
+  text-decoration: line-through;
+  color: var(--muted);
 }
 
 /* ---------- disclosure ---------- */
