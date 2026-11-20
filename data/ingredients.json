@@ -400,5 +400,13 @@
       "Condiments"
     ],
     "defaultUnit": "kg"
+  },
+  {
+    "id": "a365543f-5ad5-4eb3-833b-6246d0b44db4",
+    "name": "Maïs",
+    "labels": [
+      "Conserves"
+    ],
+    "defaultUnit": "pack"
   }
 ]
