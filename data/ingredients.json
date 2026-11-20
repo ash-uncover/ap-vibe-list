@@ -354,5 +354,13 @@
       "Boissons"
     ],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "4e47d424-c13a-4d0f-9d2a-8275cbe5a2f2",
+    "name": "Sirop de Grenadine",
+    "labels": [
+      "Boissons"
+    ],
+    "defaultUnit": "piece"
   }
 ]
