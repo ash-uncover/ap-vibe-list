@@ -342,12 +342,6 @@
     "defaultUnit": "piece"
   },
   {
-    "id": "fe5ad2df-b2f1-4597-9383-3383a1c4db13",
-    "name": "Chocolat",
-    "labels": [],
-    "defaultUnit": "piece"
-  },
-  {
     "id": "68ca4764-a0c9-41d5-946f-2095523d1a20",
     "name": "Sirop de Menthe",
     "labels": [
@@ -386,5 +380,11 @@
       "Boissons"
     ],
     "defaultUnit": "pack"
+  },
+  {
+    "id": "fe5ad2df-b2f1-4597-9383-3383a1c4db13",
+    "name": "Chocolat(Bulle)",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
