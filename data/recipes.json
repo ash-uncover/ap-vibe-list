@@ -138,5 +138,17 @@
         "unit": "piece"
       }
     ]
+  },
+  {
+    "id": "1296c01b-e35f-4001-8035-085efbbed9a6",
+    "name": "Quiche comté poireaux",
+    "kind": "recipe",
+    "items": [
+      {
+        "ingredientId": "95104599-99f8-4cd3-8af0-5c1892cda1b0",
+        "quantity": 2,
+        "unit": "piece"
+      }
+    ]
   }
 ]
