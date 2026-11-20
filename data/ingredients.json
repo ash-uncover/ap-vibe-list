@@ -408,5 +408,11 @@
       "Conserves"
     ],
     "defaultUnit": "pack"
+  },
+  {
+    "id": "95104599-99f8-4cd3-8af0-5c1892cda1b0",
+    "name": "Poireaux",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
