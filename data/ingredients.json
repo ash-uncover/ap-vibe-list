@@ -438,5 +438,11 @@
     "name": "Jambon",
     "labels": [],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "e0bd790e-be39-4a52-b931-6b5719699ff2",
+    "name": "Fromage râpé",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
