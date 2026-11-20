@@ -426,5 +426,11 @@
     "name": "Crème fraîche liquide",
     "labels": [],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "27572fa7-be82-4f42-b0c1-79269a5a4e4c",
+    "name": "Comté",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
