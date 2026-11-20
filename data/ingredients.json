@@ -362,5 +362,13 @@
       "Boissons"
     ],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "0f4e96c3-7933-4543-ab17-2fc5098b4b40",
+    "name": "Sirop de Pêche",
+    "labels": [
+      "Boissons"
+    ],
+    "defaultUnit": "piece"
   }
 ]
