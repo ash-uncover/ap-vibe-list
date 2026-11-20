@@ -1,6 +1,10 @@
 import type { ReactNode } from 'react'
 import { useAuth } from '../auth/AuthContext'
 
+/** Standard message shown when a write is rejected because the repo changed underneath it. */
+export const CONFLICT_MSG =
+  'This changed in the repository since you opened it — the latest version is now shown. Please review and try again.'
+
 export function Loading({ label = 'Loading…' }: { label?: string }) {
   return <p className="muted state">{label}</p>
 }

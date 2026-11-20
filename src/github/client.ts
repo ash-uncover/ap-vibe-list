@@ -25,6 +25,10 @@ export class GitHubClient {
     }
 
     const res = await fetch(`${API_BASE}${path}`, {
+      // GitHub serves authenticated reads with `Cache-Control: private, max-age=60`,
+      // so a GET issued right after a write can be answered from the browser cache
+      // with pre-write content. Bypass the cache to keep reads read-after-write safe.
+      cache: 'no-store',
       ...init,
       headers: { ...headers, ...(init.headers as Record<string, string> | undefined) },
     })

@@ -21,6 +21,8 @@ export async function getFile(
 /**
  * Create or update a file via the Contents API (requires a write token).
  * Pass the current `sha` to update an existing file, or `null` to create one.
+ * Returns the new blob sha (`contentSha`, for the next optimistic write) and the
+ * resulting commit sha (`commitSha`, used to advance the repo head marker).
  */
 export async function putFile(
   client: GitHubClient,
@@ -29,16 +31,16 @@ export async function putFile(
   sha: string | null,
   message: string,
   branch?: string,
-): Promise<{ sha: string }> {
+): Promise<{ contentSha: string; commitSha: string | null }> {
   const body: Record<string, string> = { message, content: encodeBase64(text) }
   if (sha) body.sha = sha
   if (branch) body.branch = branch
 
-  const res = await client.request<{ content: { sha: string } }>(`/contents/${path}`, {
-    method: 'PUT',
-    body: JSON.stringify(body),
-  })
-  return { sha: res.content.sha }
+  const res = await client.request<{ content: { sha: string }; commit?: { sha: string } }>(
+    `/contents/${path}`,
+    { method: 'PUT', body: JSON.stringify(body) },
+  )
+  return { contentSha: res.content.sha, commitSha: res.commit?.sha ?? null }
 }
 
 /** Decode GitHub's base64 (which contains newlines) to a UTF-8 string. */

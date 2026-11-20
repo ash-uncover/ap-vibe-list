@@ -1,18 +1,18 @@
 import { useEffect, useMemo, useState, type KeyboardEvent } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { useAuth } from '../auth/AuthContext'
-import { DATA_PATHS, writeJson } from '../github/data'
+import { ConflictError, DATA_PATHS, removeOp, upsertOp } from '../github/data'
 import { DEFAULT_UNIT, newId, normalizeUnit, UNITS, type Ingredient, type Unit } from '../github/model'
 import type { GitHubError } from '../github/types'
 import { useCollection } from '../hooks/useCollection'
-import { ErrorNote, Loading, PageHead, ReadOnlyBanner } from '../components/ui'
+import { ErrorNote, Loading, PageHead, ReadOnlyBanner, CONFLICT_MSG } from '../components/ui'
 
 export function IngredientEdit() {
   const { id } = useParams()
   const isNew = id === undefined
   const navigate = useNavigate()
   const { client, writeAccess } = useAuth()
-  const { data, loading, error, reload } = useCollection<Ingredient>(DATA_PATHS.ingredients)
+  const { data, loading, error, reload, commit } = useCollection<Ingredient>(DATA_PATHS.ingredients)
 
   const [name, setName] = useState('')
   const [labels, setLabels] = useState<string[]>([])
@@ -77,16 +77,13 @@ export function IngredientEdit() {
         labels,
         defaultUnit,
       }
-      const others = data.filter((i) => i.id !== next.id)
-      await writeJson(
-        client,
-        DATA_PATHS.ingredients,
-        [...others, next],
+      await commit(
+        upsertOp(next, existing ?? null),
         `${existing ? 'Update' : 'Add'} ingredient: ${trimmed}`,
       )
       navigate('/ingredients')
     } catch (e) {
-      setSaveError((e as GitHubError).message ?? 'Save failed.')
+      setSaveError(e instanceof ConflictError ? CONFLICT_MSG : ((e as GitHubError).message ?? 'Save failed.'))
       setBusy(false)
     }
   }
@@ -97,15 +94,10 @@ export function IngredientEdit() {
     setBusy(true)
     setSaveError(null)
     try {
-      await writeJson(
-        client,
-        DATA_PATHS.ingredients,
-        data.filter((i) => i.id !== existing.id),
-        `Delete ingredient: ${existing.name}`,
-      )
+      await commit(removeOp(existing.id, existing), `Delete ingredient: ${existing.name}`)
       navigate('/ingredients')
     } catch (e) {
-      setSaveError((e as GitHubError).message ?? 'Delete failed.')
+      setSaveError(e instanceof ConflictError ? CONFLICT_MSG : ((e as GitHubError).message ?? 'Delete failed.'))
       setBusy(false)
     }
   }

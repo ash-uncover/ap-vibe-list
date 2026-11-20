@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { useAuth } from '../auth/AuthContext'
-import { DATA_PATHS, writeJson } from '../github/data'
+import { appendOp, ConflictError, DATA_PATHS, removeOp, upsertOp } from '../github/data'
 import {
   boughtKey,
   DEFAULT_UNIT,
@@ -19,7 +19,7 @@ import type { GitHubError } from '../github/types'
 import { useCollection } from '../hooks/useCollection'
 import { IngredientPicker } from '../components/IngredientPicker'
 import { RecipeGroups } from '../components/RecipeGroups'
-import { Chip, ErrorNote, Loading, PageHead, ReadOnlyBanner } from '../components/ui'
+import { Chip, CONFLICT_MSG, ErrorNote, Loading, PageHead, ReadOnlyBanner } from '../components/ui'
 import { clearDraft, draftShopKey, getDraft, setDraft } from '../storage/drafts'
 
 interface Working {
@@ -119,6 +119,18 @@ export function ListShop() {
     setWorking((w) => (w ? { ...w, recipes: w.recipes.filter((g) => g.recipeId !== recipeId) } : w))
   }
 
+  /** A write collided with a concurrent change: show the latest list and explain. */
+  function applyLatestConflict(e: ConflictError) {
+    const freshRaw = (e.latest.items as ShoppingList[]).find((l) => l.id === id)
+    if (freshRaw) {
+      const fresh = migrateList(freshRaw, unitFor)
+      setWorking({ items: fresh.items, recipes: fresh.recipes, bought: fresh.bought })
+      setSaveError(CONFLICT_MSG)
+    } else {
+      setSaveError('This list was deleted in the repository.')
+    }
+  }
+
   async function commit(status: ShoppingList['status'], verb: string) {
     if (!client || !lists.data || !rawList || !working) return
     setBusy(true)
@@ -135,20 +147,15 @@ export function ListShop() {
         recipes: working.recipes,
         bought: working.bought,
       }
-      await writeJson(
-        client,
-        DATA_PATHS.lists,
-        lists.data.map((l) => (l.id === base.id ? updated : l)),
-        `${verb}: ${base.name}`,
-      )
+      await lists.commit(upsertOp(updated, rawList), `${verb}: ${base.name}`)
       if (status === 'completed') {
         if (id) clearDraft(draftShopKey(id))
         navigate('/lists')
-      } else {
-        await lists.reload()
       }
+      // Otherwise the shared cache already holds `updated` — nothing to reload.
     } catch (e) {
-      setSaveError((e as GitHubError).message ?? 'Save failed.')
+      if (e instanceof ConflictError) applyLatestConflict(e)
+      else setSaveError((e as GitHubError).message ?? 'Save failed.')
     } finally {
       setBusy(false)
     }
@@ -160,16 +167,13 @@ export function ListShop() {
     setBusy(true)
     setSaveError(null)
     try {
-      await writeJson(
-        client,
-        DATA_PATHS.lists,
-        lists.data.filter((l) => l.id !== rawList.id),
-        `Delete list: ${rawList.name}`,
-      )
+      await lists.commit(removeOp(rawList.id, rawList), `Delete list: ${rawList.name}`)
       if (id) clearDraft(draftShopKey(id))
       navigate('/lists')
     } catch (e) {
-      setSaveError((e as GitHubError).message ?? 'Delete failed.')
+      if (e instanceof ConflictError) applyLatestConflict(e)
+      else setSaveError((e as GitHubError).message ?? 'Delete failed.')
+    } finally {
       setBusy(false)
     }
   }
@@ -241,7 +245,7 @@ export function ListShop() {
               catalog={ingredients.data ?? []}
               items={working.items}
               onChange={(items) => setWorking((w) => (w ? { ...w, items } : w))}
-              onCatalogChange={ingredients.reload}
+              onCreate={(ing) => ingredients.commit(appendOp(ing), `Add ingredient: ${ing.name}`)}
             />
           </div>
 

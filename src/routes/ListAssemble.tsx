@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router'
 import { useAuth } from '../auth/AuthContext'
-import { DATA_PATHS, writeJson } from '../github/data'
+import { appendOp, DATA_PATHS } from '../github/data'
 import {
   boughtKey,
   DEFAULT_UNIT,
@@ -214,7 +214,7 @@ export function ListAssemble() {
         recipes: [],
         bought: review.bought.filter((k) => keys.has(k)),
       }
-      await writeJson(client, DATA_PATHS.lists, [...lists.data, list], `Create list: ${list.name}`)
+      await lists.commit(appendOp(list), `Create list: ${list.name}`)
       clearDraft(DRAFT_NEW_LIST)
       navigate(`/lists/${list.id}`)
     } catch (e) {
@@ -404,7 +404,7 @@ export function ListAssemble() {
               catalog={ingredients.data ?? []}
               items={draft.items}
               onChange={(items) => setDraftState((d) => ({ ...d, items }))}
-              onCatalogChange={ingredients.reload}
+              onCreate={(ing) => ingredients.commit(appendOp(ing), `Add ingredient: ${ing.name}`)}
             />
           </div>
 

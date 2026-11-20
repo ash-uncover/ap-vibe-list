@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { useAuth } from '../auth/AuthContext'
-import { DATA_PATHS, writeJson } from '../github/data'
+import { appendOp, ConflictError, DATA_PATHS, removeOp, upsertOp } from '../github/data'
 import { DEFAULT_UNIT, newId, normalizeItem, type Bundle, type BundleKind, type Ingredient, type Item } from '../github/model'
 import type { GitHubError } from '../github/types'
 import { useCollection } from '../hooks/useCollection'
 import { IngredientPicker } from '../components/IngredientPicker'
-import { ErrorNote, Loading, PageHead, ReadOnlyBanner } from '../components/ui'
+import { ErrorNote, Loading, PageHead, ReadOnlyBanner, CONFLICT_MSG } from '../components/ui'
 
 interface Props {
   kind: BundleKind
@@ -55,16 +55,13 @@ export function BundleEdit({ kind }: Props) {
     setSaveError(null)
     try {
       const next: Bundle = { id: existing?.id ?? newId(), name: trimmed, kind, items }
-      const others = bundles.data.filter((b) => b.id !== next.id)
-      await writeJson(
-        client,
-        copy.path,
-        [...others, next],
+      await bundles.commit(
+        upsertOp(next, existing ?? null),
         `${existing ? 'Update' : 'Add'} ${copy.one}: ${trimmed}`,
       )
       navigate(copy.base)
     } catch (e) {
-      setSaveError((e as GitHubError).message ?? 'Save failed.')
+      setSaveError(e instanceof ConflictError ? CONFLICT_MSG : ((e as GitHubError).message ?? 'Save failed.'))
       setBusy(false)
     }
   }
@@ -75,15 +72,10 @@ export function BundleEdit({ kind }: Props) {
     setBusy(true)
     setSaveError(null)
     try {
-      await writeJson(
-        client,
-        copy.path,
-        bundles.data.filter((b) => b.id !== existing.id),
-        `Delete ${copy.one}: ${existing.name}`,
-      )
+      await bundles.commit(removeOp(existing.id, existing), `Delete ${copy.one}: ${existing.name}`)
       navigate(copy.base)
     } catch (e) {
-      setSaveError((e as GitHubError).message ?? 'Delete failed.')
+      setSaveError(e instanceof ConflictError ? CONFLICT_MSG : ((e as GitHubError).message ?? 'Delete failed.'))
       setBusy(false)
     }
   }
@@ -119,7 +111,7 @@ export function BundleEdit({ kind }: Props) {
               catalog={ingredients.data ?? []}
               items={items}
               onChange={setItems}
-              onCatalogChange={ingredients.reload}
+              onCreate={(ing) => ingredients.commit(appendOp(ing), `Add ingredient: ${ing.name}`)}
             />
           </div>
 

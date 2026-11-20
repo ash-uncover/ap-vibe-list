@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react'
 import { useAuth } from '../auth/AuthContext'
-import { DATA_PATHS, writeJson } from '../github/data'
 import {
   DEFAULT_UNIT,
   newId,
@@ -15,12 +14,12 @@ interface Props {
   catalog: Ingredient[]
   items: Item[]
   onChange: (items: Item[]) => void
-  /** Called after a quick-create commits a new ingredient, so the parent can reload. */
-  onCatalogChange: () => void
+  /** Persist a quick-created ingredient (the parent commits it to its catalog collection). */
+  onCreate: (ingredient: Ingredient) => Promise<void>
 }
 
-export function IngredientPicker({ catalog, items, onChange, onCatalogChange }: Props) {
-  const { client, writeAccess } = useAuth()
+export function IngredientPicker({ catalog, items, onChange, onCreate }: Props) {
+  const { writeAccess } = useAuth()
   const [query, setQuery] = useState('')
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -50,20 +49,14 @@ export function IngredientPicker({ catalog, items, onChange, onCatalogChange }: 
 
   async function quickCreate() {
     const name = query.trim()
-    if (!name || !client) return
+    if (!name) return
     setBusy(true)
     setError(null)
     try {
       const ing: Ingredient = { id: newId(), name, labels: [], defaultUnit: DEFAULT_UNIT }
-      await writeJson(
-        client,
-        DATA_PATHS.ingredients,
-        [...catalog, ing],
-        `Add ingredient: ${name}`,
-      )
+      await onCreate(ing)
       onChange([...items, { ingredientId: ing.id, quantity: 1, unit: ing.defaultUnit }])
       setQuery('')
-      onCatalogChange()
     } catch (e) {
       setError((e as GitHubError).message ?? 'Could not create ingredient.')
     } finally {
