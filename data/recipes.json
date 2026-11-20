@@ -175,5 +175,52 @@
         "unit": "g"
       }
     ]
+  },
+  {
+    "id": "d8753469-2c2a-4712-8b8f-5cd7703279c7",
+    "name": "Cake jambon olives",
+    "kind": "recipe",
+    "items": [
+      {
+        "ingredientId": "09cef645-44f0-4185-88dd-471282d08614",
+        "quantity": 4,
+        "unit": "piece"
+      },
+      {
+        "ingredientId": "a9bed879-a904-4719-9b11-8a79c44983c8",
+        "quantity": 78,
+        "unit": "g"
+      },
+      {
+        "ingredientId": "e0bd790e-be39-4a52-b931-6b5719699ff2",
+        "quantity": 100,
+        "unit": "g"
+      },
+      {
+        "ingredientId": "0fa193e3-6215-4fb4-a01d-84e4485a91c5",
+        "quantity": 1,
+        "unit": "piece"
+      },
+      {
+        "ingredientId": "30236c68-d555-495f-b078-97c5aa9a7166",
+        "quantity": 80,
+        "unit": "g"
+      },
+      {
+        "ingredientId": "8a830dca-87c6-47bc-8fee-03a8c6ca4364",
+        "quantity": 1,
+        "unit": "g"
+      },
+      {
+        "ingredientId": "a4f923f1-1925-4de4-b732-7ea397de3760",
+        "quantity": 3,
+        "unit": "piece"
+      },
+      {
+        "ingredientId": "1a067989-0d45-475e-9cae-9258471f15a1",
+        "quantity": 150,
+        "unit": "g"
+      }
+    ]
   }
 ]
