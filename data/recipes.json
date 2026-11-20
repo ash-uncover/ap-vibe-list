@@ -140,43 +140,6 @@
     ]
   },
   {
-    "id": "1296c01b-e35f-4001-8035-085efbbed9a6",
-    "name": "Quiche comté poireaux",
-    "kind": "recipe",
-    "items": [
-      {
-        "ingredientId": "95104599-99f8-4cd3-8af0-5c1892cda1b0",
-        "quantity": 3,
-        "unit": "piece"
-      },
-      {
-        "ingredientId": "a4f923f1-1925-4de4-b732-7ea397de3760",
-        "quantity": 1,
-        "unit": "piece"
-      },
-      {
-        "ingredientId": "0fa193e3-6215-4fb4-a01d-84e4485a91c5",
-        "quantity": 1,
-        "unit": "piece"
-      },
-      {
-        "ingredientId": "e57b0b3d-973d-452a-aeba-3c2c1aaf3f0e",
-        "quantity": 100,
-        "unit": "g"
-      },
-      {
-        "ingredientId": "92558059-f19e-4ba9-8681-e2281606016e",
-        "quantity": 1,
-        "unit": "piece"
-      },
-      {
-        "ingredientId": "27572fa7-be82-4f42-b0c1-79269a5a4e4c",
-        "quantity": 130,
-        "unit": "g"
-      }
-    ]
-  },
-  {
     "id": "d8753469-2c2a-4712-8b8f-5cd7703279c7",
     "name": "Cake jambon olives",
     "kind": "recipe",
@@ -219,6 +182,43 @@
       {
         "ingredientId": "1a067989-0d45-475e-9cae-9258471f15a1",
         "quantity": 150,
+        "unit": "g"
+      }
+    ]
+  },
+  {
+    "id": "1296c01b-e35f-4001-8035-085efbbed9a6",
+    "name": "Quiche comté poireaux",
+    "kind": "recipe",
+    "items": [
+      {
+        "ingredientId": "95104599-99f8-4cd3-8af0-5c1892cda1b0",
+        "quantity": 3,
+        "unit": "piece"
+      },
+      {
+        "ingredientId": "a4f923f1-1925-4de4-b732-7ea397de3760",
+        "quantity": 3,
+        "unit": "piece"
+      },
+      {
+        "ingredientId": "0fa193e3-6215-4fb4-a01d-84e4485a91c5",
+        "quantity": 1,
+        "unit": "piece"
+      },
+      {
+        "ingredientId": "e57b0b3d-973d-452a-aeba-3c2c1aaf3f0e",
+        "quantity": 100,
+        "unit": "g"
+      },
+      {
+        "ingredientId": "92558059-f19e-4ba9-8681-e2281606016e",
+        "quantity": 1,
+        "unit": "piece"
+      },
+      {
+        "ingredientId": "27572fa7-be82-4f42-b0c1-79269a5a4e4c",
+        "quantity": 130,
         "unit": "g"
       }
     ]
