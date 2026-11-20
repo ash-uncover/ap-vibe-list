@@ -378,5 +378,13 @@
       "Condiments"
     ],
     "defaultUnit": "pack"
+  },
+  {
+    "id": "eab90b09-3124-4a03-ae51-55c579d8986c",
+    "name": "Chocolat en Poudre",
+    "labels": [
+      "Boissons"
+    ],
+    "defaultUnit": "pack"
   }
 ]
