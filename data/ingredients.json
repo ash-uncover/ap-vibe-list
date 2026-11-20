@@ -370,5 +370,13 @@
       "Boissons"
     ],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "a9bed879-a904-4719-9b11-8a79c44983c8",
+    "name": "Olives",
+    "labels": [
+      "Condiments"
+    ],
+    "defaultUnit": "pack"
   }
 ]
