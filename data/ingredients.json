@@ -392,5 +392,13 @@
     "name": "Chocolat (Bulle)",
     "labels": [],
     "defaultUnit": "pack"
+  },
+  {
+    "id": "07bc184c-b1fc-4714-a207-c72c1af2352a",
+    "name": "Sucre Roux",
+    "labels": [
+      "Condiments"
+    ],
+    "defaultUnit": "kg"
   }
 ]
