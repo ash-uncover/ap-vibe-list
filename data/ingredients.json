@@ -414,5 +414,11 @@
     "name": "Poireaux",
     "labels": [],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "a4f923f1-1925-4de4-b732-7ea397de3760",
+    "name": "Œufs",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
