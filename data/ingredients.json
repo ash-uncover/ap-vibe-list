@@ -346,5 +346,13 @@
     "name": "Chocolat",
     "labels": [],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "68ca4764-a0c9-41d5-946f-2095523d1a20",
+    "name": "Sirop de Menthe",
+    "labels": [
+      "Boissons"
+    ],
+    "defaultUnit": "piece"
   }
 ]
