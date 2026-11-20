@@ -420,5 +420,11 @@
     "name": "Œufs",
     "labels": [],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "e57b0b3d-973d-452a-aeba-3c2c1aaf3f0e",
+    "name": "Crème fraîche liquide",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
