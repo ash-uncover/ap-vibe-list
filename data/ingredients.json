@@ -386,5 +386,11 @@
     "name": "Chocolat (Bulle)",
     "labels": [],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "6b2fe766-1886-4d2c-b78a-fca764a7edfa",
+    "name": "Chocolat (Antoine)",
+    "labels": [],
+    "defaultUnit": "pack"
   }
 ]
