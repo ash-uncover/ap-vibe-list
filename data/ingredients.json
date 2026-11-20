@@ -444,5 +444,11 @@
     "name": "Fromage râpé",
     "labels": [],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "8a830dca-87c6-47bc-8fee-03a8c6ca4364",
+    "name": "Bicarbonate",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
