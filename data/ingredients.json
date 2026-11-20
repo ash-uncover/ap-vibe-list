@@ -432,5 +432,11 @@
     "name": "Comté",
     "labels": [],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "09cef645-44f0-4185-88dd-471282d08614",
+    "name": "Jambon",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
