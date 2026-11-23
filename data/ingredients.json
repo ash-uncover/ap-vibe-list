@@ -450,5 +450,11 @@
     "name": "Bicarbonate",
     "labels": [],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "f98fff62-badf-42c4-9d5f-f3886668aee8",
+    "name": "Chocolat Pâtissier",
+    "labels": [],
+    "defaultUnit": "pack"
   }
 ]
