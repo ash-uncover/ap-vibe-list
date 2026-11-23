@@ -464,5 +464,13 @@
       "Légumes"
     ],
     "defaultUnit": "g"
+  },
+  {
+    "id": "11004592-8c30-4476-b84e-01e911970256",
+    "name": "Salade",
+    "labels": [
+      "Légumes"
+    ],
+    "defaultUnit": "piece"
   }
 ]
