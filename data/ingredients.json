@@ -456,5 +456,13 @@
     "name": "Chocolat Pâtissier",
     "labels": [],
     "defaultUnit": "pack"
+  },
+  {
+    "id": "8ab35802-1ccb-4250-840b-d57c5353ea45",
+    "name": "Haricots Verts",
+    "labels": [
+      "Légumes"
+    ],
+    "defaultUnit": "g"
   }
 ]
