@@ -545,7 +545,9 @@
   {
     "id": "8a830dca-87c6-47bc-8fee-03a8c6ca4364",
     "name": "Bicarbonate",
-    "labelIds": [],
+    "labelIds": [
+      "e9896e92-3729-4eae-b111-a8d78bc5ec28"
+    ],
     "defaultUnit": "piece"
   }
 ]
