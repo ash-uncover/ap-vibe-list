@@ -190,13 +190,6 @@
     "labels": []
   },
   {
-    "id": "5ac8b11f-ac93-40bf-804f-c225d19bdeff",
-    "name": "Bières",
-    "labels": [
-      "Boissons"
-    ]
-  },
-  {
     "id": "929245b8-655b-4f48-aa2e-4925ac2c8145",
     "name": "Lentilles (conserve)",
     "labels": [
@@ -551,6 +544,14 @@
     "name": "Bacon",
     "labelIds": [
       "bd22f1a4-aa7e-4d20-bb44-e7550b87841c"
+    ],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "5ac8b11f-ac93-40bf-804f-c225d19bdeff",
+    "name": "Bières",
+    "labelIds": [
+      "a3a459eb-bd26-4afb-a52e-868e686cb497"
     ],
     "defaultUnit": "piece"
   }
