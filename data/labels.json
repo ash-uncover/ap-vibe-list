@@ -24,12 +24,12 @@
     "name": "Boissons"
   },
   {
-    "id": "e9896e92-3729-4eae-b111-a8d78bc5ec28",
-    "name": "Condiments"
-  },
-  {
     "id": "8e42ff8a-334b-4900-a2dc-5df3b24337e7",
     "name": "Laitage"
+  },
+  {
+    "id": "e9896e92-3729-4eae-b111-a8d78bc5ec28",
+    "name": "Condiments"
   },
   {
     "id": "83e37e72-2af8-4fd5-be1c-50a210db4e10",
