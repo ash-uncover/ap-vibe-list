@@ -4,12 +4,12 @@
     "name": "Boissons"
   },
   {
-    "id": "e9896e92-3729-4eae-b111-a8d78bc5ec28",
-    "name": "Condiments"
-  },
-  {
     "id": "206a1a0a-aeff-498b-8027-9340b12665ab",
     "name": "Fruits"
+  },
+  {
+    "id": "e9896e92-3729-4eae-b111-a8d78bc5ec28",
+    "name": "Condiments"
   },
   {
     "id": "83e37e72-2af8-4fd5-be1c-50a210db4e10",
