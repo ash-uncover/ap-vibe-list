@@ -16,12 +16,12 @@
     "name": "Viande"
   },
   {
-    "id": "b671c9d4-06b4-48b3-b20c-3d55305a254f",
-    "name": "Boissons"
-  },
-  {
     "id": "b707410e-5a65-4409-83dc-3dc7fe264ed8",
     "name": "Fromages"
+  },
+  {
+    "id": "b671c9d4-06b4-48b3-b20c-3d55305a254f",
+    "name": "Boissons"
   },
   {
     "id": "e9896e92-3729-4eae-b111-a8d78bc5ec28",
