@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState, type KeyboardEvent } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { useAuth } from '../auth/AuthContext'
 import { ConflictError, DATA_PATHS, removeOp, upsertOp } from '../github/data'
-import { DEFAULT_UNIT, newId, normalizeUnit, UNITS, type Ingredient, type Unit } from '../github/model'
+import { DEFAULT_UNIT, newId, normalizeUnit, UNITS, type Ingredient, type Label, type Unit } from '../github/model'
 import type { GitHubError } from '../github/types'
 import { useCollection } from '../hooks/useCollection'
 import { ErrorNote, Loading, PageHead, ReadOnlyBanner, CONFLICT_MSG } from '../components/ui'
@@ -13,9 +13,12 @@ export function IngredientEdit() {
   const navigate = useNavigate()
   const { client, writeAccess } = useAuth()
   const { data, loading, error, reload, commit } = useCollection<Ingredient>(DATA_PATHS.ingredients)
+  const labels = useCollection<Label>(DATA_PATHS.labels)
 
   const [name, setName] = useState('')
-  const [labels, setLabels] = useState<string[]>([])
+  const [labelIds, setLabelIds] = useState<string[]>([])
+  // Labels typed here that don't exist yet: staged locally, persisted to labels.json on save.
+  const [pendingLabels, setPendingLabels] = useState<Label[]>([])
   const [defaultUnit, setDefaultUnit] = useState<Unit>(DEFAULT_UNIT)
   const [labelInput, setLabelInput] = useState('')
   const [busy, setBusy] = useState(false)
@@ -24,34 +27,73 @@ export function IngredientEdit() {
 
   const existing = !isNew && data ? data.find((i) => i.id === id) : undefined
 
-  // Autocompletion source: every label already used across the catalog, minus the
-  // ones already on this ingredient. Filtered by what's typed so far.
+  // id → label, across the committed catalog plus labels staged in this edit.
+  const labelById = useMemo(() => {
+    const m = new Map<string, Label>()
+    for (const l of labels.data ?? []) m.set(l.id, l)
+    for (const l of pendingLabels) m.set(l.id, l)
+    return m
+  }, [labels.data, pendingLabels])
+
+  // Autocompletion source: catalog labels not already attached, filtered by what's typed.
   const suggestions = useMemo(() => {
-    const all = new Set<string>()
-    for (const ing of data ?? []) for (const l of ing.labels) all.add(l)
-    for (const l of labels) all.delete(l)
+    const attached = new Set(labelIds)
     const q = labelInput.trim().toLowerCase()
-    return [...all]
-      .filter((l) => !q || l.toLowerCase().includes(q))
-      .sort((a, b) => a.localeCompare(b))
+    return (labels.data ?? [])
+      .filter((l) => !attached.has(l.id))
+      .filter((l) => !q || l.name.toLowerCase().includes(q))
+      .sort((a, b) => a.name.localeCompare(b.name))
       .slice(0, 12)
-  }, [data, labels, labelInput])
+  }, [labels.data, labelIds, labelInput])
 
   function addLabelValue(value: string) {
-    const l = value.trim()
-    if (l && !labels.includes(l)) setLabels([...labels, l])
+    const label = value.trim()
     setLabelInput('')
+    if (!label) return
+    // Reuse an existing label (catalog or staged) matched case-insensitively; otherwise stage a new one.
+    const match = [...(labels.data ?? []), ...pendingLabels].find(
+      (l) => l.name.toLowerCase() === label.toLowerCase(),
+    )
+    const labelId = match?.id ?? newId()
+    if (!match) setPendingLabels((p) => [...p, { id: labelId, name: label }])
+    setLabelIds((ids) => (ids.includes(labelId) ? ids : [...ids, labelId]))
+  }
+
+  function removeLabel(labelId: string) {
+    setLabelIds((ids) => ids.filter((x) => x !== labelId))
+    setPendingLabels((p) => p.filter((l) => l.id !== labelId))
   }
 
   useEffect(() => {
-    if (loaded || !data) return
+    if (loaded || !data || labels.loading) return
     if (existing) {
       setName(existing.name)
-      setLabels(existing.labels)
       setDefaultUnit(normalizeUnit(existing.defaultUnit))
+      if (existing.labelIds) {
+        setLabelIds(existing.labelIds)
+      } else {
+        // Legacy ingredient stored free-text `labels`: resolve names to catalog ids, staging
+        // any not in the catalog so saving migrates this ingredient to the id-based shape.
+        const legacy = (existing as { labels?: string[] }).labels ?? []
+        const byName = new Map((labels.data ?? []).map((l) => [l.name.toLowerCase(), l] as const))
+        const ids: string[] = []
+        const staged: Label[] = []
+        for (const nm of legacy) {
+          const found = byName.get(nm.toLowerCase())
+          if (found) {
+            ids.push(found.id)
+          } else {
+            const newLabelId = newId()
+            staged.push({ id: newLabelId, name: nm })
+            ids.push(newLabelId)
+          }
+        }
+        setLabelIds(ids)
+        if (staged.length > 0) setPendingLabels(staged)
+      }
     }
     setLoaded(true)
-  }, [data, existing, loaded])
+  }, [data, existing, loaded, labels.loading, labels.data])
 
   function addLabel() {
     addLabelValue(labelInput)
@@ -71,10 +113,18 @@ export function IngredientEdit() {
     setBusy(true)
     setSaveError(null)
     try {
+      // Persist any labels created during this edit before referencing them.
+      if (pendingLabels.length > 0) {
+        await labels.commit((cur) => {
+          const ids = new Set(cur.map((l) => l.id))
+          return [...cur, ...pendingLabels.filter((l) => !ids.has(l.id))]
+        }, `Add label${pendingLabels.length > 1 ? 's' : ''}: ${pendingLabels.map((l) => l.name).join(', ')}`)
+        setPendingLabels([])
+      }
       const next: Ingredient = {
         id: existing?.id ?? newId(),
         name: trimmed,
-        labels,
+        labelIds,
         defaultUnit,
       }
       await commit(
@@ -102,7 +152,7 @@ export function IngredientEdit() {
     }
   }
 
-  if (loading) return <Loading />
+  if (loading || labels.loading) return <Loading />
   if (error) return <ErrorNote error={error} onRetry={reload} />
   if (!isNew && data && !existing) {
     return <ErrorNote error="This ingredient no longer exists." />
@@ -143,15 +193,15 @@ export function IngredientEdit() {
 
           <div className="field">
             <span className="field__label">Labels</span>
-            {labels.length > 0 && (
+            {labelIds.length > 0 && (
               <div className="chips">
-                {labels.map((l) => (
+                {labelIds.map((lid) => (
                   <button
-                    key={l}
+                    key={lid}
                     className="chip chip--removable"
-                    onClick={() => setLabels(labels.filter((x) => x !== l))}
+                    onClick={() => removeLabel(lid)}
                   >
-                    {l} <span aria-hidden>✕</span>
+                    {labelById.get(lid)?.name ?? '…'} <span aria-hidden>✕</span>
                   </button>
                 ))}
               </div>
@@ -173,12 +223,12 @@ export function IngredientEdit() {
               <div className="chips chips--suggest">
                 {suggestions.map((l) => (
                   <button
-                    key={l}
+                    key={l.id}
                     type="button"
                     className="chip chip--add"
-                    onClick={() => addLabelValue(l)}
+                    onClick={() => addLabelValue(l.name)}
                   >
-                    + {l}
+                    + {l.name}
                   </button>
                 ))}
               </div>

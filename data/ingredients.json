@@ -2,477 +2,553 @@
   {
     "id": "e6186313-7935-4fee-ace1-355ba4fcab2f",
     "name": "Courgettes",
-    "labels": [
-      "Légumes"
+    "labelIds": [
+      "b0035b81-1bc7-47f2-9d76-e71726164ba4"
     ]
   },
   {
     "id": "a33cca24-8fd5-4325-9d2c-acc75adb44ae",
     "name": "Ognions",
-    "labels": [
-      "Légumes"
+    "labelIds": [
+      "b0035b81-1bc7-47f2-9d76-e71726164ba4"
     ]
   },
   {
     "id": "41410737-3cb6-410e-9a40-85e57ab5c001",
     "name": "Poires",
-    "labels": [
-      "Fruits"
+    "labelIds": [
+      "206a1a0a-aeff-498b-8027-9340b12665ab"
     ]
   },
   {
     "id": "7ff31f9f-c4ba-4c46-8178-65b36b0a6ca3",
     "name": "Clémentines",
-    "labels": [
-      "Fruits"
+    "labelIds": [
+      "206a1a0a-aeff-498b-8027-9340b12665ab"
     ]
   },
   {
     "id": "e7a8d00f-79b6-4a1a-9d3b-ef141996a610",
     "name": "Pamplemousses",
-    "labels": [
-      "Fruits"
+    "labelIds": [
+      "206a1a0a-aeff-498b-8027-9340b12665ab"
+    ]
+  },
+  {
+    "id": "3a4afe32-a177-4246-8e9c-233ebc02cb75",
+    "name": "Ananas",
+    "labelIds": [
+      "206a1a0a-aeff-498b-8027-9340b12665ab"
     ]
   },
   {
     "id": "c429ceca-36e9-49fb-b37d-5d220bbbefbd",
     "name": "Poivrons",
-    "labels": [
-      "Légumes"
+    "labelIds": [
+      "b0035b81-1bc7-47f2-9d76-e71726164ba4"
+    ]
+  },
+  {
+    "id": "df98cc8a-413f-4ad0-ad43-28d3b6173c78",
+    "name": "Aïl",
+    "labelIds": [
+      "b0035b81-1bc7-47f2-9d76-e71726164ba4"
     ]
   },
   {
     "id": "9657ec40-0f79-47fe-8939-009365418cc4",
     "name": "Skyr",
-    "labels": [
-      "Yahourts",
-      "Laitage"
+    "labelIds": [
+      "bc83b4b5-1537-4a16-92c4-86c71b924a23",
+      "8e42ff8a-334b-4900-a2dc-5df3b24337e7"
+    ]
+  },
+  {
+    "id": "0fa193e3-6215-4fb4-a01d-84e4485a91c5",
+    "name": "Yaos",
+    "labelIds": [
+      "8e42ff8a-334b-4900-a2dc-5df3b24337e7",
+      "bc83b4b5-1537-4a16-92c4-86c71b924a23"
+    ]
+  },
+  {
+    "id": "892a4be9-9686-4883-80f7-b54f44b21148",
+    "name": "Bacon",
+    "labelIds": [
+      "41133a48-4307-47a7-9f15-e1a7131ae4ec"
     ]
   },
   {
     "id": "eef1b6bd-a2b6-4ce9-8bb9-f578fbe96bb8",
     "name": "Poulet (filets)",
-    "labels": [
-      "Viande"
+    "labelIds": [
+      "41133a48-4307-47a7-9f15-e1a7131ae4ec"
     ]
   },
   {
     "id": "e436f023-3c53-4725-9334-e70e9806df09",
     "name": "Cordons Bleus",
-    "labels": [
-      "Viande"
+    "labelIds": [
+      "41133a48-4307-47a7-9f15-e1a7131ae4ec"
     ]
   },
   {
     "id": "3272f655-013b-41a1-b2a5-3b7c1a50c002",
     "name": "Kefta (boulettes)",
-    "labels": [
-      "Viande"
+    "labelIds": [
+      "41133a48-4307-47a7-9f15-e1a7131ae4ec"
     ]
   },
   {
     "id": "32878494-6bff-4d02-9ab9-446ea3a0c83e",
     "name": "Chipolatas",
-    "labels": [
-      "Viande"
+    "labelIds": [
+      "41133a48-4307-47a7-9f15-e1a7131ae4ec"
     ]
   },
   {
     "id": "8956733b-e594-42ac-b107-8a77f1a996ab",
     "name": "Pommes",
-    "labels": [
-      "Fruits"
+    "labelIds": [
+      "206a1a0a-aeff-498b-8027-9340b12665ab"
     ]
   },
   {
     "id": "369faa26-498e-4c13-aff3-8b9828486854",
     "name": "Bananes",
-    "labels": [
-      "Fruits"
+    "labelIds": [
+      "206a1a0a-aeff-498b-8027-9340b12665ab"
     ]
   },
   {
     "id": "5cbe291b-c46b-43ff-ad20-495d73db3f74",
     "name": "Kiwis",
-    "labels": [
-      "Fruits"
+    "labelIds": [
+      "206a1a0a-aeff-498b-8027-9340b12665ab"
     ]
   },
   {
     "id": "c73d07f1-8950-4079-89fb-9883e90010de",
     "name": "Tomates",
-    "labels": [
-      "Légumes"
+    "labelIds": [
+      "b0035b81-1bc7-47f2-9d76-e71726164ba4"
     ]
   },
   {
     "id": "28719dfb-6b13-4ac4-b658-729be09ae59b",
     "name": "Echalottes",
-    "labels": [
-      "Légumes"
+    "labelIds": [
+      "b0035b81-1bc7-47f2-9d76-e71726164ba4"
     ]
   },
   {
     "id": "c3cc77fd-5626-4cab-90af-5456f99945b8",
     "name": "Aubergines",
-    "labels": [
-      "Légumes"
+    "labelIds": [
+      "b0035b81-1bc7-47f2-9d76-e71726164ba4"
     ]
   },
   {
     "id": "30236c68-d555-495f-b078-97c5aa9a7166",
     "name": "Huile d'olive",
-    "labels": [
-      "Condiments"
+    "labelIds": [
+      "e9896e92-3729-4eae-b111-a8d78bc5ec28"
     ]
   },
   {
     "id": "40be63ea-6279-48dd-b456-382d0b353c9c",
     "name": "Sel",
-    "labels": [
-      "Condiments"
+    "labelIds": [
+      "e9896e92-3729-4eae-b111-a8d78bc5ec28"
     ]
   },
   {
     "id": "585f279e-ae83-4736-8d6f-da2d1edcfde1",
     "name": "Sucre",
-    "labels": [
-      "Condiments"
+    "labelIds": [
+      "e9896e92-3729-4eae-b111-a8d78bc5ec28"
     ]
   },
   {
     "id": "5d4dbcec-a08b-4f5a-8252-7d30c6479ffa",
     "name": "Sauce Tomate",
-    "labels": [
-      "Condiments"
+    "labelIds": [
+      "e9896e92-3729-4eae-b111-a8d78bc5ec28"
     ]
   },
   {
     "id": "e1b78ca8-5a06-42e3-94f6-cafa4d9fd8c2",
     "name": "Saumon (pavés)",
-    "labels": [
-      "Poissons"
+    "labelIds": [
+      "e388a0b5-c138-45fa-8712-6444a40e4259"
     ]
   },
   {
     "id": "ec6b411e-2f9d-42fe-a5ad-1e3051686876",
     "name": "Thon (longes)",
-    "labels": [
-      "Poissons"
+    "labelIds": [
+      "e388a0b5-c138-45fa-8712-6444a40e4259"
     ]
   },
   {
     "id": "7fe21b95-c288-4e74-9b83-acecb032e485",
     "name": "Oeufs",
-    "labels": []
+    "labelIds": []
   },
   {
     "id": "92558059-f19e-4ba9-8681-e2281606016e",
     "name": "Pâte feuilletée",
-    "labels": []
+    "labelIds": []
   },
   {
     "id": "b21ee1bf-1888-4ddf-9026-ddd05d8080f1",
     "name": "Pâte brisée",
-    "labels": []
+    "labelIds": []
   },
   {
     "id": "895e806f-e1ca-4686-b527-acb3fe255aa5",
     "name": "Miel",
-    "labels": []
+    "labelIds": []
+  },
+  {
+    "id": "5ac8b11f-ac93-40bf-804f-c225d19bdeff",
+    "name": "Bières",
+    "labelIds": [
+      "b671c9d4-06b4-48b3-b20c-3d55305a254f"
+    ]
   },
   {
     "id": "929245b8-655b-4f48-aa2e-4925ac2c8145",
     "name": "Lentilles (conserve)",
-    "labels": [
-      "Conserves"
+    "labelIds": [
+      "83e37e72-2af8-4fd5-be1c-50a210db4e10"
     ]
   },
   {
     "id": "3f76a278-af35-448e-80d9-bb73316bdba6",
     "name": "Haricots rouges (conserve)",
-    "labels": [
-      "Conserves"
+    "labelIds": [
+      "83e37e72-2af8-4fd5-be1c-50a210db4e10"
     ]
   },
   {
     "id": "ffd44aec-d941-46f9-b82d-ac161f78de06",
     "name": "Pois chiches (conserve)",
-    "labels": [
-      "Conserves"
+    "labelIds": [
+      "83e37e72-2af8-4fd5-be1c-50a210db4e10"
     ]
   },
   {
     "id": "3f2dc3c8-221a-41f2-93d3-572c5b61624b",
     "name": "Pains à burger",
-    "labels": []
+    "labelIds": []
   },
   {
     "id": "26acd202-fbce-452c-ac29-44cdcea53591",
     "name": "Café",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "pack"
+  },
+  {
+    "id": "403e2f2a-f907-4959-8ea9-1bd00e3595ac",
+    "name": "Crevettes",
+    "labelIds": [
+      "e388a0b5-c138-45fa-8712-6444a40e4259"
+    ],
+    "defaultUnit": "g"
   },
   {
     "id": "5046eaf9-daae-45f3-a6fd-be22ccf2d548",
     "name": "Eau (bouteilles)",
-    "labels": [
-      "Boissons"
+    "labelIds": [
+      "b671c9d4-06b4-48b3-b20c-3d55305a254f"
+    ],
+    "defaultUnit": "pack"
+  },
+  {
+    "id": "382aea38-4035-4498-adf8-cd710d349849",
+    "name": "Emmental rapé",
+    "labelIds": [
+      "b707410e-5a65-4409-83dc-3dc7fe264ed8"
     ],
     "defaultUnit": "pack"
   },
   {
     "id": "1a067989-0d45-475e-9cae-9258471f15a1",
     "name": "Farine",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "kg"
   },
   {
     "id": "94e30404-35ad-4b17-b6db-6bbd2e46bb23",
     "name": "Lardons",
-    "labels": [
-      "Viande"
+    "labelIds": [
+      "41133a48-4307-47a7-9f15-e1a7131ae4ec"
     ],
     "defaultUnit": "pack"
   },
   {
     "id": "12c27b6e-10f7-48de-8420-2cccc34b8685",
     "name": "Parmesan rapé",
-    "labels": [
-      "Fromages"
+    "labelIds": [
+      "b707410e-5a65-4409-83dc-3dc7fe264ed8"
     ],
     "defaultUnit": "pack"
   },
   {
     "id": "f361e22c-3ae3-4483-a9ff-2a46157fc9d9",
     "name": "Raisins Blancs",
-    "labels": [
-      "Fruits"
+    "labelIds": [
+      "206a1a0a-aeff-498b-8027-9340b12665ab"
     ],
     "defaultUnit": "g"
   },
   {
     "id": "2e3bc3cb-b0fb-43c2-9cdf-92826e938d0d",
     "name": "Raisins Noirs",
-    "labels": [
-      "Fruits"
+    "labelIds": [
+      "206a1a0a-aeff-498b-8027-9340b12665ab"
     ],
     "defaultUnit": "g"
   },
   {
     "id": "6f5b83a2-90fd-4a27-bdaa-0e72e584bbc4",
     "name": "Riz",
-    "labels": [],
+    "labelIds": [],
+    "defaultUnit": "kg"
+  },
+  {
+    "id": "57388d60-59e0-48d1-bce0-f7085dbf968f",
+    "name": "Spaghetti",
+    "labelIds": [
+      "6943617d-6cf8-41c4-9b6b-1966cc8b6c02"
+    ],
     "defaultUnit": "kg"
   },
   {
     "id": "773861eb-3528-4e72-b42e-c4ce56a76064",
     "name": "Fromage a Burger",
-    "labels": [
-      "Laitage"
+    "labelIds": [
+      "8e42ff8a-334b-4900-a2dc-5df3b24337e7"
     ],
     "defaultUnit": "piece"
   },
   {
     "id": "5873f275-8b9d-4477-8472-2aff7edee366",
     "name": "Steack Haches",
-    "labels": [
-      "Viande"
+    "labelIds": [
+      "41133a48-4307-47a7-9f15-e1a7131ae4ec"
     ],
     "defaultUnit": "piece"
   },
   {
     "id": "68ca4764-a0c9-41d5-946f-2095523d1a20",
     "name": "Sirop de Menthe",
-    "labels": [
-      "Boissons"
+    "labelIds": [
+      "b671c9d4-06b4-48b3-b20c-3d55305a254f"
     ],
     "defaultUnit": "piece"
   },
   {
     "id": "4e47d424-c13a-4d0f-9d2a-8275cbe5a2f2",
     "name": "Sirop de Grenadine",
-    "labels": [
-      "Boissons"
+    "labelIds": [
+      "b671c9d4-06b4-48b3-b20c-3d55305a254f"
     ],
     "defaultUnit": "piece"
   },
   {
     "id": "0f4e96c3-7933-4543-ab17-2fc5098b4b40",
     "name": "Sirop de Pêche",
-    "labels": [
-      "Boissons"
+    "labelIds": [
+      "b671c9d4-06b4-48b3-b20c-3d55305a254f"
     ],
     "defaultUnit": "piece"
   },
   {
+    "id": "a9bed879-a904-4719-9b11-8a79c44983c8",
+    "name": "Olives",
+    "labelIds": [
+      "e9896e92-3729-4eae-b111-a8d78bc5ec28"
+    ],
+    "defaultUnit": "pack"
+  },
+  {
     "id": "eab90b09-3124-4a03-ae51-55c579d8986c",
     "name": "Chocolat en Poudre",
-    "labels": [
-      "Boissons"
+    "labelIds": [
+      "b671c9d4-06b4-48b3-b20c-3d55305a254f"
     ],
     "defaultUnit": "pack"
   },
   {
     "id": "6b2fe766-1886-4d2c-b78a-fca764a7edfa",
     "name": "Chocolat (Antoine)",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "pack"
   },
   {
     "id": "fe5ad2df-b2f1-4597-9383-3383a1c4db13",
     "name": "Chocolat (Bulle)",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "pack"
   },
   {
     "id": "07bc184c-b1fc-4714-a207-c72c1af2352a",
     "name": "Sucre Roux",
-    "labels": [
-      "Condiments"
+    "labelIds": [
+      "e9896e92-3729-4eae-b111-a8d78bc5ec28"
     ],
     "defaultUnit": "kg"
   },
   {
+    "id": "a365543f-5ad5-4eb3-833b-6246d0b44db4",
+    "name": "Maïs",
+    "labelIds": [
+      "83e37e72-2af8-4fd5-be1c-50a210db4e10"
+    ],
+    "defaultUnit": "pack"
+  },
+  {
     "id": "95104599-99f8-4cd3-8af0-5c1892cda1b0",
     "name": "Poireaux",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "piece"
   },
   {
     "id": "a4f923f1-1925-4de4-b732-7ea397de3760",
     "name": "Œufs",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "piece"
   },
   {
     "id": "e57b0b3d-973d-452a-aeba-3c2c1aaf3f0e",
     "name": "Crème fraîche liquide",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "piece"
   },
   {
     "id": "27572fa7-be82-4f42-b0c1-79269a5a4e4c",
     "name": "Comté",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "piece"
   },
   {
     "id": "09cef645-44f0-4185-88dd-471282d08614",
     "name": "Jambon",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "piece"
   },
   {
     "id": "e0bd790e-be39-4a52-b931-6b5719699ff2",
     "name": "Fromage râpé",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "piece"
   },
   {
     "id": "8a830dca-87c6-47bc-8fee-03a8c6ca4364",
     "name": "Bicarbonate",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "piece"
   },
   {
     "id": "f98fff62-badf-42c4-9d5f-f3886668aee8",
     "name": "Chocolat Pâtissier",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "pack"
   },
   {
     "id": "8ab35802-1ccb-4250-840b-d57c5353ea45",
     "name": "Haricots Verts",
-    "labels": [
-      "Légumes"
+    "labelIds": [
+      "b0035b81-1bc7-47f2-9d76-e71726164ba4"
     ],
     "defaultUnit": "g"
   },
   {
     "id": "11004592-8c30-4476-b84e-01e911970256",
     "name": "Salade",
-    "labels": [
-      "Légumes"
+    "labelIds": [
+      "b0035b81-1bc7-47f2-9d76-e71726164ba4"
     ],
     "defaultUnit": "piece"
   },
   {
     "id": "8702e9f1-cfd6-4e43-a086-ef8fe33a7a9c",
     "name": "Jambon cru",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "piece"
   },
   {
     "id": "fbd1ac9c-aaa8-4b85-a35b-022ec896ebd6",
     "name": "Oignons",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "piece"
   },
   {
     "id": "3e59d1dd-d275-41a5-bdc1-d3d3af70e163",
     "name": "Chèvre frais",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "piece"
   },
   {
     "id": "26e1c412-e7f2-49df-9bbe-cfb14694630c",
     "name": "Ail",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "piece"
   },
   {
     "id": "aedda013-00cf-4ef3-b08f-301dce899a51",
     "name": "Parmesan",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "piece"
   },
   {
     "id": "6218fc6f-5317-4981-9982-2f6ebdac8350",
     "name": "Pommes de terre",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "piece"
   },
   {
     "id": "ec19bb72-72be-47e0-99fb-a24dd34c72b2",
     "name": "Échalottes",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "piece"
   },
   {
     "id": "7f28d06c-12a4-4f76-81af-9369a45d1526",
     "name": "Fruits",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "piece"
   },
   {
     "id": "2b2f512f-7b29-456b-816e-5262811217d6",
     "name": "Liquide vaisselle",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "piece"
   },
   {
     "id": "ec0d0824-33d9-4edf-805f-c262bc42e6b9",
     "name": "Papier toilette",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "piece"
   },
   {
     "id": "5930a09d-9ec1-4c73-8e49-134bd9ddefa9",
     "name": "Sacs poubelles 10l",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "piece"
   },
   {
     "id": "6dac35ff-31fe-4ff9-967a-47d6a476c192",
     "name": "Pain",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "piece"
   },
   {
     "id": "61f7c60e-ef3e-445e-ad4a-2eed5f906b68",
     "name": "Cigarettes",
-    "labels": [],
+    "labelIds": [],
     "defaultUnit": "piece"
   },
   {

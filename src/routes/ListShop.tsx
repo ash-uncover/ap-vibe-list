@@ -7,12 +7,14 @@ import {
   DEFAULT_UNIT,
   effectiveItems,
   formatAmount,
+  ingredientLabelNames,
   migrateList,
   normalizeItem,
   type AttachedRecipe,
   type Bundle,
   type Ingredient,
   type Item,
+  type Label,
   type ShoppingList,
 } from '../github/model'
 import type { GitHubError } from '../github/types'
@@ -36,6 +38,7 @@ export function ListShop() {
   const lists = useCollection<ShoppingList>(DATA_PATHS.lists)
   const recipes = useCollection<Bundle>(DATA_PATHS.recipes)
   const ingredients = useCollection<Ingredient>(DATA_PATHS.ingredients)
+  const labels = useCollection<Label>(DATA_PATHS.labels)
 
   const initialDraft = useMemo<Working | null>(() => {
     if (!id) return null
@@ -53,6 +56,10 @@ export function ListShop() {
   const byId = useMemo(
     () => new Map((ingredients.data ?? []).map((i) => [i.id, i] as const)),
     [ingredients.data],
+  )
+  const labelsById = useMemo(
+    () => new Map((labels.data ?? []).map((l) => [l.id, l] as const)),
+    [labels.data],
   )
   const unitFor = (ingredientId: string) => byId.get(ingredientId)?.defaultUnit ?? DEFAULT_UNIT
 
@@ -178,7 +185,7 @@ export function ListShop() {
     }
   }
 
-  if (lists.loading || ingredients.loading || recipes.loading) return <Loading />
+  if (lists.loading || ingredients.loading || recipes.loading || labels.loading) return <Loading />
   if (lists.error) return <ErrorNote error={lists.error} onRetry={lists.reload} />
   if (lists.data && !rawList) return <ErrorNote error="This list no longer exists." />
   if (!working || !rawList) return <Loading />
@@ -216,15 +223,16 @@ export function ListShop() {
             const key = boughtKey(it.ingredientId, it.unit)
             const ing = byId.get(it.ingredientId)
             const bought = boughtSet.has(key)
+            const chips = ing ? ingredientLabelNames(ing, labelsById) : []
             return (
               <li key={key}>
                 <label className={`check ${bought ? 'is-bought' : ''}`}>
                   <input type="checkbox" checked={bought} onChange={() => toggle(key)} />
                   <span className="check__name">{ing?.name ?? 'Unknown item'}</span>
                   <span className="check__amount">{formatAmount(it.quantity, it.unit)}</span>
-                  {ing && ing.labels.length > 0 && (
+                  {chips.length > 0 && (
                     <span className="check__chips">
-                      {ing.labels.map((l) => (
+                      {chips.map((l) => (
                         <Chip key={l}>{l}</Chip>
                       ))}
                     </span>

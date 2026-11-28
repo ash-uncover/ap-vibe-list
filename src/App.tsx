@@ -5,6 +5,7 @@ import { Layout } from './components/Layout'
 import { Home } from './routes/Home'
 import { IngredientsList } from './routes/IngredientsList'
 import { IngredientEdit } from './routes/IngredientEdit'
+import { LabelsManage } from './routes/LabelsManage'
 import { BundlesList } from './routes/BundlesList'
 import { BundleEdit } from './routes/BundleEdit'
 import { ListsList } from './routes/ListsList'
@@ -29,6 +30,7 @@ export function App() {
 
         <Route path="ingredients" element={<IngredientsList />} />
         <Route path="ingredients/new" element={<IngredientEdit />} />
+        <Route path="ingredients/labels" element={<LabelsManage />} />
         <Route path="ingredients/:id" element={<IngredientEdit />} />
 
         <Route path="recipes" element={<BundlesList kind="recipe" />} />

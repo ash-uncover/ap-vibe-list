@@ -5,6 +5,7 @@ import type { GitHubError } from './types'
 /** One JSON file per collection. Shardable later if volume ever demands it. */
 export const DATA_PATHS = {
   ingredients: 'data/ingredients.json',
+  labels: 'data/labels.json',
   recipes: 'data/recipes.json',
   templates: 'data/templates.json',
   lists: 'data/lists.json',

@@ -1,46 +1,46 @@
 [
   {
-    "id": "05e04f30-9f00-4f5f-a01d-2009604d114b",
-    "name": "Légumes"
-  },
-  {
-    "id": "d51c963d-4978-43e1-856c-21177346d708",
-    "name": "Fruits"
-  },
-  {
-    "id": "bd22f1a4-aa7e-4d20-bb44-e7550b87841c",
-    "name": "Viande"
-  },
-  {
-    "id": "a3a459eb-bd26-4afb-a52e-868e686cb497",
+    "id": "b671c9d4-06b4-48b3-b20c-3d55305a254f",
     "name": "Boissons"
   },
   {
-    "id": "7fbcc3e1-e931-46af-bd62-1779ffe716ac",
-    "name": "Poissons"
-  },
-  {
-    "id": "54a6d07d-919d-49aa-9f53-39c8720a7dd0",
-    "name": "Fromages"
-  },
-  {
-    "id": "30a9e64d-c2f1-47df-b9c9-1312ff6410d7",
-    "name": "Conserves"
-  },
-  {
-    "id": "ceec97e5-9609-4df9-a265-a54b9dc3a131",
+    "id": "e9896e92-3729-4eae-b111-a8d78bc5ec28",
     "name": "Condiments"
   },
   {
-    "id": "eda6fbd2-65f1-442b-9b5b-742836698757",
+    "id": "83e37e72-2af8-4fd5-be1c-50a210db4e10",
+    "name": "Conserves"
+  },
+  {
+    "id": "b707410e-5a65-4409-83dc-3dc7fe264ed8",
+    "name": "Fromages"
+  },
+  {
+    "id": "206a1a0a-aeff-498b-8027-9340b12665ab",
+    "name": "Fruits"
+  },
+  {
+    "id": "8e42ff8a-334b-4900-a2dc-5df3b24337e7",
     "name": "Laitage"
   },
   {
-    "id": "ea9364ef-b1ba-4495-acc9-4cdcbc643db3",
-    "name": "Yahourts"
+    "id": "b0035b81-1bc7-47f2-9d76-e71726164ba4",
+    "name": "Légumes"
   },
   {
-    "id": "c27917ba-ec48-4b93-8e61-66b53af159ef",
+    "id": "6943617d-6cf8-41c4-9b6b-1966cc8b6c02",
     "name": "Pantry"
+  },
+  {
+    "id": "e388a0b5-c138-45fa-8712-6444a40e4259",
+    "name": "Poissons"
+  },
+  {
+    "id": "41133a48-4307-47a7-9f15-e1a7131ae4ec",
+    "name": "Viande"
+  },
+  {
+    "id": "bc83b4b5-1537-4a16-92c4-86c71b924a23",
+    "name": "Yahourts"
   }
 ]

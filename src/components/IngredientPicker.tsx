@@ -53,7 +53,7 @@ export function IngredientPicker({ catalog, items, onChange, onCreate }: Props) 
     setBusy(true)
     setError(null)
     try {
-      const ing: Ingredient = { id: newId(), name, labels: [], defaultUnit: DEFAULT_UNIT }
+      const ing: Ingredient = { id: newId(), name, labelIds: [], defaultUnit: DEFAULT_UNIT }
       await onCreate(ing)
       onChange([...items, { ingredientId: ing.id, quantity: 1, unit: ing.defaultUnit }])
       setQuery('')

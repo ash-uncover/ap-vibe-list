@@ -45,6 +45,21 @@ deployed to **GitHub Pages**, that authenticates with a **GitHub PAT** and opera
 | `src/github/`    | `client.ts` (thin authenticated `fetch` wrapper) + Contents API helpers.|
 | `src/routes/`    | Screens. Add new features here as routes.                             |
 
+### Data model
+
+Collections persist as JSON arrays in the repo under `data/` (`DATA_PATHS` in
+`src/github/data.ts`): `ingredients`, `labels`, `recipes`, `templates`, `lists`.
+
+**Labels are first-class objects.** `data/labels.json` holds `Label { id, name }`, and each
+ingredient references them by id (`Ingredient.labelIds: string[]`) — never by name. Renaming a
+label edits only the `Label` object, so the new name shows everywhere automatically. Resolve
+ids to names for display with `labelNames(ids, byId)` (`src/github/model.ts`). The
+**Manage labels** screen (`src/routes/LabelsManage.tsx`, route `ingredients/labels`, reached via
+a button on the Items page — not a main nav entry) lists labels with usage counts and supports
+rename, delete (strips the id from every ingredient, then removes the label), and merge
+(re-points ingredients to the target, then removes the source). New labels are created inline
+while editing an ingredient and committed to `labels.json` on save.
+
 ## Commands
 
 ```bash
@@ -52,9 +67,26 @@ npm install
 npm run dev        # Vite dev server
 npm run build      # production build (emits dist/ + 404.html fallback)
 npm run preview    # preview the production build
+npm run test:e2e   # Playwright UI tests (drive the app via demo mode)
 ```
 
 Verify a change with `npm run build` before claiming it works; the build type-checks.
+
+## Testing
+
+UI behaviour is covered by **Playwright** end-to-end tests in `e2e/`, run with
+`npm run test:e2e` (and in CI via `.github/workflows/e2e.yml` on every PR). They drive the
+real app through its **demo mode** — a localStorage-backed mock of the GitHub Contents API
+(`src/github/mockClient.ts`) — so no PAT or network is needed. `e2e/helpers.ts` enters demo
+mode and seeds collections (`enterDemoWithData`) and reads them back (`readCollection`),
+discovering the storage key at runtime so nothing hardcodes the owner/repo.
+
+Tests seed **both** the current data shape and legacy/un-migrated shapes where the app must
+stay resilient (e.g. ingredients with free-text `labels` and no `labels.json`, which the
+Contents API still serves from the default branch before a migration lands).
+
+**Keep tests in step with the app: whenever you add or change a user-facing capability, add
+or update the `e2e/` spec that covers it in the same PR.**
 
 ## Working process
 
@@ -63,7 +95,8 @@ Work is driven by **GitHub issues** on `ash-uncover/ap-vibe-list` (public). The 
 1. **Check open issues** (`gh issue list`, or the public REST API if `gh` isn't authed on
    github.com).
 2. If there are any, **implement and test** the change — verify with `npm run build`
-   (it type-checks).
+   (type-checks) and `npm run test:e2e`, adding/updating the `e2e/` spec for the new or
+   changed capability.
 3. **Open a pull request and close the issue** — branch off `main` (never commit directly
    to `main`), and reference the issue with `Closes #N` in the PR body so merging closes it.
 4. **Update documentation** (this file and/or relevant docs) to reflect the change.
