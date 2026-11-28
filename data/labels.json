@@ -1,11 +1,11 @@
 [
   {
-    "id": "b671c9d4-06b4-48b3-b20c-3d55305a254f",
-    "name": "Boissons"
-  },
-  {
     "id": "206a1a0a-aeff-498b-8027-9340b12665ab",
     "name": "Fruits"
+  },
+  {
+    "id": "b671c9d4-06b4-48b3-b20c-3d55305a254f",
+    "name": "Boissons"
   },
   {
     "id": "e9896e92-3729-4eae-b111-a8d78bc5ec28",
