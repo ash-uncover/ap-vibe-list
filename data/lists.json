@@ -2,103 +2,108 @@
   {
     "id": "d1ac1360-a58d-45ed-bf32-e5e7392da081",
     "name": "Liste",
-    "status": "active",
     "createdAt": "2026-11-28T07:59:15.053Z",
+    "status": "active",
     "items": [
       {
         "ingredientId": "26e1c412-e7f2-49df-9bbe-cfb14694630c",
-        "unit": "piece",
-        "quantity": 3
+        "quantity": 3,
+        "unit": "piece"
       },
       {
         "ingredientId": "3e59d1dd-d275-41a5-bdc1-d3d3af70e163",
-        "unit": "piece",
-        "quantity": 1
+        "quantity": 1,
+        "unit": "piece"
       },
       {
         "ingredientId": "61f7c60e-ef3e-445e-ad4a-2eed5f906b68",
-        "unit": "pack",
-        "quantity": 2
+        "quantity": 2,
+        "unit": "pack"
       },
       {
         "ingredientId": "e436f023-3c53-4725-9334-e70e9806df09",
-        "unit": "piece",
-        "quantity": 4
+        "quantity": 4,
+        "unit": "piece"
       },
       {
         "ingredientId": "ec19bb72-72be-47e0-99fb-a24dd34c72b2",
-        "unit": "pack",
-        "quantity": 1
+        "quantity": 1,
+        "unit": "pack"
       },
       {
         "ingredientId": "7f28d06c-12a4-4f76-81af-9369a45d1526",
-        "unit": "kg",
-        "quantity": 1
+        "quantity": 1,
+        "unit": "kg"
       },
       {
         "ingredientId": "8ab35802-1ccb-4250-840b-d57c5353ea45",
-        "unit": "g",
-        "quantity": 600
+        "quantity": 600,
+        "unit": "g"
       },
       {
         "ingredientId": "8702e9f1-cfd6-4e43-a086-ef8fe33a7a9c",
-        "unit": "piece",
-        "quantity": 4
+        "quantity": 4,
+        "unit": "piece"
       },
       {
         "ingredientId": "2b2f512f-7b29-456b-816e-5262811217d6",
-        "unit": "piece",
-        "quantity": 1
+        "quantity": 1,
+        "unit": "piece"
       },
       {
         "ingredientId": "7fe21b95-c288-4e74-9b83-acecb032e485",
-        "unit": "piece",
-        "quantity": 6
+        "quantity": 6,
+        "unit": "piece"
       },
       {
         "ingredientId": "fbd1ac9c-aaa8-4b85-a35b-022ec896ebd6",
-        "unit": "piece",
-        "quantity": 7
+        "quantity": 7,
+        "unit": "piece"
       },
       {
         "ingredientId": "6dac35ff-31fe-4ff9-967a-47d6a476c192",
-        "unit": "piece",
-        "quantity": 4
+        "quantity": 4,
+        "unit": "piece"
       },
       {
         "ingredientId": "ec0d0824-33d9-4edf-805f-c262bc42e6b9",
-        "unit": "pack",
-        "quantity": 1
+        "quantity": 1,
+        "unit": "pack"
       },
       {
         "ingredientId": "aedda013-00cf-4ef3-b08f-301dce899a51",
-        "unit": "pack",
-        "quantity": 1
+        "quantity": 1,
+        "unit": "pack"
       },
       {
         "ingredientId": "6218fc6f-5317-4981-9982-2f6ebdac8350",
-        "unit": "pack",
-        "quantity": 1
+        "quantity": 1,
+        "unit": "pack"
       },
       {
         "ingredientId": "eef1b6bd-a2b6-4ce9-8bb9-f578fbe96bb8",
-        "unit": "piece",
-        "quantity": 4
+        "quantity": 4,
+        "unit": "piece"
       },
       {
         "ingredientId": "5930a09d-9ec1-4c73-8e49-134bd9ddefa9",
-        "unit": "pack",
-        "quantity": 1
+        "quantity": 1,
+        "unit": "pack"
       },
       {
         "ingredientId": "c73d07f1-8950-4079-89fb-9883e90010de",
-        "unit": "piece",
-        "quantity": 2
+        "quantity": 2,
+        "unit": "piece"
       },
       {
         "ingredientId": "0fa193e3-6215-4fb4-a01d-84e4485a91c5",
-        "unit": "piece",
-        "quantity": 16
+        "quantity": 16,
+        "unit": "piece"
+      },
+      {
+        "ingredientId": "07bc184c-b1fc-4714-a207-c72c1af2352a",
+        "quantity": 1,
+        "unit": "kg"
       }
     ],
     "recipes": [],
