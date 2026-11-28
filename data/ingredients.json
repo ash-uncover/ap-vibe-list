@@ -74,12 +74,6 @@
     ]
   },
   {
-    "id": "27572fa7-be82-4f42-b0c1-79269a5a4e4c",
-    "name": "Comté",
-    "labelIds": [],
-    "defaultUnit": "piece"
-  },
-  {
     "id": "e436f023-3c53-4725-9334-e70e9806df09",
     "name": "Cordons Bleus",
     "labelIds": [
@@ -559,5 +553,13 @@
       "c985538c-48eb-4963-b9e3-338a14f413fe"
     ],
     "defaultUnit": "pack"
+  },
+  {
+    "id": "27572fa7-be82-4f42-b0c1-79269a5a4e4c",
+    "name": "Comté",
+    "labelIds": [
+      "b707410e-5a65-4409-83dc-3dc7fe264ed8"
+    ],
+    "defaultUnit": "piece"
   }
 ]
