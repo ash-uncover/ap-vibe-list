@@ -273,12 +273,6 @@
     ]
   },
   {
-    "id": "6218fc6f-5317-4981-9982-2f6ebdac8350",
-    "name": "Pommes de terre",
-    "labelIds": [],
-    "defaultUnit": "piece"
-  },
-  {
     "id": "eef1b6bd-a2b6-4ce9-8bb9-f578fbe96bb8",
     "name": "Poulet (filets)",
     "labelIds": [
@@ -598,6 +592,14 @@
     "id": "ff8e6df4-d7d9-41fa-96e0-1d0b99d426d0",
     "name": "Beurre de cacahuète",
     "labelIds": [],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "6218fc6f-5317-4981-9982-2f6ebdac8350",
+    "name": "Pommes de terre",
+    "labelIds": [
+      "b0035b81-1bc7-47f2-9d76-e71726164ba4"
+    ],
     "defaultUnit": "piece"
   }
 ]
