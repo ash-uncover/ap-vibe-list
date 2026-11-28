@@ -88,12 +88,6 @@
     ]
   },
   {
-    "id": "e57b0b3d-973d-452a-aeba-3c2c1aaf3f0e",
-    "name": "Crème fraîche liquide",
-    "labelIds": [],
-    "defaultUnit": "piece"
-  },
-  {
     "id": "403e2f2a-f907-4959-8ea9-1bd00e3595ac",
     "name": "Crevettes",
     "labelIds": [
@@ -559,6 +553,14 @@
     "name": "Comté",
     "labelIds": [
       "b707410e-5a65-4409-83dc-3dc7fe264ed8"
+    ],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "e57b0b3d-973d-452a-aeba-3c2c1aaf3f0e",
+    "name": "Crème fraîche liquide",
+    "labelIds": [
+      "8e42ff8a-334b-4900-a2dc-5df3b24337e7"
     ],
     "defaultUnit": "piece"
   }
