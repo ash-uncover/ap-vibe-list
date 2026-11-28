@@ -46,12 +46,6 @@
     "defaultUnit": "piece"
   },
   {
-    "id": "3e59d1dd-d275-41a5-bdc1-d3d3af70e163",
-    "name": "Chèvre frais",
-    "labelIds": [],
-    "defaultUnit": "piece"
-  },
-  {
     "id": "32878494-6bff-4d02-9ab9-446ea3a0c83e",
     "name": "Chipolatas",
     "labelIds": [
@@ -551,5 +545,13 @@
       "e1c277a2-2ec4-4273-bed2-b5280b92d478"
     ],
     "defaultUnit": "pack"
+  },
+  {
+    "id": "3e59d1dd-d275-41a5-bdc1-d3d3af70e163",
+    "name": "Chèvre frais",
+    "labelIds": [
+      "b707410e-5a65-4409-83dc-3dc7fe264ed8"
+    ],
+    "defaultUnit": "piece"
   }
 ]
