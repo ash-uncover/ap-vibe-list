@@ -53,10 +53,21 @@ export function IngredientsList() {
           <ul className="rows">
             {sorted.map((i) => {
               const names = ingredientLabelNames(i, byId)
+              const warning =
+                names.length === 0
+                  ? 'No label — add one so it groups correctly while shopping.'
+                  : names.length > 1
+                    ? 'Multiple labels — it will group under only one while shopping.'
+                    : null
               return (
                 <li key={i.id}>
                   <Link to={`/ingredients/${i.id}`} className="rows__item">
                     <span className="rows__main">{i.name}</span>
+                    {warning && (
+                      <span className="rows__warn" role="img" aria-label={warning} title={warning}>
+                        ⚠️
+                      </span>
+                    )}
                     {names.length > 0 && (
                       <span className="rows__chips">
                         {names.map((l) => (
