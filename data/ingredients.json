@@ -149,12 +149,6 @@
     ]
   },
   {
-    "id": "09cef645-44f0-4185-88dd-471282d08614",
-    "name": "Jambon",
-    "labelIds": [],
-    "defaultUnit": "piece"
-  },
-  {
     "id": "8702e9f1-cfd6-4e43-a086-ef8fe33a7a9c",
     "name": "Jambon cru",
     "labelIds": [],
@@ -569,6 +563,14 @@
     "name": "Fruits",
     "labelIds": [
       "206a1a0a-aeff-498b-8027-9340b12665ab"
+    ],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "09cef645-44f0-4185-88dd-471282d08614",
+    "name": "Jambon",
+    "labelIds": [
+      "3fd9e312-c3c9-4661-ad0c-35633eaed550"
     ],
     "defaultUnit": "piece"
   }
