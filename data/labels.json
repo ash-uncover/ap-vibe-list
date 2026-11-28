@@ -20,12 +20,12 @@
     "name": "Fromages"
   },
   {
-    "id": "8e42ff8a-334b-4900-a2dc-5df3b24337e7",
-    "name": "Laitage"
-  },
-  {
     "id": "b0035b81-1bc7-47f2-9d76-e71726164ba4",
     "name": "Légumes"
+  },
+  {
+    "id": "8e42ff8a-334b-4900-a2dc-5df3b24337e7",
+    "name": "Laitage"
   },
   {
     "id": "6943617d-6cf8-41c4-9b6b-1966cc8b6c02",
