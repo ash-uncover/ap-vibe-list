@@ -538,5 +538,11 @@
     "name": "Sacs poubelles 10l",
     "labels": [],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "6dac35ff-31fe-4ff9-967a-47d6a476c192",
+    "name": "Pain",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
