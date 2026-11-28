@@ -199,12 +199,6 @@
     ]
   },
   {
-    "id": "fbd1ac9c-aaa8-4b85-a35b-022ec896ebd6",
-    "name": "Oignons",
-    "labelIds": [],
-    "defaultUnit": "piece"
-  },
-  {
     "id": "a9bed879-a904-4719-9b11-8a79c44983c8",
     "name": "Olives",
     "labelIds": [
@@ -608,6 +602,14 @@
     "name": "Beurre de cacahuète",
     "labelIds": [
       "e1c277a2-2ec4-4273-bed2-b5280b92d478"
+    ],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "fbd1ac9c-aaa8-4b85-a35b-022ec896ebd6",
+    "name": "Oignons",
+    "labelIds": [
+      "b0035b81-1bc7-47f2-9d76-e71726164ba4"
     ],
     "defaultUnit": "piece"
   }
