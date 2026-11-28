@@ -243,12 +243,6 @@
     "defaultUnit": "piece"
   },
   {
-    "id": "aedda013-00cf-4ef3-b08f-301dce899a51",
-    "name": "Parmesan",
-    "labelIds": [],
-    "defaultUnit": "piece"
-  },
-  {
     "id": "12c27b6e-10f7-48de-8420-2cccc34b8685",
     "name": "Parmesan rapé",
     "labelIds": [
@@ -582,6 +576,14 @@
     "name": "Pâte feuilletée",
     "labelIds": [
       "3fd9e312-c3c9-4661-ad0c-35633eaed550"
+    ],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "aedda013-00cf-4ef3-b08f-301dce899a51",
+    "name": "Parmesan",
+    "labelIds": [
+      "b707410e-5a65-4409-83dc-3dc7fe264ed8"
     ],
     "defaultUnit": "piece"
   }
