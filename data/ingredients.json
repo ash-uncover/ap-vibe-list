@@ -532,5 +532,11 @@
     "name": "Papier toilette",
     "labels": [],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "5930a09d-9ec1-4c73-8e49-134bd9ddefa9",
+    "name": "Sacs poubelles 10l",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
