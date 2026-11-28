@@ -35,13 +35,6 @@
     ]
   },
   {
-    "id": "3a4afe32-a177-4246-8e9c-233ebc02cb75",
-    "name": "Ananas",
-    "labels": [
-      "Fruits"
-    ]
-  },
-  {
     "id": "c429ceca-36e9-49fb-b37d-5d220bbbefbd",
     "name": "Poivrons",
     "labels": [
@@ -549,6 +542,14 @@
     "name": "Aïl",
     "labelIds": [
       "05e04f30-9f00-4f5f-a01d-2009604d114b"
+    ],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "3a4afe32-a177-4246-8e9c-233ebc02cb75",
+    "name": "Ananas",
+    "labelIds": [
+      "d51c963d-4978-43e1-856c-21177346d708"
     ],
     "defaultUnit": "piece"
   }
