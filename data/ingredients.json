@@ -251,12 +251,6 @@
     "defaultUnit": "pack"
   },
   {
-    "id": "95104599-99f8-4cd3-8af0-5c1892cda1b0",
-    "name": "Poireaux",
-    "labelIds": [],
-    "defaultUnit": "piece"
-  },
-  {
     "id": "41410737-3cb6-410e-9a40-85e57ab5c001",
     "name": "Poires",
     "labelIds": [
@@ -587,6 +581,14 @@
     "name": "Pâte brisée",
     "labelIds": [
       "3fd9e312-c3c9-4661-ad0c-35633eaed550"
+    ],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "95104599-99f8-4cd3-8af0-5c1892cda1b0",
+    "name": "Poireaux",
+    "labelIds": [
+      "b0035b81-1bc7-47f2-9d76-e71726164ba4"
     ],
     "defaultUnit": "piece"
   }
