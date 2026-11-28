@@ -572,12 +572,6 @@
     "defaultUnit": "piece"
   },
   {
-    "id": "ff8e6df4-d7d9-41fa-96e0-1d0b99d426d0",
-    "name": "Beurre de cacahuète",
-    "labelIds": [],
-    "defaultUnit": "piece"
-  },
-  {
     "id": "6218fc6f-5317-4981-9982-2f6ebdac8350",
     "name": "Pommes de terre",
     "labelIds": [
@@ -606,6 +600,14 @@
     "name": "Pains à burger",
     "labelIds": [
       "554a8907-8492-40d0-a11e-4123a80711d2"
+    ],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "ff8e6df4-d7d9-41fa-96e0-1d0b99d426d0",
+    "name": "Beurre de cacahuète",
+    "labelIds": [
+      "e1c277a2-2ec4-4273-bed2-b5280b92d478"
     ],
     "defaultUnit": "piece"
   }
