@@ -192,11 +192,6 @@
     "defaultUnit": "pack"
   },
   {
-    "id": "895e806f-e1ca-4686-b527-acb3fe255aa5",
-    "name": "Miel",
-    "labelIds": []
-  },
-  {
     "id": "7fe21b95-c288-4e74-9b83-acecb032e485",
     "name": "Oeufs",
     "labelIds": []
@@ -573,6 +568,14 @@
     "name": "Jambon cru",
     "labelIds": [
       "3fd9e312-c3c9-4661-ad0c-35633eaed550"
+    ],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "895e806f-e1ca-4686-b527-acb3fe255aa5",
+    "name": "Miel",
+    "labelIds": [
+      "e1c277a2-2ec4-4273-bed2-b5280b92d478"
     ],
     "defaultUnit": "piece"
   }
