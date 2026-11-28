@@ -38,12 +38,6 @@
     ]
   },
   {
-    "id": "8a830dca-87c6-47bc-8fee-03a8c6ca4364",
-    "name": "Bicarbonate",
-    "labelIds": [],
-    "defaultUnit": "piece"
-  },
-  {
     "id": "5ac8b11f-ac93-40bf-804f-c225d19bdeff",
     "name": "Bières",
     "labelIds": [
@@ -547,5 +541,11 @@
     "name": "Café",
     "labelIds": [],
     "defaultUnit": "pack"
+  },
+  {
+    "id": "8a830dca-87c6-47bc-8fee-03a8c6ca4364",
+    "name": "Bicarbonate",
+    "labelIds": [],
+    "defaultUnit": "piece"
   }
 ]
