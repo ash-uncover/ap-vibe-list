@@ -513,12 +513,6 @@
     "defaultUnit": "piece"
   },
   {
-    "id": "f98fff62-badf-42c4-9d5f-f3886668aee8",
-    "name": "Chocolat Pâtissier",
-    "labelIds": [],
-    "defaultUnit": "pack"
-  },
-  {
     "id": "8a830dca-87c6-47bc-8fee-03a8c6ca4364",
     "name": "Bicarbonate",
     "labelIds": [
@@ -555,6 +549,14 @@
     "name": "Chocolat (Bulle)",
     "labelIds": [
       "59d43b70-6f9e-4b6c-abcc-c07a5a063ae7"
+    ],
+    "defaultUnit": "pack"
+  },
+  {
+    "id": "f98fff62-badf-42c4-9d5f-f3886668aee8",
+    "name": "Chocolat Pâtissier",
+    "labelIds": [
+      "c985538c-48eb-4963-b9e3-338a14f413fe"
     ],
     "defaultUnit": "pack"
   }
