@@ -551,14 +551,6 @@
     "defaultUnit": "piece"
   },
   {
-    "id": "a4f923f1-1925-4de4-b732-7ea397de3760",
-    "name": "Œufs",
-    "labelIds": [
-      "c985538c-48eb-4963-b9e3-338a14f413fe"
-    ],
-    "defaultUnit": "piece"
-  },
-  {
     "id": "6218fc6f-5317-4981-9982-2f6ebdac8350",
     "name": "Pommes de terre",
     "labelIds": [
