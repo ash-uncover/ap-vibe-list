@@ -53,12 +53,6 @@
     ]
   },
   {
-    "id": "fe5ad2df-b2f1-4597-9383-3383a1c4db13",
-    "name": "Chocolat (Bulle)",
-    "labelIds": [],
-    "defaultUnit": "pack"
-  },
-  {
     "id": "eab90b09-3124-4a03-ae51-55c579d8986c",
     "name": "Chocolat en Poudre",
     "labelIds": [
@@ -551,6 +545,14 @@
   {
     "id": "6b2fe766-1886-4d2c-b78a-fca764a7edfa",
     "name": "Chocolat (Antoine)",
+    "labelIds": [
+      "59d43b70-6f9e-4b6c-abcc-c07a5a063ae7"
+    ],
+    "defaultUnit": "pack"
+  },
+  {
+    "id": "fe5ad2df-b2f1-4597-9383-3383a1c4db13",
+    "name": "Chocolat (Bulle)",
     "labelIds": [
       "59d43b70-6f9e-4b6c-abcc-c07a5a063ae7"
     ],
