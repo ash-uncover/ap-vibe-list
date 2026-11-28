@@ -53,12 +53,6 @@
     ]
   },
   {
-    "id": "6b2fe766-1886-4d2c-b78a-fca764a7edfa",
-    "name": "Chocolat (Antoine)",
-    "labelIds": [],
-    "defaultUnit": "pack"
-  },
-  {
     "id": "fe5ad2df-b2f1-4597-9383-3383a1c4db13",
     "name": "Chocolat (Bulle)",
     "labelIds": [],
@@ -553,5 +547,13 @@
       "b707410e-5a65-4409-83dc-3dc7fe264ed8"
     ],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "6b2fe766-1886-4d2c-b78a-fca764a7edfa",
+    "name": "Chocolat (Antoine)",
+    "labelIds": [
+      "59d43b70-6f9e-4b6c-abcc-c07a5a063ae7"
+    ],
+    "defaultUnit": "pack"
   }
 ]
