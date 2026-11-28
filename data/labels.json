@@ -24,12 +24,12 @@
     "name": "Condiments"
   },
   {
-    "id": "83e37e72-2af8-4fd5-be1c-50a210db4e10",
-    "name": "Conserves"
-  },
-  {
     "id": "b707410e-5a65-4409-83dc-3dc7fe264ed8",
     "name": "Fromages"
+  },
+  {
+    "id": "83e37e72-2af8-4fd5-be1c-50a210db4e10",
+    "name": "Conserves"
   },
   {
     "id": "8e42ff8a-334b-4900-a2dc-5df3b24337e7",
