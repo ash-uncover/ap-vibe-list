@@ -478,5 +478,11 @@
     "name": "Jambon cru",
     "labels": [],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "fbd1ac9c-aaa8-4b85-a35b-022ec896ebd6",
+    "name": "Oignons",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
