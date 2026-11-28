@@ -52,12 +52,6 @@
     "defaultUnit": "piece"
   },
   {
-    "id": "26acd202-fbce-452c-ac29-44cdcea53591",
-    "name": "Café",
-    "labelIds": [],
-    "defaultUnit": "pack"
-  },
-  {
     "id": "3e59d1dd-d275-41a5-bdc1-d3d3af70e163",
     "name": "Chèvre frais",
     "labelIds": [],
@@ -545,6 +539,12 @@
   {
     "id": "f98fff62-badf-42c4-9d5f-f3886668aee8",
     "name": "Chocolat Pâtissier",
+    "labelIds": [],
+    "defaultUnit": "pack"
+  },
+  {
+    "id": "26acd202-fbce-452c-ac29-44cdcea53591",
+    "name": "Café",
     "labelIds": [],
     "defaultUnit": "pack"
   }
