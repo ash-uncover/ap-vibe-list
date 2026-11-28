@@ -32,11 +32,11 @@
     "name": "Condiments"
   },
   {
-    "id": "b671c9d4-06b4-48b3-b20c-3d55305a254f",
-    "name": "Boissons"
-  },
-  {
     "id": "6943617d-6cf8-41c4-9b6b-1966cc8b6c02",
     "name": "Pantry"
+  },
+  {
+    "id": "b671c9d4-06b4-48b3-b20c-3d55305a254f",
+    "name": "Boissons"
   }
 ]
