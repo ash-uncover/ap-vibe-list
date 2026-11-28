@@ -266,14 +266,6 @@
     "defaultUnit": "kg"
   },
   {
-    "id": "57388d60-59e0-48d1-bce0-f7085dbf968f",
-    "name": "Spaghetti",
-    "labels": [
-      "Pantry"
-    ],
-    "defaultUnit": "kg"
-  },
-  {
     "id": "773861eb-3528-4e72-b42e-c4ce56a76064",
     "name": "Fromage a Burger",
     "labels": [
@@ -555,5 +547,13 @@
       "ea9364ef-b1ba-4495-acc9-4cdcbc643db3"
     ],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "57388d60-59e0-48d1-bce0-f7085dbf968f",
+    "name": "Spaghetti",
+    "labelIds": [
+      "c27917ba-ec48-4b93-8e61-66b53af159ef"
+    ],
+    "defaultUnit": "kg"
   }
 ]
