@@ -12,13 +12,6 @@
     "name": "Ananas",
     "labelIds": [
       "206a1a0a-aeff-498b-8027-9340b12665ab"
-    ]
-  },
-  {
-    "id": "3a4afe32-a177-4246-8e9c-233ebc02cb75",
-    "name": "Ananas",
-    "labelIds": [
-      "d51c963d-4978-43e1-856c-21177346d708"
     ],
     "defaultUnit": "piece"
   },
@@ -34,13 +27,6 @@
     "name": "Bacon",
     "labelIds": [
       "41133a48-4307-47a7-9f15-e1a7131ae4ec"
-    ]
-  },
-  {
-    "id": "892a4be9-9686-4883-80f7-b54f44b21148",
-    "name": "Bacon",
-    "labelIds": [
-      "bd22f1a4-aa7e-4d20-bb44-e7550b87841c"
     ],
     "defaultUnit": "piece"
   },
@@ -62,13 +48,6 @@
     "name": "Bières",
     "labelIds": [
       "b671c9d4-06b4-48b3-b20c-3d55305a254f"
-    ]
-  },
-  {
-    "id": "5ac8b11f-ac93-40bf-804f-c225d19bdeff",
-    "name": "Bières",
-    "labelIds": [
-      "a3a459eb-bd26-4afb-a52e-868e686cb497"
     ],
     "defaultUnit": "piece"
   },
@@ -165,14 +144,6 @@
     "defaultUnit": "g"
   },
   {
-    "id": "403e2f2a-f907-4959-8ea9-1bd00e3595ac",
-    "name": "Crevettes",
-    "labelIds": [
-      "7fbcc3e1-e931-46af-bd62-1779ffe716ac"
-    ],
-    "defaultUnit": "g"
-  },
-  {
     "id": "5046eaf9-daae-45f3-a6fd-be22ccf2d548",
     "name": "Eau (bouteilles)",
     "labelIds": [
@@ -198,14 +169,6 @@
     "name": "Emmental rapé",
     "labelIds": [
       "b707410e-5a65-4409-83dc-3dc7fe264ed8"
-    ],
-    "defaultUnit": "pack"
-  },
-  {
-    "id": "382aea38-4035-4498-adf8-cd710d349849",
-    "name": "Emmental rapé",
-    "labelIds": [
-      "54a6d07d-919d-49aa-9f53-39c8720a7dd0"
     ],
     "defaultUnit": "pack"
   },
@@ -313,14 +276,6 @@
     "defaultUnit": "pack"
   },
   {
-    "id": "a365543f-5ad5-4eb3-833b-6246d0b44db4",
-    "name": "Maïs",
-    "labelIds": [
-      "30a9e64d-c2f1-47df-b9c9-1312ff6410d7"
-    ],
-    "defaultUnit": "pack"
-  },
-  {
     "id": "895e806f-e1ca-4686-b527-acb3fe255aa5",
     "name": "Miel",
     "labelIds": []
@@ -354,14 +309,6 @@
     "name": "Olives",
     "labelIds": [
       "e9896e92-3729-4eae-b111-a8d78bc5ec28"
-    ],
-    "defaultUnit": "pack"
-  },
-  {
-    "id": "a9bed879-a904-4719-9b11-8a79c44983c8",
-    "name": "Olives",
-    "labelIds": [
-      "ceec97e5-9609-4df9-a265-a54b9dc3a131"
     ],
     "defaultUnit": "pack"
   },
@@ -558,14 +505,6 @@
     "defaultUnit": "kg"
   },
   {
-    "id": "57388d60-59e0-48d1-bce0-f7085dbf968f",
-    "name": "Spaghetti",
-    "labelIds": [
-      "c27917ba-ec48-4b93-8e61-66b53af159ef"
-    ],
-    "defaultUnit": "kg"
-  },
-  {
     "id": "5873f275-8b9d-4477-8472-2aff7edee366",
     "name": "Steack Haches",
     "labelIds": [
@@ -608,14 +547,6 @@
     "labelIds": [
       "8e42ff8a-334b-4900-a2dc-5df3b24337e7",
       "bc83b4b5-1537-4a16-92c4-86c71b924a23"
-    ]
-  },
-  {
-    "id": "0fa193e3-6215-4fb4-a01d-84e4485a91c5",
-    "name": "Yaos",
-    "labelIds": [
-      "eda6fbd2-65f1-442b-9b5b-742836698757",
-      "ea9364ef-b1ba-4495-acc9-4cdcbc643db3"
     ],
     "defaultUnit": "piece"
   }
