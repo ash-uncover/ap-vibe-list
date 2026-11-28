@@ -32,11 +32,11 @@
     "name": "Laitage"
   },
   {
-    "id": "6943617d-6cf8-41c4-9b6b-1966cc8b6c02",
-    "name": "Pantry"
-  },
-  {
     "id": "41133a48-4307-47a7-9f15-e1a7131ae4ec",
     "name": "Viande"
+  },
+  {
+    "id": "6943617d-6cf8-41c4-9b6b-1966cc8b6c02",
+    "name": "Pantry"
   }
 ]
