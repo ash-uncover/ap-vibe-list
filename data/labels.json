@@ -16,12 +16,12 @@
     "name": "Boissons"
   },
   {
-    "id": "e9896e92-3729-4eae-b111-a8d78bc5ec28",
-    "name": "Condiments"
-  },
-  {
     "id": "41133a48-4307-47a7-9f15-e1a7131ae4ec",
     "name": "Viande"
+  },
+  {
+    "id": "e9896e92-3729-4eae-b111-a8d78bc5ec28",
+    "name": "Condiments"
   },
   {
     "id": "83e37e72-2af8-4fd5-be1c-50a210db4e10",
