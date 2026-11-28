@@ -88,15 +88,21 @@ export function ListAssemble() {
   )
   const unitFor = (id: string) => byId.get(id)?.defaultUnit ?? DEFAULT_UNIT
 
+  /** Generic fallback name for a list started from scratch. */
+  const defaultListName = () => `List - ${new Date().toLocaleDateString()}`
+
   // Persist working state so a refresh never loses it.
   useEffect(() => {
     setDraft(DRAFT_NEW_LIST, { ...draft, review })
   }, [draft, review])
 
-  // Nothing to choose from: advance straight to the builder.
+  // Nothing to choose from: advance straight to the builder with a default name.
   useEffect(() => {
     if (step !== 'template' || templates.loading || templates.error) return
-    if ((templates.data?.length ?? 0) === 0) setStep('build')
+    if ((templates.data?.length ?? 0) === 0) {
+      setDraftState((d) => ({ ...d, name: d.name.trim() || defaultListName() }))
+      setStep('build')
+    }
   }, [step, templates.loading, templates.error, templates.data])
 
   // Clone from a past list: flatten its still-unbought effective items into user items.
@@ -140,6 +146,8 @@ export function ListAssemble() {
         items,
         recipes: [],
       })
+    } else {
+      setDraftState((d) => ({ ...d, name: d.name.trim() || defaultListName() }))
     }
     setStep('build')
   }
@@ -225,9 +233,10 @@ export function ListAssemble() {
 
   function discard() {
     clearDraft(DRAFT_NEW_LIST)
-    setDraftState({ name: '', items: [], recipes: [] })
+    const hasTemplates = (templates.data?.length ?? 0) > 0
+    setDraftState({ name: hasTemplates ? '' : defaultListName(), items: [], recipes: [] })
     setReview(null)
-    setStep((templates.data?.length ?? 0) > 0 ? 'template' : 'build')
+    setStep(hasTemplates ? 'template' : 'build')
   }
 
   const anyLoading =
