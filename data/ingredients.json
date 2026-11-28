@@ -490,5 +490,11 @@
     "name": "Chèvre frais",
     "labels": [],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "26e1c412-e7f2-49df-9bbe-cfb14694630c",
+    "name": "Ail",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
