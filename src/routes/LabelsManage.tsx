@@ -165,108 +165,112 @@ export function LabelsManage() {
             const others = ordered.filter((l) => l.id !== label.id)
             return (
               <li key={label.id}>
-                <div className="rows__item">
-                  {!isEditing && !isMerging && (
-                    <div className="label-reorder">
-                      <button
-                        className="btn btn--sm"
-                        aria-label={`Move ${label.name} up`}
-                        title="Move up"
-                        onClick={() => move(label, -1)}
-                        disabled={!writeAccess || busy || index === 0}
-                      >
-                        ▲
-                      </button>
-                      <button
-                        className="btn btn--sm"
-                        aria-label={`Move ${label.name} down`}
-                        title="Move down"
-                        onClick={() => move(label, 1)}
-                        disabled={!writeAccess || busy || index === ordered.length - 1}
-                      >
-                        ▼
-                      </button>
-                    </div>
-                  )}
-                  {isEditing ? (
-                    <input
-                      className="input rows__main"
-                      autoFocus
-                      value={editing.name}
-                      onChange={(e) => setEditing({ id: label.id, name: e.target.value })}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter') rename(label, editing.name)
-                        if (e.key === 'Escape') setEditing(null)
-                      }}
-                    />
-                  ) : (
-                    <span className="rows__main">{label.name}</span>
-                  )}
-                  <span className="rows__meta">
-                    {count} {count === 1 ? 'item' : 'items'}
-                  </span>
-
-                  {isEditing ? (
-                    <div className="row">
-                      <button
-                        className="btn btn--sm btn--primary"
-                        onClick={() => rename(label, editing.name)}
-                        disabled={busy || !editing.name.trim()}
-                      >
-                        Save
-                      </button>
-                      <button className="btn btn--sm" onClick={() => setEditing(null)} disabled={busy}>
-                        Cancel
-                      </button>
-                    </div>
-                  ) : isMerging ? (
-                    <div className="row">
-                      <select
-                        className="input"
+                <div className="label-row">
+                  <div className="label-row__top">
+                    {isEditing ? (
+                      <input
+                        className="input label-row__name"
                         autoFocus
-                        value=""
-                        disabled={busy || others.length === 0}
-                        onChange={(e) => e.target.value && merge(label, e.target.value)}
-                      >
-                        <option value="">Merge into…</option>
-                        {others.map((l) => (
-                          <option key={l.id} value={l.id}>
-                            {l.name}
-                          </option>
-                        ))}
-                      </select>
-                      <button className="btn btn--sm" onClick={() => setMergingId(null)} disabled={busy}>
-                        Cancel
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="row">
-                      <button
-                        className="btn btn--sm"
-                        onClick={() => setEditing({ id: label.id, name: label.name })}
-                        disabled={!writeAccess || busy}
-                        title={writeAccess ? undefined : 'Read-only token'}
-                      >
-                        Rename
-                      </button>
-                      <button
-                        className="btn btn--sm"
-                        onClick={() => setMergingId(label.id)}
-                        disabled={!writeAccess || busy || others.length === 0}
-                        title={writeAccess ? undefined : 'Read-only token'}
-                      >
-                        Merge
-                      </button>
-                      <button
-                        className="btn btn--sm btn--danger-ghost"
-                        onClick={() => remove(label)}
-                        disabled={!writeAccess || busy}
-                        title={writeAccess ? undefined : 'Read-only token'}
-                      >
-                        {busy ? '…' : 'Delete'}
-                      </button>
-                    </div>
-                  )}
+                        value={editing.name}
+                        onChange={(e) => setEditing({ id: label.id, name: e.target.value })}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter') rename(label, editing.name)
+                          if (e.key === 'Escape') setEditing(null)
+                        }}
+                      />
+                    ) : (
+                      <>
+                        <span className="label-row__name">{label.name}</span>
+                        <span className="rows__meta">
+                          {count} {count === 1 ? 'item' : 'items'}
+                        </span>
+                      </>
+                    )}
+                  </div>
+
+                  <div className="label-row__actions">
+                    {isEditing ? (
+                      <>
+                        <button
+                          className="btn btn--sm btn--primary"
+                          onClick={() => rename(label, editing.name)}
+                          disabled={busy || !editing.name.trim()}
+                        >
+                          Save
+                        </button>
+                        <button className="btn btn--sm" onClick={() => setEditing(null)} disabled={busy}>
+                          Cancel
+                        </button>
+                      </>
+                    ) : isMerging ? (
+                      <>
+                        <select
+                          className="input label-row__merge"
+                          autoFocus
+                          value=""
+                          disabled={busy || others.length === 0}
+                          onChange={(e) => e.target.value && merge(label, e.target.value)}
+                        >
+                          <option value="">Merge into…</option>
+                          {others.map((l) => (
+                            <option key={l.id} value={l.id}>
+                              {l.name}
+                            </option>
+                          ))}
+                        </select>
+                        <button className="btn btn--sm" onClick={() => setMergingId(null)} disabled={busy}>
+                          Cancel
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <div className="label-reorder">
+                          <button
+                            className="btn btn--sm"
+                            aria-label={`Move ${label.name} up`}
+                            title="Move up"
+                            onClick={() => move(label, -1)}
+                            disabled={!writeAccess || busy || index === 0}
+                          >
+                            ▲
+                          </button>
+                          <button
+                            className="btn btn--sm"
+                            aria-label={`Move ${label.name} down`}
+                            title="Move down"
+                            onClick={() => move(label, 1)}
+                            disabled={!writeAccess || busy || index === ordered.length - 1}
+                          >
+                            ▼
+                          </button>
+                        </div>
+                        <button
+                          className="btn btn--sm"
+                          onClick={() => setEditing({ id: label.id, name: label.name })}
+                          disabled={!writeAccess || busy}
+                          title={writeAccess ? undefined : 'Read-only token'}
+                        >
+                          Rename
+                        </button>
+                        <button
+                          className="btn btn--sm"
+                          onClick={() => setMergingId(label.id)}
+                          disabled={!writeAccess || busy || others.length === 0}
+                          title={writeAccess ? undefined : 'Read-only token'}
+                        >
+                          Merge
+                        </button>
+                        <button
+                          className="btn btn--sm btn--danger-ghost"
+                          onClick={() => remove(label)}
+                          disabled={!writeAccess || busy}
+                          title={writeAccess ? undefined : 'Read-only token'}
+                        >
+                          {busy ? '…' : 'Delete'}
+                        </button>
+                      </>
+                    )}
+                  </div>
                 </div>
               </li>
             )

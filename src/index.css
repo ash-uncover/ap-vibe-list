@@ -513,6 +513,36 @@ code {
   gap: 4px;
   flex: none;
 }
+.label-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.label-row__top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.label-row__name {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.label-row__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.label-row__merge {
+  flex: 1;
+  min-width: 10rem;
+}
 .rows__chips {
   display: flex;
   gap: 4px;
