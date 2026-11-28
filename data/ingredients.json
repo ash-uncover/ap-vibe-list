@@ -484,5 +484,11 @@
     "name": "Oignons",
     "labels": [],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "3e59d1dd-d275-41a5-bdc1-d3d3af70e163",
+    "name": "Chèvre frais",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
