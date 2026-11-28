@@ -1,11 +1,18 @@
 import { Link } from 'react-router'
+import { useMemo } from 'react'
 import { DATA_PATHS } from '../github/data'
-import { normalizeUnit, unitLabel, type Ingredient } from '../github/model'
+import { labelNames, normalizeUnit, unitLabel, type Ingredient, type Label } from '../github/model'
 import { useCollection } from '../hooks/useCollection'
 import { Chip, EmptyState, ErrorNote, Loading, PageHead, ReadOnlyBanner } from '../components/ui'
 
 export function IngredientsList() {
   const { data, loading, error, reload } = useCollection<Ingredient>(DATA_PATHS.ingredients)
+  const labels = useCollection<Label>(DATA_PATHS.labels)
+
+  const byId = useMemo(
+    () => new Map((labels.data ?? []).map((l) => [l.id, l] as const)),
+    [labels.data],
+  )
 
   const sorted = data
     ? [...data].sort((a, b) => a.name.localeCompare(b.name))
@@ -16,9 +23,14 @@ export function IngredientsList() {
       <PageHead
         title="Ingredients"
         action={
-          <Link to="/ingredients/new" className="btn btn--primary btn--sm">
-            New
-          </Link>
+          <div className="row">
+            <Link to="/ingredients/labels" className="btn btn--sm">
+              Manage labels
+            </Link>
+            <Link to="/ingredients/new" className="btn btn--primary btn--sm">
+              New
+            </Link>
+          </div>
         }
       />
       <ReadOnlyBanner />
@@ -39,24 +51,27 @@ export function IngredientsList() {
           />
         ) : (
           <ul className="rows">
-            {sorted.map((i) => (
-              <li key={i.id}>
-                <Link to={`/ingredients/${i.id}`} className="rows__item">
-                  <span className="rows__main">{i.name}</span>
-                  {i.labels.length > 0 && (
-                    <span className="rows__chips">
-                      {i.labels.map((l) => (
-                        <Chip key={l}>{l}</Chip>
-                      ))}
+            {sorted.map((i) => {
+              const names = labelNames(i.labelIds, byId)
+              return (
+                <li key={i.id}>
+                  <Link to={`/ingredients/${i.id}`} className="rows__item">
+                    <span className="rows__main">{i.name}</span>
+                    {names.length > 0 && (
+                      <span className="rows__chips">
+                        {names.map((l) => (
+                          <Chip key={l}>{l}</Chip>
+                        ))}
+                      </span>
+                    )}
+                    <span className="rows__unit">{unitLabel(normalizeUnit(i.defaultUnit))}</span>
+                    <span className="rows__chevron" aria-hidden>
+                      ›
                     </span>
-                  )}
-                  <span className="rows__unit">{unitLabel(normalizeUnit(i.defaultUnit))}</span>
-                  <span className="rows__chevron" aria-hidden>
-                    ›
-                  </span>
-                </Link>
-              </li>
-            ))}
+                  </Link>
+                </li>
+              )
+            })}
           </ul>
         )
       )}

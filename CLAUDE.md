@@ -45,6 +45,21 @@ deployed to **GitHub Pages**, that authenticates with a **GitHub PAT** and opera
 | `src/github/`    | `client.ts` (thin authenticated `fetch` wrapper) + Contents API helpers.|
 | `src/routes/`    | Screens. Add new features here as routes.                             |
 
+### Data model
+
+Collections persist as JSON arrays in the repo under `data/` (`DATA_PATHS` in
+`src/github/data.ts`): `ingredients`, `labels`, `recipes`, `templates`, `lists`.
+
+**Labels are first-class objects.** `data/labels.json` holds `Label { id, name }`, and each
+ingredient references them by id (`Ingredient.labelIds: string[]`) — never by name. Renaming a
+label edits only the `Label` object, so the new name shows everywhere automatically. Resolve
+ids to names for display with `labelNames(ids, byId)` (`src/github/model.ts`). The
+**Manage labels** screen (`src/routes/LabelsManage.tsx`, route `ingredients/labels`, reached via
+a button on the Items page — not a main nav entry) lists labels with usage counts and supports
+rename, delete (strips the id from every ingredient, then removes the label), and merge
+(re-points ingredients to the target, then removes the source). New labels are created inline
+while editing an ingredient and committed to `labels.json` on save.
+
 ## Commands
 
 ```bash

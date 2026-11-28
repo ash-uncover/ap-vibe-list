@@ -39,8 +39,23 @@ export function normalizeUnit(u: unknown, fallback: Unit = DEFAULT_UNIT): Unit {
 export interface Ingredient {
   id: string
   name: string
-  labels: string[]
+  labelIds: string[]
   defaultUnit: Unit
+}
+
+/** A reusable, named label. Ingredients reference labels by `id`, so renaming a label
+ *  here is reflected everywhere it is used without touching any ingredient. */
+export interface Label {
+  id: string
+  name: string
+}
+
+/** Resolve label ids to their names via a catalog, dropping unknown ids, sorted for display. */
+export function labelNames(ids: string[], byId: Map<string, Label>): string[] {
+  return ids
+    .map((id) => byId.get(id)?.name)
+    .filter((n): n is string => n !== undefined)
+    .sort((a, b) => a.localeCompare(b))
 }
 
 export type BundleKind = 'template' | 'recipe'
