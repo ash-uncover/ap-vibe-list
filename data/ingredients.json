@@ -537,17 +537,19 @@
     "defaultUnit": "pack"
   },
   {
-    "id": "26acd202-fbce-452c-ac29-44cdcea53591",
-    "name": "Café",
-    "labelIds": [],
-    "defaultUnit": "pack"
-  },
-  {
     "id": "8a830dca-87c6-47bc-8fee-03a8c6ca4364",
     "name": "Bicarbonate",
     "labelIds": [
       "e9896e92-3729-4eae-b111-a8d78bc5ec28"
     ],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "26acd202-fbce-452c-ac29-44cdcea53591",
+    "name": "Café",
+    "labelIds": [
+      "e1c277a2-2ec4-4273-bed2-b5280b92d478"
+    ],
+    "defaultUnit": "pack"
   }
 ]
