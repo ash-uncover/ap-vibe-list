@@ -502,5 +502,11 @@
     "name": "Parmesan",
     "labels": [],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "6218fc6f-5317-4981-9982-2f6ebdac8350",
+    "name": "Pommes de terre",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
