@@ -65,14 +65,35 @@ export function IngredientEdit() {
   }
 
   useEffect(() => {
-    if (loaded || !data) return
+    if (loaded || !data || labels.loading) return
     if (existing) {
       setName(existing.name)
-      setLabelIds(existing.labelIds)
       setDefaultUnit(normalizeUnit(existing.defaultUnit))
+      if (existing.labelIds) {
+        setLabelIds(existing.labelIds)
+      } else {
+        // Legacy ingredient stored free-text `labels`: resolve names to catalog ids, staging
+        // any not in the catalog so saving migrates this ingredient to the id-based shape.
+        const legacy = (existing as { labels?: string[] }).labels ?? []
+        const byName = new Map((labels.data ?? []).map((l) => [l.name.toLowerCase(), l] as const))
+        const ids: string[] = []
+        const staged: Label[] = []
+        for (const nm of legacy) {
+          const found = byName.get(nm.toLowerCase())
+          if (found) {
+            ids.push(found.id)
+          } else {
+            const newLabelId = newId()
+            staged.push({ id: newLabelId, name: nm })
+            ids.push(newLabelId)
+          }
+        }
+        setLabelIds(ids)
+        if (staged.length > 0) setPendingLabels(staged)
+      }
     }
     setLoaded(true)
-  }, [data, existing, loaded])
+  }, [data, existing, loaded, labels.loading, labels.data])
 
   function addLabel() {
     addLabelValue(labelInput)

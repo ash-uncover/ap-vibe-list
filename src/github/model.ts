@@ -51,11 +51,25 @@ export interface Label {
 }
 
 /** Resolve label ids to their names via a catalog, dropping unknown ids, sorted for display. */
-export function labelNames(ids: string[], byId: Map<string, Label>): string[] {
-  return ids
+export function labelNames(ids: string[] | undefined, byId: Map<string, Label>): string[] {
+  return (ids ?? [])
     .map((id) => byId.get(id)?.name)
     .filter((n): n is string => n !== undefined)
     .sort((a, b) => a.localeCompare(b))
+}
+
+/**
+ * Display names for an ingredient's labels, resilient to both shapes: current ingredients
+ * reference labels by id (`labelIds`), while legacy/not-yet-migrated data stored free-text
+ * names in `labels`. Never throws on missing fields.
+ */
+export function ingredientLabelNames(
+  ing: { labelIds?: string[]; labels?: string[] },
+  byId: Map<string, Label>,
+): string[] {
+  if (ing.labelIds && ing.labelIds.length > 0) return labelNames(ing.labelIds, byId)
+  if (ing.labels && ing.labels.length > 0) return [...ing.labels].sort((a, b) => a.localeCompare(b))
+  return []
 }
 
 export type BundleKind = 'template' | 'recipe'

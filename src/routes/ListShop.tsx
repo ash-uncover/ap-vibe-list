@@ -7,7 +7,7 @@ import {
   DEFAULT_UNIT,
   effectiveItems,
   formatAmount,
-  labelNames,
+  ingredientLabelNames,
   migrateList,
   normalizeItem,
   type AttachedRecipe,
@@ -223,7 +223,7 @@ export function ListShop() {
             const key = boughtKey(it.ingredientId, it.unit)
             const ing = byId.get(it.ingredientId)
             const bought = boughtSet.has(key)
-            const chips = ing ? labelNames(ing.labelIds, labelsById) : []
+            const chips = ing ? ingredientLabelNames(ing, labelsById) : []
             return (
               <li key={key}>
                 <label className={`check ${bought ? 'is-bought' : ''}`}>

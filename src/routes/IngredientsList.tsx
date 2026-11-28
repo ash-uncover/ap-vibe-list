@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
 import { useMemo } from 'react'
 import { DATA_PATHS } from '../github/data'
-import { labelNames, normalizeUnit, unitLabel, type Ingredient, type Label } from '../github/model'
+import { ingredientLabelNames, normalizeUnit, unitLabel, type Ingredient, type Label } from '../github/model'
 import { useCollection } from '../hooks/useCollection'
 import { Chip, EmptyState, ErrorNote, Loading, PageHead, ReadOnlyBanner } from '../components/ui'
 
@@ -52,7 +52,7 @@ export function IngredientsList() {
         ) : (
           <ul className="rows">
             {sorted.map((i) => {
-              const names = labelNames(i.labelIds, byId)
+              const names = ingredientLabelNames(i, byId)
               return (
                 <li key={i.id}>
                   <Link to={`/ingredients/${i.id}`} className="rows__item">

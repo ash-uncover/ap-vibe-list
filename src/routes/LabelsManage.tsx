@@ -21,7 +21,7 @@ export function LabelsManage() {
   const counts = useMemo(() => {
     const m = new Map<string, number>()
     for (const ing of ingredients.data ?? [])
-      for (const id of ing.labelIds) m.set(id, (m.get(id) ?? 0) + 1)
+      for (const id of ing.labelIds ?? []) m.set(id, (m.get(id) ?? 0) + 1)
     return m
   }, [ingredients.data])
 
@@ -72,8 +72,8 @@ export function LabelsManage() {
         await ingredients.commit(
           (cur) =>
             cur.map((i) =>
-              i.labelIds.includes(label.id)
-                ? { ...i, labelIds: i.labelIds.filter((x) => x !== label.id) }
+              (i.labelIds ?? []).includes(label.id)
+                ? { ...i, labelIds: (i.labelIds ?? []).filter((x) => x !== label.id) }
                 : i,
             ),
           `Remove label from ingredients: ${label.name}`,
@@ -102,8 +102,8 @@ export function LabelsManage() {
       await ingredients.commit(
         (cur) =>
           cur.map((i) => {
-            if (!i.labelIds.includes(from.id)) return i
-            const merged = [...new Set(i.labelIds.map((x) => (x === from.id ? to.id : x)))]
+            if (!(i.labelIds ?? []).includes(from.id)) return i
+            const merged = [...new Set((i.labelIds ?? []).map((x) => (x === from.id ? to.id : x)))]
             return { ...i, labelIds: merged }
           }),
         `Merge label ${from.name} into ${to.name}`,
