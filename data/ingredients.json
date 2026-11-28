@@ -520,5 +520,11 @@
     "name": "Fruits",
     "labels": [],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "2b2f512f-7b29-456b-816e-5262811217d6",
+    "name": "Liquide vaisselle",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
