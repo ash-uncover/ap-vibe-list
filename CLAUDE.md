@@ -60,10 +60,16 @@ rename, delete (strips the id from every ingredient, then removes the label), an
 (re-points ingredients to the target, then removes the source). New labels are created inline
 while editing an ingredient and committed to `labels.json` on save.
 
+**Label order is user-defined.** The `labels.json` array order *is* the order: the Manage
+labels screen shows labels in that order (not alphabetical) with move up/down controls that
+persist a reordered array. That order drives grouping in the shopping view.
+
 **Shopping view groups by label.** `ListShop` (consumption only) categorizes the checklist as
-`label > ingredient` in collapsible sections: each item goes under its primary label (first
-alphabetically) with an **Other** bucket for unlabeled items; only labels that have items are
-shown. List creation/edit screens keep a flat list.
+`label > ingredient` in collapsible sections, ordered by the user-defined label order; each
+item goes under its primary label (the one earliest in that order among the labels it carries)
+with an **Other** bucket (always last) for unlabeled items. Only labels that have items are
+shown, and ingredients stay alphabetical within a group. List creation/edit screens keep a flat
+list.
 
 The Items list (`IngredientsList`) flags any ingredient with **0 or more than 1 label** with a
 warning icon, since those don't group cleanly in the shopping view (an unlabeled item lands in

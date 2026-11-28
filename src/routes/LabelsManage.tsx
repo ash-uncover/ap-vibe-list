@@ -25,10 +25,9 @@ export function LabelsManage() {
     return m
   }, [ingredients.data])
 
-  const sorted = useMemo(
-    () => [...(labels.data ?? [])].sort((a, b) => a.name.localeCompare(b.name)),
-    [labels.data],
-  )
+  // Labels are shown in their stored order (the order of labels.json), which the user controls
+  // with the move up/down buttons and which drives grouping in the shopping view.
+  const ordered = labels.data ?? []
 
   function fail(e: unknown) {
     setActionError(e instanceof ConflictError ? CONFLICT_MSG : ((e as GitHubError).message ?? 'Action failed.'))
@@ -88,7 +87,7 @@ export function LabelsManage() {
   }
 
   async function merge(from: Label, toId: string) {
-    const to = sorted.find((l) => l.id === toId)
+    const to = ordered.find((l) => l.id === toId)
     if (!to || to.id === from.id) return
     if (
       !confirm(
@@ -117,6 +116,26 @@ export function LabelsManage() {
     }
   }
 
+  /** Reorder: swap a label with its neighbour and persist the new labels.json order. */
+  async function move(label: Label, dir: -1 | 1) {
+    setBusyId(label.id)
+    setActionError(null)
+    try {
+      await labels.commit((cur) => {
+        const i = cur.findIndex((l) => l.id === label.id)
+        const j = i + dir
+        if (i < 0 || j < 0 || j >= cur.length) return cur
+        const next = [...cur]
+        ;[next[i], next[j]] = [next[j], next[i]]
+        return next
+      }, `Reorder label: ${label.name}`)
+    } catch (e) {
+      fail(e)
+    } finally {
+      setBusyId(null)
+    }
+  }
+
   if (labels.loading || ingredients.loading) return <Loading />
   if (labels.error) return <ErrorNote error={labels.error} onRetry={labels.reload} />
 
@@ -131,22 +150,44 @@ export function LabelsManage() {
 
       {actionError && <p className="flash flash--error">{actionError}</p>}
 
-      {sorted.length === 0 ? (
+      {ordered.length === 0 ? (
         <EmptyState
           title="No labels yet"
           hint="Labels are created while editing an ingredient. Add one there and it will show up here."
         />
       ) : (
         <ul className="rows">
-          {sorted.map((label) => {
+          {ordered.map((label, index) => {
             const count = counts.get(label.id) ?? 0
             const busy = busyId === label.id
             const isEditing = editing?.id === label.id
             const isMerging = mergingId === label.id
-            const others = sorted.filter((l) => l.id !== label.id)
+            const others = ordered.filter((l) => l.id !== label.id)
             return (
               <li key={label.id}>
                 <div className="rows__item">
+                  {!isEditing && !isMerging && (
+                    <div className="label-reorder">
+                      <button
+                        className="btn btn--sm"
+                        aria-label={`Move ${label.name} up`}
+                        title="Move up"
+                        onClick={() => move(label, -1)}
+                        disabled={!writeAccess || busy || index === 0}
+                      >
+                        ▲
+                      </button>
+                      <button
+                        className="btn btn--sm"
+                        aria-label={`Move ${label.name} down`}
+                        title="Move down"
+                        onClick={() => move(label, 1)}
+                        disabled={!writeAccess || busy || index === ordered.length - 1}
+                      >
+                        ▼
+                      </button>
+                    </div>
+                  )}
                   {isEditing ? (
                     <input
                       className="input rows__main"

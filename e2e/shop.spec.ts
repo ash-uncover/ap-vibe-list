@@ -43,8 +43,9 @@ test.describe('shopping view — grouped by label', () => {
 
     await expect(page.getByRole('heading', { name: 'Weekend shop' })).toBeVisible()
 
-    // Only labels with items appear, alphabetically, "Other" last. "Unused" is absent.
-    await expect(page.locator('.shop-group__name')).toHaveText(['Dairy', 'Vegetables', 'Other'])
+    // Groups follow the label order defined in labels.json (Vegetables before Dairy — i.e. NOT
+    // alphabetical), "Other" always last, and the item-less "Unused" label is absent.
+    await expect(page.locator('.shop-group__name')).toHaveText(['Vegetables', 'Dairy', 'Other'])
 
     const veg = page.locator('.shop-group', { hasText: 'Vegetables' })
     await expect(veg.locator('.check__name')).toHaveText(['Carrot', 'Tomato'])

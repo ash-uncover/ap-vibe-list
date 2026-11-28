@@ -73,4 +73,19 @@ test.describe('label management', () => {
     await page.goto('ingredients')
     await expect(page.getByRole('link', { name: /Carrot/ })).not.toContainText('Vegetables')
   })
+
+  test('user can reorder labels and the order persists', async ({ page }) => {
+    await enterDemoWithData(page, seed())
+    await page.goto('ingredients/labels')
+
+    // Shown in stored order, not alphabetically.
+    await expect(page.locator('.rows__main')).toHaveText(['Vegetables', 'Fresh'])
+
+    await page.getByRole('button', { name: 'Move Vegetables down' }).click()
+    await expect(page.locator('.rows__main')).toHaveText(['Fresh', 'Vegetables'])
+
+    // Persisted to the backing store — survives a reload.
+    await page.goto('ingredients/labels')
+    await expect(page.locator('.rows__main')).toHaveText(['Fresh', 'Vegetables'])
+  })
 })

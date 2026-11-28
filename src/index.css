@@ -508,6 +508,11 @@ code {
   line-height: 1;
   flex: none;
 }
+.label-reorder {
+  display: flex;
+  gap: 4px;
+  flex: none;
+}
 .rows__chips {
   display: flex;
   gap: 4px;
