@@ -28,12 +28,12 @@
     "name": "Boissons"
   },
   {
-    "id": "e9896e92-3729-4eae-b111-a8d78bc5ec28",
-    "name": "Condiments"
-  },
-  {
     "id": "83e37e72-2af8-4fd5-be1c-50a210db4e10",
     "name": "Conserves"
+  },
+  {
+    "id": "e9896e92-3729-4eae-b111-a8d78bc5ec28",
+    "name": "Condiments"
   },
   {
     "id": "6943617d-6cf8-41c4-9b6b-1966cc8b6c02",
