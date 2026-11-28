@@ -593,5 +593,11 @@
       "c985538c-48eb-4963-b9e3-338a14f413fe"
     ],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "ff8e6df4-d7d9-41fa-96e0-1d0b99d426d0",
+    "name": "Beurre de cacahuète",
+    "labelIds": [],
+    "defaultUnit": "piece"
   }
 ]
