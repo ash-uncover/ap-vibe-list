@@ -56,6 +56,19 @@ npm run preview    # preview the production build
 
 Verify a change with `npm run build` before claiming it works; the build type-checks.
 
+## Working process
+
+Work is driven by **GitHub issues** on `ash-uncover/ap-vibe-list` (public). The standing loop:
+
+1. **Check open issues** (`gh issue list`, or the public REST API if `gh` isn't authed on
+   github.com).
+2. If there are any, **implement and test** the change — verify with `npm run build`
+   (it type-checks).
+3. **Open a pull request and close the issue** — branch off `main` (never commit directly
+   to `main`), and reference the issue with `Closes #N` in the PR body so merging closes it.
+4. **Update documentation** (this file and/or relevant docs) to reflect the change.
+5. Then complete the current work.
+
 ## How to add a feature
 
 1. Add a route under `src/routes/` and register it in `src/App.tsx`.
