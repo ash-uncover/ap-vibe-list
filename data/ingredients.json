@@ -192,12 +192,6 @@
     "defaultUnit": "pack"
   },
   {
-    "id": "a4f923f1-1925-4de4-b732-7ea397de3760",
-    "name": "Œufs",
-    "labelIds": [],
-    "defaultUnit": "piece"
-  },
-  {
     "id": "a33cca24-8fd5-4325-9d2c-acc75adb44ae",
     "name": "Ognions",
     "labelIds": [
@@ -589,6 +583,14 @@
     "name": "Poireaux",
     "labelIds": [
       "b0035b81-1bc7-47f2-9d76-e71726164ba4"
+    ],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "a4f923f1-1925-4de4-b732-7ea397de3760",
+    "name": "Œufs",
+    "labelIds": [
+      "c985538c-48eb-4963-b9e3-338a14f413fe"
     ],
     "defaultUnit": "piece"
   }
