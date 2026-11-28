@@ -322,14 +322,6 @@
     "defaultUnit": "piece"
   },
   {
-    "id": "a9bed879-a904-4719-9b11-8a79c44983c8",
-    "name": "Olives",
-    "labels": [
-      "Condiments"
-    ],
-    "defaultUnit": "pack"
-  },
-  {
     "id": "eab90b09-3124-4a03-ae51-55c579d8986c",
     "name": "Chocolat en Poudre",
     "labels": [
@@ -552,6 +544,14 @@
     "name": "Maïs",
     "labelIds": [
       "30a9e64d-c2f1-47df-b9c9-1312ff6410d7"
+    ],
+    "defaultUnit": "pack"
+  },
+  {
+    "id": "a9bed879-a904-4719-9b11-8a79c44983c8",
+    "name": "Olives",
+    "labelIds": [
+      "ceec97e5-9609-4df9-a265-a54b9dc3a131"
     ],
     "defaultUnit": "pack"
   }
