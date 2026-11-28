@@ -358,14 +358,6 @@
     "defaultUnit": "kg"
   },
   {
-    "id": "a365543f-5ad5-4eb3-833b-6246d0b44db4",
-    "name": "Maïs",
-    "labels": [
-      "Conserves"
-    ],
-    "defaultUnit": "pack"
-  },
-  {
     "id": "95104599-99f8-4cd3-8af0-5c1892cda1b0",
     "name": "Poireaux",
     "labels": [],
@@ -552,6 +544,14 @@
     "name": "Emmental rapé",
     "labelIds": [
       "54a6d07d-919d-49aa-9f53-39c8720a7dd0"
+    ],
+    "defaultUnit": "pack"
+  },
+  {
+    "id": "a365543f-5ad5-4eb3-833b-6246d0b44db4",
+    "name": "Maïs",
+    "labelIds": [
+      "30a9e64d-c2f1-47df-b9c9-1312ff6410d7"
     ],
     "defaultUnit": "pack"
   }
