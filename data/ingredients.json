@@ -262,11 +262,6 @@
     "labelIds": []
   },
   {
-    "id": "92558059-f19e-4ba9-8681-e2281606016e",
-    "name": "Pâte feuilletée",
-    "labelIds": []
-  },
-  {
     "id": "95104599-99f8-4cd3-8af0-5c1892cda1b0",
     "name": "Poireaux",
     "labelIds": [],
@@ -579,6 +574,14 @@
     "name": "Oeufs",
     "labelIds": [
       "c985538c-48eb-4963-b9e3-338a14f413fe"
+    ],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "92558059-f19e-4ba9-8681-e2281606016e",
+    "name": "Pâte feuilletée",
+    "labelIds": [
+      "3fd9e312-c3c9-4661-ad0c-35633eaed550"
     ],
     "defaultUnit": "piece"
   }
