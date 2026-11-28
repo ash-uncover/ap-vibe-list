@@ -8,12 +8,12 @@
     "name": "Légumes"
   },
   {
-    "id": "b671c9d4-06b4-48b3-b20c-3d55305a254f",
-    "name": "Boissons"
-  },
-  {
     "id": "e388a0b5-c138-45fa-8712-6444a40e4259",
     "name": "Poissons"
+  },
+  {
+    "id": "b671c9d4-06b4-48b3-b20c-3d55305a254f",
+    "name": "Boissons"
   },
   {
     "id": "e9896e92-3729-4eae-b111-a8d78bc5ec28",
