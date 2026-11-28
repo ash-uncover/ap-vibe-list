@@ -296,12 +296,6 @@
     "defaultUnit": "g"
   },
   {
-    "id": "6f5b83a2-90fd-4a27-bdaa-0e72e584bbc4",
-    "name": "Riz",
-    "labelIds": [],
-    "defaultUnit": "kg"
-  },
-  {
     "id": "5930a09d-9ec1-4c73-8e49-134bd9ddefa9",
     "name": "Sacs poubelles 10l",
     "labelIds": [],
@@ -601,5 +595,13 @@
       "b0035b81-1bc7-47f2-9d76-e71726164ba4"
     ],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "6f5b83a2-90fd-4a27-bdaa-0e72e584bbc4",
+    "name": "Riz",
+    "labelIds": [
+      "6943617d-6cf8-41c4-9b6b-1966cc8b6c02"
+    ],
+    "defaultUnit": "kg"
   }
 ]
