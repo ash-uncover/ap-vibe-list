@@ -149,12 +149,6 @@
     ]
   },
   {
-    "id": "8702e9f1-cfd6-4e43-a086-ef8fe33a7a9c",
-    "name": "Jambon cru",
-    "labelIds": [],
-    "defaultUnit": "piece"
-  },
-  {
     "id": "3272f655-013b-41a1-b2a5-3b7c1a50c002",
     "name": "Kefta (boulettes)",
     "labelIds": [
@@ -569,6 +563,14 @@
   {
     "id": "09cef645-44f0-4185-88dd-471282d08614",
     "name": "Jambon",
+    "labelIds": [
+      "3fd9e312-c3c9-4661-ad0c-35633eaed550"
+    ],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "8702e9f1-cfd6-4e43-a086-ef8fe33a7a9c",
+    "name": "Jambon cru",
     "labelIds": [
       "3fd9e312-c3c9-4661-ad0c-35633eaed550"
     ],
