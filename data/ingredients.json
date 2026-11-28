@@ -127,12 +127,6 @@
     "defaultUnit": "piece"
   },
   {
-    "id": "e0bd790e-be39-4a52-b931-6b5719699ff2",
-    "name": "Fromage râpé",
-    "labelIds": [],
-    "defaultUnit": "piece"
-  },
-  {
     "id": "7f28d06c-12a4-4f76-81af-9369a45d1526",
     "name": "Fruits",
     "labelIds": [],
@@ -567,5 +561,13 @@
       "c985538c-48eb-4963-b9e3-338a14f413fe"
     ],
     "defaultUnit": "kg"
+  },
+  {
+    "id": "e0bd790e-be39-4a52-b931-6b5719699ff2",
+    "name": "Fromage râpé",
+    "labelIds": [
+      "8e42ff8a-334b-4900-a2dc-5df3b24337e7"
+    ],
+    "defaultUnit": "piece"
   }
 ]
