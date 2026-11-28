@@ -472,5 +472,83 @@
       "Légumes"
     ],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "8702e9f1-cfd6-4e43-a086-ef8fe33a7a9c",
+    "name": "Jambon cru",
+    "labels": [],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "fbd1ac9c-aaa8-4b85-a35b-022ec896ebd6",
+    "name": "Oignons",
+    "labels": [],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "3e59d1dd-d275-41a5-bdc1-d3d3af70e163",
+    "name": "Chèvre frais",
+    "labels": [],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "26e1c412-e7f2-49df-9bbe-cfb14694630c",
+    "name": "Ail",
+    "labels": [],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "aedda013-00cf-4ef3-b08f-301dce899a51",
+    "name": "Parmesan",
+    "labels": [],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "6218fc6f-5317-4981-9982-2f6ebdac8350",
+    "name": "Pommes de terre",
+    "labels": [],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "ec19bb72-72be-47e0-99fb-a24dd34c72b2",
+    "name": "Échalottes",
+    "labels": [],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "7f28d06c-12a4-4f76-81af-9369a45d1526",
+    "name": "Fruits",
+    "labels": [],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "2b2f512f-7b29-456b-816e-5262811217d6",
+    "name": "Liquide vaisselle",
+    "labels": [],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "ec0d0824-33d9-4edf-805f-c262bc42e6b9",
+    "name": "Papier toilette",
+    "labels": [],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "5930a09d-9ec1-4c73-8e49-134bd9ddefa9",
+    "name": "Sacs poubelles 10l",
+    "labels": [],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "6dac35ff-31fe-4ff9-967a-47d6a476c192",
+    "name": "Pain",
+    "labels": [],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "61f7c60e-ef3e-445e-ad4a-2eed5f906b68",
+    "name": "Cigarettes",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
