@@ -60,6 +60,11 @@ rename, delete (strips the id from every ingredient, then removes the label), an
 (re-points ingredients to the target, then removes the source). New labels are created inline
 while editing an ingredient and committed to `labels.json` on save.
 
+**Shopping view groups by label.** `ListShop` (consumption only) categorizes the checklist as
+`label > ingredient` in collapsible sections: each item goes under its primary label (first
+alphabetically) with an **Other** bucket for unlabeled items; only labels that have items are
+shown. List creation/edit screens keep a flat list.
+
 ## Commands
 
 ```bash
