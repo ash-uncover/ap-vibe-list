@@ -111,12 +111,6 @@
     ]
   },
   {
-    "id": "ec19bb72-72be-47e0-99fb-a24dd34c72b2",
-    "name": "Échalottes",
-    "labelIds": [],
-    "defaultUnit": "piece"
-  },
-  {
     "id": "382aea38-4035-4498-adf8-cd710d349849",
     "name": "Emmental rapé",
     "labelIds": [
@@ -561,6 +555,14 @@
     "name": "Crème fraîche liquide",
     "labelIds": [
       "8e42ff8a-334b-4900-a2dc-5df3b24337e7"
+    ],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "ec19bb72-72be-47e0-99fb-a24dd34c72b2",
+    "name": "Échalottes",
+    "labelIds": [
+      "b0035b81-1bc7-47f2-9d76-e71726164ba4"
     ],
     "defaultUnit": "piece"
   }
