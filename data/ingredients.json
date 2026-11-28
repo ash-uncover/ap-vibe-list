@@ -508,5 +508,11 @@
     "name": "Pommes de terre",
     "labels": [],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "ec19bb72-72be-47e0-99fb-a24dd34c72b2",
+    "name": "Échalottes",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
