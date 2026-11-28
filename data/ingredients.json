@@ -251,11 +251,6 @@
     "defaultUnit": "pack"
   },
   {
-    "id": "b21ee1bf-1888-4ddf-9026-ddd05d8080f1",
-    "name": "Pâte brisée",
-    "labelIds": []
-  },
-  {
     "id": "95104599-99f8-4cd3-8af0-5c1892cda1b0",
     "name": "Poireaux",
     "labelIds": [],
@@ -584,6 +579,14 @@
     "name": "Parmesan",
     "labelIds": [
       "b707410e-5a65-4409-83dc-3dc7fe264ed8"
+    ],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "b21ee1bf-1888-4ddf-9026-ddd05d8080f1",
+    "name": "Pâte brisée",
+    "labelIds": [
+      "3fd9e312-c3c9-4661-ad0c-35633eaed550"
     ],
     "defaultUnit": "piece"
   }
