@@ -472,5 +472,11 @@
       "Légumes"
     ],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "8702e9f1-cfd6-4e43-a086-ef8fe33a7a9c",
+    "name": "Jambon cru",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
