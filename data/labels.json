@@ -12,12 +12,12 @@
     "name": "Conserves"
   },
   {
-    "id": "b707410e-5a65-4409-83dc-3dc7fe264ed8",
-    "name": "Fromages"
-  },
-  {
     "id": "206a1a0a-aeff-498b-8027-9340b12665ab",
     "name": "Fruits"
+  },
+  {
+    "id": "b707410e-5a65-4409-83dc-3dc7fe264ed8",
+    "name": "Fromages"
   },
   {
     "id": "8e42ff8a-334b-4900-a2dc-5df3b24337e7",
