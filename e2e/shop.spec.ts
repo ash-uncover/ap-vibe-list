@@ -52,6 +52,9 @@ test.describe('shopping view — grouped by label', () => {
 
     const other = page.locator('.shop-group', { hasText: 'Other' })
     await expect(other.locator('.check__name')).toHaveText(['Salt'])
+
+    // Items no longer repeat their label inside the row — the group header carries it.
+    await expect(page.locator('.check__chips')).toHaveCount(0)
   })
 
   test('label groups are collapsible', async ({ page }) => {

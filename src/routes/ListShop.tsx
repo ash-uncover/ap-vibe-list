@@ -7,7 +7,6 @@ import {
   DEFAULT_UNIT,
   effectiveItems,
   formatAmount,
-  ingredientLabelNames,
   migrateList,
   normalizeItem,
   type AttachedRecipe,
@@ -21,7 +20,7 @@ import type { GitHubError } from '../github/types'
 import { useCollection } from '../hooks/useCollection'
 import { IngredientPicker } from '../components/IngredientPicker'
 import { RecipeGroups } from '../components/RecipeGroups'
-import { Chip, CONFLICT_MSG, ErrorNote, Loading, PageHead, ReadOnlyBanner } from '../components/ui'
+import { CONFLICT_MSG, ErrorNote, Loading, PageHead, ReadOnlyBanner } from '../components/ui'
 import { clearDraft, draftShopKey, getDraft, setDraft } from '../storage/drafts'
 
 interface Working {
@@ -267,20 +266,12 @@ export function ListShop() {
                     const key = boughtKey(it.ingredientId, it.unit)
                     const ing = byId.get(it.ingredientId)
                     const bought = boughtSet.has(key)
-                    const chips = ing ? ingredientLabelNames(ing, labelsById) : []
                     return (
                       <li key={key}>
                         <label className={`check ${bought ? 'is-bought' : ''}`}>
                           <input type="checkbox" checked={bought} onChange={() => toggle(key)} />
                           <span className="check__name">{ing?.name ?? 'Unknown item'}</span>
                           <span className="check__amount">{formatAmount(it.quantity, it.unit)}</span>
-                          {chips.length > 0 && (
-                            <span className="check__chips">
-                              {chips.map((l) => (
-                                <Chip key={l}>{l}</Chip>
-                              ))}
-                            </span>
-                          )}
                         </label>
                       </li>
                     )
