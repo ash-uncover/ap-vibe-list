@@ -4,12 +4,12 @@
     "name": "Fruits"
   },
   {
-    "id": "b671c9d4-06b4-48b3-b20c-3d55305a254f",
-    "name": "Boissons"
-  },
-  {
     "id": "b0035b81-1bc7-47f2-9d76-e71726164ba4",
     "name": "Légumes"
+  },
+  {
+    "id": "b671c9d4-06b4-48b3-b20c-3d55305a254f",
+    "name": "Boissons"
   },
   {
     "id": "e9896e92-3729-4eae-b111-a8d78bc5ec28",
