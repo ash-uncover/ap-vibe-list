@@ -20,12 +20,12 @@
     "name": "Fromages"
   },
   {
-    "id": "b671c9d4-06b4-48b3-b20c-3d55305a254f",
-    "name": "Boissons"
-  },
-  {
     "id": "8e42ff8a-334b-4900-a2dc-5df3b24337e7",
     "name": "Laitage"
+  },
+  {
+    "id": "b671c9d4-06b4-48b3-b20c-3d55305a254f",
+    "name": "Boissons"
   },
   {
     "id": "e9896e92-3729-4eae-b111-a8d78bc5ec28",
