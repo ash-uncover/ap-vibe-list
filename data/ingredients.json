@@ -485,12 +485,6 @@
     "defaultUnit": "piece"
   },
   {
-    "id": "26e1c412-e7f2-49df-9bbe-cfb14694630c",
-    "name": "Ail",
-    "labelIds": [],
-    "defaultUnit": "piece"
-  },
-  {
     "id": "aedda013-00cf-4ef3-b08f-301dce899a51",
     "name": "Parmesan",
     "labelIds": [],
@@ -616,5 +610,13 @@
       "c27917ba-ec48-4b93-8e61-66b53af159ef"
     ],
     "defaultUnit": "kg"
+  },
+  {
+    "id": "26e1c412-e7f2-49df-9bbe-cfb14694630c",
+    "name": "Aïl",
+    "labelIds": [
+      "b0035b81-1bc7-47f2-9d76-e71726164ba4"
+    ],
+    "defaultUnit": "piece"
   }
 ]
