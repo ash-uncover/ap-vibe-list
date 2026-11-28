@@ -213,12 +213,6 @@
     "defaultUnit": "pack"
   },
   {
-    "id": "6dac35ff-31fe-4ff9-967a-47d6a476c192",
-    "name": "Pain",
-    "labelIds": [],
-    "defaultUnit": "piece"
-  },
-  {
     "id": "3f2dc3c8-221a-41f2-93d3-572c5b61624b",
     "name": "Pains à burger",
     "labelIds": []
@@ -603,5 +597,13 @@
       "6943617d-6cf8-41c4-9b6b-1966cc8b6c02"
     ],
     "defaultUnit": "kg"
+  },
+  {
+    "id": "6dac35ff-31fe-4ff9-967a-47d6a476c192",
+    "name": "Pain",
+    "labelIds": [
+      "554a8907-8492-40d0-a11e-4123a80711d2"
+    ],
+    "defaultUnit": "piece"
   }
 ]
