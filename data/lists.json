@@ -114,6 +114,11 @@
         "ingredientId": "5ac8b11f-ac93-40bf-804f-c225d19bdeff",
         "quantity": 3,
         "unit": "piece"
+      },
+      {
+        "ingredientId": "3272f655-013b-41a1-b2a5-3b7c1a50c002",
+        "quantity": 9,
+        "unit": "piece"
       }
     ],
     "recipes": [],
