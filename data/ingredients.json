@@ -119,12 +119,6 @@
     "defaultUnit": "pack"
   },
   {
-    "id": "1a067989-0d45-475e-9cae-9258471f15a1",
-    "name": "Farine",
-    "labelIds": [],
-    "defaultUnit": "kg"
-  },
-  {
     "id": "773861eb-3528-4e72-b42e-c4ce56a76064",
     "name": "Fromage a Burger",
     "labelIds": [
@@ -565,5 +559,13 @@
       "b0035b81-1bc7-47f2-9d76-e71726164ba4"
     ],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "1a067989-0d45-475e-9cae-9258471f15a1",
+    "name": "Farine",
+    "labelIds": [
+      "c985538c-48eb-4963-b9e3-338a14f413fe"
+    ],
+    "defaultUnit": "kg"
   }
 ]
