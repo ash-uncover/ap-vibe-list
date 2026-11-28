@@ -718,6 +718,34 @@ button.listcard {
   flex-wrap: wrap;
 }
 
+/* ---------- shopping groups (label > ingredient) ---------- */
+.shop-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.shop-group {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--canvas);
+}
+.shop-group__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.shop-group__name {
+  flex: 1;
+  min-width: 0;
+}
+.shop-group__items {
+  padding: 0 10px 10px;
+}
+
 /* ---------- review rows (new-list confirmation) ---------- */
 .review-row {
   display: flex;

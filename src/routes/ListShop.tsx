@@ -199,6 +199,23 @@ export function ListShop() {
     (r) => !working.recipes.some((g) => g.recipeId === r.id),
   )
 
+  // Shopping view: group items under their primary label (first alphabetically), with an
+  // "Other" bucket for unlabeled items. Only labels that actually have items appear. This is
+  // consumption-only — the "Edit list" picker below stays a flat list.
+  const OTHER_KEY = '￿'
+  const groupMap = new Map<string, { label: string; items: Item[] }>()
+  for (const it of effective) {
+    const ing = byId.get(it.ingredientId)
+    const primary = (ing ? ingredientLabelNames(ing, labelsById) : [])[0]
+    const key = primary ?? OTHER_KEY
+    const bucket = groupMap.get(key) ?? { label: primary ?? 'Other', items: [] }
+    bucket.items.push(it)
+    groupMap.set(key, bucket)
+  }
+  const groups = [...groupMap.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([key, v]) => ({ key, label: v.label, items: v.items }))
+
   return (
     <div className="stack">
       <PageHead title={rawList.name} />
@@ -218,30 +235,47 @@ export function ListShop() {
       {effective.length === 0 ? (
         <p className="muted">This list is empty. Add items or a recipe below.</p>
       ) : (
-        <ul className="checklist">
-          {effective.map((it) => {
-            const key = boughtKey(it.ingredientId, it.unit)
-            const ing = byId.get(it.ingredientId)
-            const bought = boughtSet.has(key)
-            const chips = ing ? ingredientLabelNames(ing, labelsById) : []
+        <div className="shop-groups">
+          {groups.map((g) => {
+            const groupDone = g.items.filter((it) =>
+              boughtSet.has(boughtKey(it.ingredientId, it.unit)),
+            ).length
             return (
-              <li key={key}>
-                <label className={`check ${bought ? 'is-bought' : ''}`}>
-                  <input type="checkbox" checked={bought} onChange={() => toggle(key)} />
-                  <span className="check__name">{ing?.name ?? 'Unknown item'}</span>
-                  <span className="check__amount">{formatAmount(it.quantity, it.unit)}</span>
-                  {chips.length > 0 && (
-                    <span className="check__chips">
-                      {chips.map((l) => (
-                        <Chip key={l}>{l}</Chip>
-                      ))}
-                    </span>
-                  )}
-                </label>
-              </li>
+              <details key={g.key} className="shop-group" open>
+                <summary className="shop-group__head">
+                  <span className="shop-group__name">{g.label}</span>
+                  <span className="rows__meta">
+                    {groupDone}/{g.items.length}
+                  </span>
+                </summary>
+                <ul className="checklist shop-group__items">
+                  {g.items.map((it) => {
+                    const key = boughtKey(it.ingredientId, it.unit)
+                    const ing = byId.get(it.ingredientId)
+                    const bought = boughtSet.has(key)
+                    const chips = ing ? ingredientLabelNames(ing, labelsById) : []
+                    return (
+                      <li key={key}>
+                        <label className={`check ${bought ? 'is-bought' : ''}`}>
+                          <input type="checkbox" checked={bought} onChange={() => toggle(key)} />
+                          <span className="check__name">{ing?.name ?? 'Unknown item'}</span>
+                          <span className="check__amount">{formatAmount(it.quantity, it.unit)}</span>
+                          {chips.length > 0 && (
+                            <span className="check__chips">
+                              {chips.map((l) => (
+                                <Chip key={l}>{l}</Chip>
+                              ))}
+                            </span>
+                          )}
+                        </label>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </details>
             )
           })}
-        </ul>
+        </div>
       )}
 
       <details className="disclosure">
