@@ -526,5 +526,11 @@
     "name": "Liquide vaisselle",
     "labels": [],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "ec0d0824-33d9-4edf-805f-c262bc42e6b9",
+    "name": "Papier toilette",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
