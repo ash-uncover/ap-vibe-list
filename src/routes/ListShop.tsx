@@ -7,7 +7,6 @@ import {
   DEFAULT_UNIT,
   effectiveItems,
   formatAmount,
-  ingredientLabelNames,
   migrateList,
   normalizeItem,
   type AttachedRecipe,
@@ -21,7 +20,7 @@ import type { GitHubError } from '../github/types'
 import { useCollection } from '../hooks/useCollection'
 import { IngredientPicker } from '../components/IngredientPicker'
 import { RecipeGroups } from '../components/RecipeGroups'
-import { Chip, CONFLICT_MSG, ErrorNote, Loading, PageHead, ReadOnlyBanner } from '../components/ui'
+import { CONFLICT_MSG, ErrorNote, Loading, PageHead, ReadOnlyBanner } from '../components/ui'
 import { clearDraft, draftShopKey, getDraft, setDraft } from '../storage/drafts'
 
 interface Working {
@@ -199,22 +198,36 @@ export function ListShop() {
     (r) => !working.recipes.some((g) => g.recipeId === r.id),
   )
 
-  // Shopping view: group items under their primary label (first alphabetically), with an
-  // "Other" bucket for unlabeled items. Only labels that actually have items appear. This is
-  // consumption-only — the "Edit list" picker below stays a flat list.
-  const OTHER_KEY = '￿'
-  const groupMap = new Map<string, { label: string; items: Item[] }>()
+  // Shopping view: group items by label, honoring the user-defined label order (the order of
+  // entries in labels.json). Each item goes under its primary label — the one earliest in that
+  // order among the labels it carries — with an "Other" bucket (always last) for unlabeled
+  // items. Only labels that actually have items appear; ingredients stay alphabetical within a
+  // group (effective is pre-sorted by name). Consumption-only — the edit picker stays flat.
+  const labelOrder = new Map((labels.data ?? []).map((l, i) => [l.id, i] as const))
+  const OTHER_KEY = '￿-other'
+  const OTHER_RANK = Number.MAX_SAFE_INTEGER
+  const groupMap = new Map<string, { key: string; label: string; rank: number; items: Item[] }>()
   for (const it of effective) {
     const ing = byId.get(it.ingredientId)
-    const primary = (ing ? ingredientLabelNames(ing, labelsById) : [])[0]
-    const key = primary ?? OTHER_KEY
-    const bucket = groupMap.get(key) ?? { label: primary ?? 'Other', items: [] }
+    const validIds = (ing?.labelIds ?? []).filter((id) => labelsById.has(id))
+    let key = OTHER_KEY
+    let label = 'Other'
+    let rank = OTHER_RANK
+    if (validIds.length > 0) {
+      const primaryId = validIds.reduce((a, b) =>
+        (labelOrder.get(a) ?? OTHER_RANK) <= (labelOrder.get(b) ?? OTHER_RANK) ? a : b,
+      )
+      key = primaryId
+      label = labelsById.get(primaryId)!.name
+      rank = labelOrder.get(primaryId) ?? OTHER_RANK
+    }
+    const bucket = groupMap.get(key) ?? { key, label, rank, items: [] }
     bucket.items.push(it)
     groupMap.set(key, bucket)
   }
-  const groups = [...groupMap.entries()]
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([key, v]) => ({ key, label: v.label, items: v.items }))
+  const groups = [...groupMap.values()].sort(
+    (a, b) => a.rank - b.rank || a.label.localeCompare(b.label),
+  )
 
   return (
     <div className="stack">
@@ -253,20 +266,12 @@ export function ListShop() {
                     const key = boughtKey(it.ingredientId, it.unit)
                     const ing = byId.get(it.ingredientId)
                     const bought = boughtSet.has(key)
-                    const chips = ing ? ingredientLabelNames(ing, labelsById) : []
                     return (
                       <li key={key}>
                         <label className={`check ${bought ? 'is-bought' : ''}`}>
                           <input type="checkbox" checked={bought} onChange={() => toggle(key)} />
                           <span className="check__name">{ing?.name ?? 'Unknown item'}</span>
                           <span className="check__amount">{formatAmount(it.quantity, it.unit)}</span>
-                          {chips.length > 0 && (
-                            <span className="check__chips">
-                              {chips.map((l) => (
-                                <Chip key={l}>{l}</Chip>
-                              ))}
-                            </span>
-                          )}
                         </label>
                       </li>
                     )
