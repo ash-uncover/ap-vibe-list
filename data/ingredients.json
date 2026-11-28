@@ -91,12 +91,6 @@
     "defaultUnit": "pack"
   },
   {
-    "id": "f98fff62-badf-42c4-9d5f-f3886668aee8",
-    "name": "Chocolat Pâtissier",
-    "labelIds": [],
-    "defaultUnit": "pack"
-  },
-  {
     "id": "61f7c60e-ef3e-445e-ad4a-2eed5f906b68",
     "name": "Cigarettes",
     "labelIds": [],
@@ -547,5 +541,11 @@
       "8e42ff8a-334b-4900-a2dc-5df3b24337e7"
     ],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "f98fff62-badf-42c4-9d5f-f3886668aee8",
+    "name": "Chocolat Pâtissier",
+    "labelIds": [],
+    "defaultUnit": "pack"
   }
 ]
