@@ -49,13 +49,6 @@
     ]
   },
   {
-    "id": "df98cc8a-413f-4ad0-ad43-28d3b6173c78",
-    "name": "Aïl",
-    "labels": [
-      "Légumes"
-    ]
-  },
-  {
     "id": "9657ec40-0f79-47fe-8939-009365418cc4",
     "name": "Skyr",
     "labels": [
@@ -549,6 +542,15 @@
     "id": "61f7c60e-ef3e-445e-ad4a-2eed5f906b68",
     "name": "Cigarettes",
     "labels": [],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "df98cc8a-413f-4ad0-ad43-28d3b6173c78",
+    "name": "Aïl",
+    "labelIds": [
+      "05e04f30-9f00-4f5f-a01d-2009604d114b",
+      "6ff7bd0c-ccb9-4ff6-a695-714f71f24f1f"
+    ],
     "defaultUnit": "piece"
   }
 ]
