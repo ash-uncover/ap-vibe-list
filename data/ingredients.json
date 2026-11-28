@@ -49,13 +49,6 @@
     ]
   },
   {
-    "id": "df98cc8a-413f-4ad0-ad43-28d3b6173c78",
-    "name": "Aïl",
-    "labelIds": [
-      "b0035b81-1bc7-47f2-9d76-e71726164ba4"
-    ]
-  },
-  {
     "id": "9657ec40-0f79-47fe-8939-009365418cc4",
     "name": "Skyr",
     "labelIds": [
@@ -549,14 +542,6 @@
     "id": "61f7c60e-ef3e-445e-ad4a-2eed5f906b68",
     "name": "Cigarettes",
     "labelIds": [],
-    "defaultUnit": "piece"
-  },
-  {
-    "id": "df98cc8a-413f-4ad0-ad43-28d3b6173c78",
-    "name": "Aïl",
-    "labelIds": [
-      "05e04f30-9f00-4f5f-a01d-2009604d114b"
-    ],
     "defaultUnit": "piece"
   },
   {
