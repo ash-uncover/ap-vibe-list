@@ -544,5 +544,11 @@
     "name": "Pain",
     "labels": [],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "61f7c60e-ef3e-445e-ad4a-2eed5f906b68",
+    "name": "Cigarettes",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
