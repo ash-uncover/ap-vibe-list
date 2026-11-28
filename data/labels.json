@@ -8,12 +8,12 @@
     "name": "Boissons"
   },
   {
-    "id": "e9896e92-3729-4eae-b111-a8d78bc5ec28",
-    "name": "Condiments"
-  },
-  {
     "id": "b0035b81-1bc7-47f2-9d76-e71726164ba4",
     "name": "Légumes"
+  },
+  {
+    "id": "e9896e92-3729-4eae-b111-a8d78bc5ec28",
+    "name": "Condiments"
   },
   {
     "id": "83e37e72-2af8-4fd5-be1c-50a210db4e10",
