@@ -127,12 +127,6 @@
     "defaultUnit": "piece"
   },
   {
-    "id": "7f28d06c-12a4-4f76-81af-9369a45d1526",
-    "name": "Fruits",
-    "labelIds": [],
-    "defaultUnit": "piece"
-  },
-  {
     "id": "3f76a278-af35-448e-80d9-bb73316bdba6",
     "name": "Haricots rouges (conserve)",
     "labelIds": [
@@ -567,6 +561,14 @@
     "name": "Fromage râpé",
     "labelIds": [
       "8e42ff8a-334b-4900-a2dc-5df3b24337e7"
+    ],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "7f28d06c-12a4-4f76-81af-9369a45d1526",
+    "name": "Fruits",
+    "labelIds": [
+      "206a1a0a-aeff-498b-8027-9340b12665ab"
     ],
     "defaultUnit": "piece"
   }
