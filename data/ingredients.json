@@ -514,5 +514,11 @@
     "name": "Échalottes",
     "labels": [],
     "defaultUnit": "piece"
+  },
+  {
+    "id": "7f28d06c-12a4-4f76-81af-9369a45d1526",
+    "name": "Fruits",
+    "labels": [],
+    "defaultUnit": "piece"
   }
 ]
