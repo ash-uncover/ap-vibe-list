@@ -58,13 +58,6 @@
     ]
   },
   {
-    "id": "892a4be9-9686-4883-80f7-b54f44b21148",
-    "name": "Bacon",
-    "labels": [
-      "Viande"
-    ]
-  },
-  {
     "id": "eef1b6bd-a2b6-4ce9-8bb9-f578fbe96bb8",
     "name": "Poulet (filets)",
     "labels": [
@@ -550,6 +543,14 @@
     "name": "Ananas",
     "labelIds": [
       "d51c963d-4978-43e1-856c-21177346d708"
+    ],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "892a4be9-9686-4883-80f7-b54f44b21148",
+    "name": "Bacon",
+    "labelIds": [
+      "bd22f1a4-aa7e-4d20-bb44-e7550b87841c"
     ],
     "defaultUnit": "piece"
   }
