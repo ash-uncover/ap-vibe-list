@@ -104,6 +104,11 @@
         "ingredientId": "07bc184c-b1fc-4714-a207-c72c1af2352a",
         "quantity": 1,
         "unit": "kg"
+      },
+      {
+        "ingredientId": "ff8e6df4-d7d9-41fa-96e0-1d0b99d426d0",
+        "quantity": 1,
+        "unit": "pack"
       }
     ],
     "recipes": [],
