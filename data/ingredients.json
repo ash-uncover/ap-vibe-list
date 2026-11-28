@@ -50,14 +50,6 @@
     ]
   },
   {
-    "id": "0fa193e3-6215-4fb4-a01d-84e4485a91c5",
-    "name": "Yaos",
-    "labels": [
-      "Laitage",
-      "Yahourts"
-    ]
-  },
-  {
     "id": "eef1b6bd-a2b6-4ce9-8bb9-f578fbe96bb8",
     "name": "Poulet (filets)",
     "labels": [
@@ -554,5 +546,14 @@
       "ceec97e5-9609-4df9-a265-a54b9dc3a131"
     ],
     "defaultUnit": "pack"
+  },
+  {
+    "id": "0fa193e3-6215-4fb4-a01d-84e4485a91c5",
+    "name": "Yaos",
+    "labelIds": [
+      "eda6fbd2-65f1-442b-9b5b-742836698757",
+      "ea9364ef-b1ba-4495-acc9-4cdcbc643db3"
+    ],
+    "defaultUnit": "piece"
   }
 ]
