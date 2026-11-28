@@ -192,11 +192,6 @@
     "defaultUnit": "pack"
   },
   {
-    "id": "7fe21b95-c288-4e74-9b83-acecb032e485",
-    "name": "Oeufs",
-    "labelIds": []
-  },
-  {
     "id": "a4f923f1-1925-4de4-b732-7ea397de3760",
     "name": "Œufs",
     "labelIds": [],
@@ -576,6 +571,14 @@
     "name": "Miel",
     "labelIds": [
       "e1c277a2-2ec4-4273-bed2-b5280b92d478"
+    ],
+    "defaultUnit": "piece"
+  },
+  {
+    "id": "7fe21b95-c288-4e74-9b83-acecb032e485",
+    "name": "Oeufs",
+    "labelIds": [
+      "c985538c-48eb-4963-b9e3-338a14f413fe"
     ],
     "defaultUnit": "piece"
   }
