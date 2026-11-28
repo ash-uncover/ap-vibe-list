@@ -59,4 +59,26 @@ test.describe('ingredients list', () => {
     const labels = await readCollection<{ name: string }>(page, 'labels')
     expect(labels.map((l) => l.name)).toContain('Vegetables')
   })
+
+  test('warns on ingredients with 0 or more than 1 label', async ({ page }) => {
+    await enterDemoWithData(page, {
+      labels: [
+        { id: 'veg', name: 'Vegetables' },
+        { id: 'fresh', name: 'Fresh' },
+      ],
+      ingredients: [
+        { id: 'ok', name: 'Carrot', defaultUnit: 'piece', labelIds: ['veg'] }, // exactly 1 — no warning
+        { id: 'none', name: 'Salt', defaultUnit: 'piece', labelIds: [] }, // 0 — warning
+        { id: 'multi', name: 'Tomato', defaultUnit: 'piece', labelIds: ['veg', 'fresh'] }, // 2 — warning
+      ],
+    })
+    await page.goto('ingredients')
+
+    const row = (name: string) => page.locator('.rows__item', { hasText: name })
+    await expect(row('Carrot').locator('.rows__warn')).toHaveCount(0)
+    await expect(row('Salt').locator('.rows__warn')).toHaveCount(1)
+    await expect(row('Tomato').locator('.rows__warn')).toHaveCount(1)
+    await expect(row('Salt').locator('.rows__warn')).toHaveAttribute('aria-label', /No label/)
+    await expect(row('Tomato').locator('.rows__warn')).toHaveAttribute('aria-label', /Multiple labels/)
+  })
 })

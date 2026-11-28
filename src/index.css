@@ -503,6 +503,11 @@ code {
   color: var(--muted);
   font-size: 18px;
 }
+.rows__warn {
+  font-size: 14px;
+  line-height: 1;
+  flex: none;
+}
 .rows__chips {
   display: flex;
   gap: 4px;

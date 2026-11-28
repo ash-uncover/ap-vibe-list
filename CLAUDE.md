@@ -65,6 +65,10 @@ while editing an ingredient and committed to `labels.json` on save.
 alphabetically) with an **Other** bucket for unlabeled items; only labels that have items are
 shown. List creation/edit screens keep a flat list.
 
+The Items list (`IngredientsList`) flags any ingredient with **0 or more than 1 label** with a
+warning icon, since those don't group cleanly in the shopping view (an unlabeled item lands in
+"Other", a multi-labelled one groups under only its primary label).
+
 ## Commands
 
 ```bash
