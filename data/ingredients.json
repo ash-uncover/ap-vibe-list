@@ -230,14 +230,6 @@
     "defaultUnit": "pack"
   },
   {
-    "id": "382aea38-4035-4498-adf8-cd710d349849",
-    "name": "Emmental rapé",
-    "labels": [
-      "Fromages"
-    ],
-    "defaultUnit": "pack"
-  },
-  {
     "id": "1a067989-0d45-475e-9cae-9258471f15a1",
     "name": "Farine",
     "labels": [],
@@ -554,5 +546,13 @@
       "7fbcc3e1-e931-46af-bd62-1779ffe716ac"
     ],
     "defaultUnit": "g"
+  },
+  {
+    "id": "382aea38-4035-4498-adf8-cd710d349849",
+    "name": "Emmental rapé",
+    "labelIds": [
+      "54a6d07d-919d-49aa-9f53-39c8720a7dd0"
+    ],
+    "defaultUnit": "pack"
   }
 ]
